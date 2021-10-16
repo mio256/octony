@@ -27,7 +27,7 @@ class Thread(models.Model):
 
     def print_title(self):
         if(len(self.thread_text) > 14):
-            return self.thread_text[0:10]+'...'
+            return self.thread_text[0:14]+'...'
         else:
             return self.thread_text[0:14]
 
