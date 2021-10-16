@@ -411,7 +411,7 @@ padding: 0;
 
 @media screen and (max-width: 750px) {
 
-  img { max-width: 100%; }
+  img { max-width: 75%; }
 
   .textarea_width{
     width: 100%;
