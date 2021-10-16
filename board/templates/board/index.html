@@ -1,7 +1,8 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
 
-<h1>Octony</h1>
+
+<a href="board:index"><img src="{% static 'board/images/logo.png' %}" alt="Octony"></a>
 
 <div class="box8">
     <p>Octony -OCTO anoNYmous-</p>
@@ -21,12 +22,12 @@
 
 {% if latest_thread_list %}
 {% for thread in latest_thread_list %}
-<a href="{% url 'board:detail' thread.id %}" class="btn-flat-double-border">
+<div href="{% url 'board:detail' thread.id %}" class="btn-flat-double-border">
     {{ thread.print_title }} <br>
     スレ数 : {{ thread.print_count_response}} <br>
     更新日時 : {{ thread.print_latest_date}}<br>
     作成日時 : {{ thread.print_pub_date}}</a>
-</a>
+</div>
 {% endfor %}
 {% else %}
 <p>そして誰も居なくなった...</p>
