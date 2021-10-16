@@ -1,0 +1,34 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
+
+<h1>{{ thread.thread_text }}</h1>
+<div class="box4">
+    <p>{{ thread.thread_text }}</p>
+    <p>スレ数 : {{ thread.print_count_response}}</p>
+    <p>更新日時 : {{ thread.print_latest_date}}</p>
+    <p>作成日時 : {{ thread.print_pub_date}}</p>
+</div>
+<ul>
+    {% for response in thread.response_set.all %}
+    <li>
+        {{ response.name_text }} -- {{ response.print_tweet_date }}<br>
+        {{ response.response_text }}
+    </li>
+    {% endfor %}
+</ul>
+
+<div class="box17">
+    <form action="{% url 'board:tweet' thread.id %}" method="post">
+        {% csrf_token %}
+        名前 : <input type="text" value="ななしちゃん" name="name_str" required minlength="1" maxlength="10"> <br>
+        つぶやき : <br>
+        <textarea name="tweet_str" rows="4" cols="40"></textarea> <br>
+        <input type="submit" value="Send"><input type="reset" value="Reset">
+    </form>
+</div>
+
+<p>
+    <a href="{% url 'board:index' %}" class="btn-brackets">
+        他のスレ
+    </a>
+</p>

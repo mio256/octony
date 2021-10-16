@@ -1,0 +1,28 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
+
+<h1>{{ thread.thread_text }}</h1>
+<ul>
+    {% for response in thread.response_set.all %}
+    <li>
+        {{ response.name_text }} -- {{ response.print_tweet_date }}<br>
+        {{ response.response_text }}
+    </li>
+    {% endfor %}
+</ul>
+
+<div class="box8">
+    <p>書き込み完了</p>
+</div>
+
+<p>
+    <a href="{% url 'board:detail' thread.id %}" class="btn-brackets">
+        新規書き込み
+    </a>
+</p>
+
+<p>
+    <a href="{% url 'board:index' %}" class="btn-brackets">
+        他のスレ
+    </a>
+</p>

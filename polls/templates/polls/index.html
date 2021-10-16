@@ -1,0 +1,54 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+<h1>Send your feeling.</h1>
+
+<div class="box8">
+    <p>It is your voting space.</p>
+</div>
+
+{% if latest_question_list %}
+<ul>
+    {% for question in latest_question_list %}
+    <p>
+        <a href="{% url 'polls:detail' question.id %}" class="btn-brackets">
+            {{ question.question_text }}
+        </a>
+    </p>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+
+<div>
+    <ol>
+        <li>Select menu</li>
+        <li>Vote</li>
+        <li>Follow me</li>
+    </ol>
+</div>
+
+<div>
+    <!--twitter-->
+    <a class="btn-social-square btn-social-square--twitter">
+        T
+    </a>
+    <!--facebook-->
+    <a class="btn-social-square btn-social-square--facebook">
+        F
+    </a>
+    <!--はてぶ-->
+    <a class="btn-social-square btn-social-square--hatebu">
+        B!
+    </a>
+    <!--pocket-->
+    <a class="btn-social-square btn-social-square--pocket">
+        P
+    </a>
+    <!--feedly-->
+    <a class="btn-social-square btn-social-square--feedly">
+        R
+    </a>
+</div>
