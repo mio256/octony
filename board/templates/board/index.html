@@ -4,14 +4,9 @@
 
 <a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony"></a>
 
-<div class="box8">
-    <p>Octony -OCTO anoNYmous-</p>
-    <br>
-    <p>ネット版 語らいの場</p>
-    <p> 〜長工生の8学科全員が匿名で交流できる場所〜</p>
-    <br>
-    <p>ただの雑談から各科の交流まで</p>
-</div>
+<p class="box8">Octony-OctoAnonymous 8人の匿名者</p>
+<p class="box8">長工生が匿名で交流できる場所</p>
+<p class="box8">ただの雑談から各科の交流まで</p>
 
 <div>
     <ol>
@@ -39,7 +34,8 @@
     <form action="{% url 'board:create_thread' %}" method="post">
         {% csrf_token %}
         新規スレ:<br>
-        <textarea name="thread_str" rows="4" cols="40"></textarea><br>
-        <input type="submit" value="Send"><input type="reset" value="Reset">
+        <textarea name="thread_str" rows="4" class="textarea_width"></textarea> <br>
+        <input type="submit" value="新規">
+        <input type="reset" value="リセット">
     </form>
 </div>

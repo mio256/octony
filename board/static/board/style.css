@@ -1,29 +1,12 @@
+/* スレッド見出し */
 h1 {
+  font-size: 40px;
   color: #6594e0;/*文字色*/
   /*線の種類（点線）2px 線色*/
   border-bottom: dashed 2px #6594e0;
 }
 
-h2 {
-  color: #505050;/*文字色*/
-  padding: 0.5em;/*文字周りの余白*/
-  display: inline-block;/*おまじない*/
-  line-height: 1.3;/*行高*/
-  background: #dbebf8;/*背景色*/
-  vertical-align: middle;
-  border-radius: 25px 0px 0px 25px;/*左側の角を丸く*/
-}
-
-h2:before {
-  content: '●';
-  color: white;
-  margin-right: 8px;
-}
-
-li a{
-  color: green;
-}
-
+/* オレンジ [ボタン] */
 .btn-brackets {
 display: inline-block;
 position: relative;
@@ -57,6 +40,7 @@ border-bottom: solid 1px #ff7f7f;
 right: 0;
 }
 
+/* オレンジ付箋 */
 .box8 {
 padding: 0.5em 1em;
 margin: 2em 0;
@@ -107,6 +91,7 @@ background: #ff6d82;
 background: #7bda72;
 }
 
+/* ステップ目次 */
 ol {
 counter-reset:number; /*数字をリセット*/
 list-style-type: none!important; /*数字を一旦消す*/
@@ -157,140 +142,11 @@ top: 50%;
 transform: translateY(-50%);
 }
 
-.box25{
-position: relative;
-background: #fff0cd;
-box-shadow: 0px 0px 0px 5px #fff0cd;
-border: dashed 2px white;
-padding: 0.2em 0.5em;
-color: #454545;
-}
-.box25:after{
-position: absolute;
-content: '';
-right: -7px;
-top: -7px;
-border-width: 0 15px 15px 0;
-border-style: solid;
-border-color: #ffdb88 #fff #ffdb88;
-box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
-}
-.box25 p {
-margin: 0; 
-padding: 0;
-}
-
-.btn-square {
-display: inline-block;
-padding: 0.5em 1em;
-text-decoration: none;
-background: #668ad8;/*ボタン色*/
-color: #FFF;
-border-bottom: solid 4px #627295;
-border-radius: 3px;
-}
-.btn-square:active {
-/*ボタンを押したとき*/
--webkit-transform: translateY(4px);
-transform: translateY(4px);/*下に動く*/
-border-bottom: none;/*線を消す*/
-}
-
-.ribbon1 {
-display: inline-block;
-position: relative;
-height: 50px;/*リボンの高さ*/
-line-height: 50px;/*リボンの高さ*/
-text-align: center;
-padding: 0 30px;/*横の大きさ*/
-font-size: 18px;/*文字の大きさ*/
-background: #f57a78;/*塗りつぶし色*/
-color: #FFF;/*文字色*/
-box-sizing: border-box;
-}
-
-.ribbon1:before, .ribbon1:after {
-position: absolute;
-content: '';
-width: 0px;
-height: 0px;
-z-index: 1;
-}
-
-.ribbon1:before {
-top: 0;
-left: 0;
-border-width: 25px 0px 25px 15px;
-border-color: transparent transparent transparent #fff;
-border-style: solid;
-}
-
-.ribbon1:after {
-top: 0;
-right: 0;
-border-width: 25px 15px 25px 0px;
-border-color: transparent #fff transparent transparent;
-border-style: solid;
-}
-
-.ribbon13-wrapper {  
-display: block;
-position: relative;
-margin: 15px auto;
-padding: 10px 0;
-width: 300px;
-background: #f1f1f1;
-}
-
-.ribbon13 {
-display: inline-block;
-position: relative;
-box-sizing: border-box;
-padding: 5px 0;
-margin: 0 0 0 -20px;
-width: calc(100% + 20px);
-color: white;
-background: #70a6ff;
-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-}
-
-.ribbon13 h3{
-margin: 0;
-padding: 0 30px 0 15px;
-border-top: dashed 1px #FFF;
-border-bottom: dashed 1px #FFF;
-font-size: 20px;
-line-height: 46px;
-}
-
-.ribbon13:after {
-position: absolute;
-content: '';
-z-index: 1;
-top: 0;
-right: 0;
-width: 0px;
-height: 0px;
-border-width: 30px 15px 30px 0px;
-border-color: transparent #f1f1f1 transparent transparent;
-border-style: solid;
-}
-
-.ribbon13:before {
-position: absolute;
-content: '';
-top: 100%;
-left: 0;
-border: none;
-border-bottom: solid 15px transparent;
-border-right: solid 20px #6081b7;
-}
-
+/* レス */
 ul {
 padding: 0;
 position: relative;
 }
-
 ul li {
 color: black;
 border-left: solid 8px orange;/*左側の線*/
@@ -302,18 +158,7 @@ padding: 0.5em;
 list-style-type: none!important;
 }
 
-.box21{
-padding: 0.5em 1em;
-background: -moz-linear-gradient(#ffb03c, #ff708d);
-background: -webkit-linear-gradient(#ffb03c, #ff708d);
-background: linear-gradient(to right, #ffb03c, #ff708d);
-color: #FFF;
-}
-.box21 p {
-margin: 0; 
-padding: 0;
-}
-
+/* スレッド一覧 */
 .btn-flat-double-border {
 display: inline-block;
 padding: 0.5em 1em;
@@ -409,9 +254,27 @@ padding: 0;
   width: 50%;
 }
 
+/* テキストボックス 左から右へのアニメーション*/
+.text_underline::before{
+  position: absolute; 
+  left: 0px; /*左配置 ここright: 0px;にすると右から左のアニメーション*/
+  bottom: 0px; /*左配置*/
+  width: 0px; /*アニメーションで0pxから100%に*/
+  height: 1px; /*高さ*/
+  content: '';
+  background-color: #3be5ae; /*アニメーションの色*/
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+#text3:focus + .text_underline::before{
+  width: 100%;
+}
+
+/*スマホ用*/
 @media screen and (max-width: 750px) {
 
-  img { max-width: 75%; }
+  img { width: 100%; }
 
   .textarea_width{
     width: 100%;

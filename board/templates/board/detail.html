@@ -25,11 +25,12 @@
 <div class="box17">
     <form action="{% url 'board:tweet' thread.id %}" method="post">
         {% csrf_token %}
-        <a name="jump">書き込み</a>
-        名前 : <input type="text" value="ななしちゃん" name="name_str" required minlength="1" maxlength="10"> <br>
+        <a name="jump">書き込み</a><br>
+        <input type="text" value="ななしちゃん" name="name_str" required minlength="1" maxlength="10"> <br>
         つぶやき : <br>
         <textarea name="tweet_str" rows="4" class="textarea_width"></textarea> <br>
-        <input type="submit" value="Send"><input type="reset" value="Reset">
+        <input type="submit" value="書き込み">
+        <input type="reset" value="リセット">
     </form>
 </div>
 
