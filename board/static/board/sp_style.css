@@ -1,5 +1,9 @@
 *{
-  font-size: x-large;
+  font-size: xxx-large;
+}
+
+@media only screen and (max-width: 750px) {
+  img { max-width: 100%; }
 }
 
 h1 {
@@ -332,6 +336,7 @@ transition: .4s;
 background: #fcf0ce;
 }
 
+/* スレ一覧 */
 .box4{
 padding: 8px 19px;
 margin: 2em 0;
@@ -345,18 +350,19 @@ margin: 0;
 padding: 0;
 }
 
+/* 投稿ボックス */
 .box17{
   margin:2em 0;
   position: relative;
   padding: 0.5em 1.5em;
-  border-top: solid 2px black;
-  border-bottom: solid 2px black;
+  border-top: solid 5px black;
+  border-bottom: solid 5px black;
 }
 .box17:before, .box17:after{
   content: '';
   position: absolute;
-  top: -10px;
-  width: 2px;
+  top: -5px;
+  width: 5px;
   height: -webkit-calc(100% + 20px);
   height: calc(100% + 20px);
   background-color: black;
