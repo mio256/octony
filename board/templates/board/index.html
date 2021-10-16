@@ -22,12 +22,12 @@
 
 {% if latest_thread_list %}
 {% for thread in latest_thread_list %}
-<div href="{% url 'board:detail' thread.id %}" class="btn-flat-double-border">
+<a href="{% url 'board:detail' thread.id %}" class="btn-flat-double-border">
     {{ thread.print_title }} <br>
     スレ数 : {{ thread.print_count_response}} <br>
     更新日時 : {{ thread.print_latest_date}}<br>
     作成日時 : {{ thread.print_pub_date}}</a>
-</div>
+</a>
 {% endfor %}
 {% else %}
 <p>そして誰も居なくなった...</p>
