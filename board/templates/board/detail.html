@@ -11,7 +11,7 @@
 <ul>
     {% for response in thread.response_set.all %}
     <li>
-        {{ response.name_text }} -- {{ response.print_tweet_date }}<br>
+        {{ forloop.counter }}.{{ response.name_text }} -- {{ response.print_tweet_date }}<br>
         {{ response.response_text }}
     </li>
     {% endfor %}

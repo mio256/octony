@@ -1,3 +1,7 @@
+p {
+  white-space: pre-wrap;
+}
+
 h1 {
   color: #6594e0;/*文字色*/
   /*線の種類（点線）2px 線色*/
