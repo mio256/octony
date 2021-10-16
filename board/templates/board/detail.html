@@ -1,15 +1,15 @@
 {% load static %}
-<!-- pcとspでスタイルシートを分岐 -->
-<link rel="stylesheet" media="screen and (max-width:768px)" href="{% static 'board/sp_style.css' %}">
-<link rel="stylesheet" media="screen and (min-width:769px)" href="{% static 'board/pc_style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
 
 <h1>{{ thread.thread_text }}</h1>
+
 <div class="box4">
     <p>{{ thread.thread_text }}</p>
     <p>スレ数 : {{ thread.print_count_response}}</p>
     <p>更新日時 : {{ thread.print_latest_date}}</p>
     <p>作成日時 : {{ thread.print_pub_date}}</p>
 </div>
+
 <ul>
     {% for response in thread.response_set.all %}
     <li>

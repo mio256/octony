@@ -1,3 +1,12 @@
+@media screen and(max-width: 750px) {
+
+  img { max-width: 100%; }
+
+  *{
+    font-size: xx-large;
+  }
+}
+
 h1 {
   color: #6594e0;/*文字色*/
   /*線の種類（点線）2px 線色*/

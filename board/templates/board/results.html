@@ -1,7 +1,6 @@
 {% load static %}
-<!-- pcとspでスタイルシートを分岐 -->
-<link rel="stylesheet" media="screen and (max-width:768px)" href="{% static 'board/sp_style.css' %}">
-<link rel="stylesheet" media="screen and (min-width:769px)" href="{% static 'board/pc_style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
+
 <h1>{{ thread.thread_text }}</h1>
 
 <ul>
