@@ -25,6 +25,12 @@ class Thread(models.Model):
     def print_count_response(self):
         return self.response_set.count()
 
+    def print_title(self):
+        if(len(self.thread_text) > 14):
+            return self.thread_text[0:10]+'...'
+        else:
+            return self.thread_text[0:14]
+
     @ admin.display(
         boolean=True,
         ordering='pub_date',
