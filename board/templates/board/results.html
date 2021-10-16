@@ -1,31 +1,9 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
+<meta http-equiv="Refresh" content="1; {% url 'board:detail' thread.id%}">
 
 <h1>{{ thread.thread_text }}</h1>
-
-<a href="#jump" class="btn-cross">最新へ</a>
-
-<ul>
-    {% for response in thread.response_set.all %}
-    <li>
-        {{ forloop.counter }}.{{ response.name_text }} -- {{ response.print_tweet_date }}<br>
-        {{ response.response_text }}
-    </li>
-    {% endfor %}
-</ul>
 
 <div class="box8">
     <a name="jump">書き込み完了</a>
 </div>
-
-<p>
-    <a href="{% url 'board:detail' thread.id %}" class="btn-brackets">
-        更新
-    </a>
-</p>
-
-<p>
-    <a href="{% url 'board:index' %}" class="btn-brackets">
-        他のスレ
-    </a>
-</p>
