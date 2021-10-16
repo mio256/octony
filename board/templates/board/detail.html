@@ -11,6 +11,8 @@
     <p>作成日時 : {{ thread.print_pub_date}}</p>
 </div>
 
+<a href="#jump" class="btn-cross">最新へ</a>
+
 <ul>
     {% for response in thread.response_set.all %}
     <li>
@@ -23,6 +25,7 @@
 <div class="box17">
     <form action="{% url 'board:tweet' thread.id %}" method="post">
         {% csrf_token %}
+        <a name="jump">書き込み</a>
         名前 : <input type="text" value="ななしちゃん" name="name_str" required minlength="1" maxlength="10"> <br>
         つぶやき : <br>
         <textarea name="tweet_str" rows="4" class="textarea_width"></textarea> <br>

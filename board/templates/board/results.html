@@ -1,8 +1,9 @@
-<meta name="viewport" content="width=device-width,initial-scale=1">
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
 
 <h1>{{ thread.thread_text }}</h1>
+
+<a href="#jump" class="btn-cross">最新へ</a>
 
 <ul>
     {% for response in thread.response_set.all %}
@@ -14,7 +15,7 @@
 </ul>
 
 <div class="box8">
-    <p>書き込み完了</p>
+    <a name="jump">書き込み完了</a>
 </div>
 
 <p>
