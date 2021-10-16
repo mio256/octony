@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width,initial-scale=1">
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
 
@@ -24,7 +25,7 @@
         {% csrf_token %}
         名前 : <input type="text" value="ななしちゃん" name="name_str" required minlength="1" maxlength="10"> <br>
         つぶやき : <br>
-        <textarea name="tweet_str" rows="4" cols="40"></textarea> <br>
+        <textarea name="tweet_str" rows="4" class="textarea_width"></textarea> <br>
         <input type="submit" value="Send"><input type="reset" value="Reset">
     </form>
 </div>
