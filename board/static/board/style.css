@@ -164,7 +164,7 @@ list-style-type: none!important;
 
 /* スレッド 一覧 青枠線 */
 .btn-blue-border {
-  width: 30%;
+  width: 25%;
   display: inline-block;
   padding: 0.5em 1em;
   margin: 5px;
@@ -180,7 +180,7 @@ list-style-type: none!important;
 
 /* スレッド 一覧 赤枠線 */
 .btn-red-border {
-  width: 30%;
+  width: 25%;
   display: inline-block;
   padding: 0.5em 1em;
   margin: 5px;
@@ -196,7 +196,7 @@ list-style-type: none!important;
 
 /* スレッド 一覧 緑枠線 */
 .btn-green-border {
-  width: 30%;
+  width: 25%;
   display: inline-block;
   padding: 0.5em 1em;
   margin: 5px;
