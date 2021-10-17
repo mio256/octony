@@ -34,7 +34,7 @@ class Thread(models.Model):
 
     def add_favorite(self):
         self.favorite_num += 1
-        self.update_date
+        self.update_date()
 
     @ admin.display(
         boolean=True,
