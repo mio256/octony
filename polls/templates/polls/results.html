@@ -9,7 +9,7 @@
     <!-- PC SP 切り替え -->
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- ページ自動更新 -->
-    <meta http-equiv="Refresh" content="5; {% url 'polls:index' %}">
+    <meta http-equiv="Refresh" content="3; {% url 'polls:index' %}">
 
     <title>Octony</title>
 </head>
@@ -20,18 +20,6 @@
 
     <!-- メッセージ -->
     <p class="box8">投稿完了 5秒後に自動で戻ります</p>
-
-    <!-- 感謝 -->
-    <div>
-        <ol>
-            <li>投票</li>
-            <li>してくれて</li>
-            <li>ありがとう！</li>
-        </ol>
-    </div>
-
-    <!-- ロゴ -->
-    <a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony"></a>
 </body>
 
 </html>

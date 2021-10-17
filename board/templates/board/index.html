@@ -44,18 +44,12 @@
     {% if thread.was_update_recently %}
     <a href="{% url 'board:detail' thread.id %}" class="btn-red-border">
         {{ thread.print_title }} <br>
-        レス数 : {{ thread.print_count_response }} <br>
-        おすすめ数 : {{ thread.favorite_num }} <br>
-        更新日時 : {{ thread.print_latest_date }}<br>
-        作成日時 : {{ thread.print_pub_date }}
+        レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
     </a>
     {% else %}
     <a href="{% url 'board:detail' thread.id %}" class="btn-blue-border">
         {{ thread.print_title }} <br>
-        レス数 : {{ thread.print_count_response }} <br>
-        おすすめ数 : {{ thread.favorite_num }} <br>
-        更新日時 : {{ thread.print_latest_date }}<br>
-        作成日時 : {{ thread.print_pub_date }}
+        レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
     </a>
     {% endif %}
     {% endfor %}
@@ -75,8 +69,8 @@
             {% csrf_token %}
             新規スレ:<br>
             <textarea name="thread_str" rows="4" class="textarea_width"></textarea> <br>
-            <input type="submit" value="新規">
-            <input type="reset" value="リセット">
+            <input type="submit" value="新規" class="btn-cross">
+            <input type="reset" value="リセット" class="btn-cross">
         </form>
     </div>
 
