@@ -93,6 +93,11 @@ def tweet(request, thread_id):
             'error_message': "You didn't have a tweet.",
         })
     else:
+        if '$' in tweet.name_text:
+            tweet.hashset(tweet.name_text.split('$')[-1])
+            tweet.name_text = tweet.name_text.split('$')[0]
+        else:
+            tweet.hash_text = 0
         tweet.save()
         thread.update_date()
         thread.save()

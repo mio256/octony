@@ -1,5 +1,7 @@
 import datetime
 import re
+import hashlib
+
 
 from django.db import models
 from django.utils import timezone
@@ -54,6 +56,7 @@ class Response(models.Model):
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE)
     response_text = models.CharField(max_length=255)
     name_text = models.CharField(max_length=255)
+    hash_text = models.CharField(max_length=255)
     tweet_date = models.DateTimeField('date published')
 
     def __str__(self):
@@ -68,3 +71,6 @@ class Response(models.Model):
             return True
         else:
             return False
+
+    def hashset(self, str):
+        self.hash_text = hashlib.sha256(str.encode()).hexdigest()[:8]

@@ -39,10 +39,11 @@
             {% if response.was_url %}
             {{ forloop.counter }}.
             <a href="{{response.name_text}}" target="_blank" rel="noopener noreferrer">{{ response.name_text }}</a><br>
-            ---- {{ response.print_tweet_date }}<br>
+            ----- {{ response.print_tweet_date }}<br>
             {{ response.response_text | linebreaksbr }}
             {% else %}
-            {{ forloop.counter }}.{{ response.name_text }}-{{ response.print_tweet_date }}<br>
+            {{ forloop.counter }}.{{ response.name_text }}.{{ response.hash_text }}<br>
+            ----- {{response.print_tweet_date }}<br>
             {{ response.response_text | linebreaksbr }}
             {% endif %}
         </li>
