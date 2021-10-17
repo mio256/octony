@@ -1,4 +1,5 @@
 import datetime
+import re
 
 from django.db import models
 from django.utils import timezone
@@ -56,3 +57,10 @@ class Response(models.Model):
 
     def print_tweet_date(self):
         return (self.tweet_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+
+    def was_url(self):
+        pattern = "https?://[\w/:%#\$&\?\(\)~\.=\+\-]+"
+        if re.match(pattern, self.name_text):
+            return True
+        else:
+            return False
