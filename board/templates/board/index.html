@@ -13,10 +13,10 @@
 </head>
 
 <body>
-    <footer>
+    <header>
         <!-- ロゴ -->
         <a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony"></a>
-    </footer>
+    </header>
 
     <!-- 付箋 -->
     <p class="box8">Octony-OctoAnonymous 8人の匿名者</p>
@@ -46,6 +46,11 @@
     <p>そして誰も居なくなった...</p>
     <p>新規スレを立ててね！</p>
     {% endif %}
+
+    <!-- すべて表示 -->
+    <a href="{% url 'board:list' %}" class="btn-flat-double-border">
+        すべて表示
+    </a>
 
     <!-- 新規スレッド作成 -->
     <div class="box17">

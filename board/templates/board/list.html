@@ -14,21 +14,7 @@
 
 <body>
     <!-- ロゴ -->
-    <a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony"></a>
-
-    <!-- 付箋 -->
-    <p class="box8">Octony-OctoAnonymous 8人の匿名者</p>
-    <p class="box8">長工生が匿名で交流できる場所</p>
-    <p class="box8">ただの雑談から各科の交流まで</p>
-
-    <!-- ステップ -->
-    <div>
-        <ol>
-            <li>好きなスレを探す</li>
-            <li>書き込む</li>
-            <li>新しいスレを作ってみる</li>
-        </ol>
-    </div>
+    <a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony"></a><br>
 
     <!-- 最新スレッド -->
     {% if latest_thread_list %}
@@ -55,6 +41,10 @@
             <input type="reset" value="リセット">
         </form>
     </div>
+
+    <!-- ボタン類 -->
+    <a class="btn-brackets" onclick="window.location.reload(true);">更新</a>
+    <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
 </body>
 
 </html>

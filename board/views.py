@@ -22,6 +22,20 @@ class IndexView(generic.ListView):
         ).order_by('-latest_date')[:10]
 
 
+class ListView(generic.ListView):
+    template_name = 'board/list.html'
+    context_object_name = 'latest_thread_list'
+
+    def get_queryset(self):
+        """
+        Return the last five published questions (not including those set to be
+        published in the future).
+        """
+        return Thread.objects.filter(
+            pub_date__lte=timezone.now()
+        ).order_by('-latest_date')
+
+
 class DetailView(generic.DetailView):
     model = Thread
     template_name = 'board/detail.html'
