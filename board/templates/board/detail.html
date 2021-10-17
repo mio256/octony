@@ -63,10 +63,12 @@
         </form>
     </div>
 
-    <!-- ボタン類 -->
-    <a class="btn-brackets" onclick="window.location.reload(true);">更新</a>
-    <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
-    <a href="{% url 'board:favorite' thread.id %}" class="btn-brackets">おすすめ</a>
+    <footer>
+        <!-- ボタン類 -->
+        <a class="btn-brackets" onclick="window.location.reload(true);">更新</a>
+        <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
+        <a href="{% url 'board:favorite' thread.id %}" class="btn-brackets">おすすめ</a>
+    </footer>
 </body>
 
 </html>

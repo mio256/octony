@@ -13,17 +13,20 @@
 </head>
 
 <body>
-    <!-- タイトル -->
-    <h1>投票所</h1>
+    <header>
+        <!-- ロゴ -->
+        <a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony"></a>
+    </header>
 
     <!-- 付箋 -->
-    <p class="box8">アンケート調査など</p>
+    <p class="box8">アンケート調査</p>
 
     <!-- 目次 -->
     <div>
         <ol>
             <li>質問を選ぶ</li>
             <li>投票</li>
+            <li>より良いOctonyへ</li>
         </ol>
     </div>
 
@@ -31,19 +34,19 @@
     {% if latest_question_list %}
     <ul>
         {% for question in latest_question_list %}
-        <p>
-            <a href="{% url 'polls:detail' question.id %}" class="btn-brackets">
-                {{ question.question_text }}
-            </a>
-        </p>
+        <a href="{% url 'polls:detail' question.id %}" class="btn-green-border">
+            {{ question.question_text }}
+        </a>
         {% endfor %}
     </ul>
     {% else %}
     <p>No polls are available.</p>
     {% endif %}
 
-    <!-- ロゴ -->
-    <a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony"></a>
+    <footer>
+        <!-- ボタン類 -->
+        <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
+    </footer>
 </body>
 
 </html>

@@ -35,9 +35,6 @@
         </ol>
     </div>
 
-    <!-- アンケート -->
-    <a href="{% url 'polls:index' %}" class="btn-polls"><span>アンケートにご協力ください</span></a><br>
-
     <!-- 最新スレッド -->
     {% if latest_thread_list %}
     {% for thread in latest_thread_list %}
@@ -62,6 +59,9 @@
     <a href="{% url 'board:list' %}" class="btn-blue-border">
         すべて表示
     </a>
+
+    <!-- アンケート -->
+    <a href="{% url 'polls:index' %}" class="btn-green-border"><span>アンケートにご協力ください</span></a><br>
 
     <!-- 新規スレッド作成 -->
     <div class="box17">

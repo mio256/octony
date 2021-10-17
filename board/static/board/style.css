@@ -160,6 +160,7 @@ list-style-type: none!important;
 
 /* スレッド 一覧 青枠線 */
 .btn-blue-border {
+  width: 80%;
   display: inline-block;
   padding: 0.5em 1em;
   margin: 5px;
@@ -175,6 +176,7 @@ list-style-type: none!important;
 
 /* スレッド 一覧 赤枠線 */
 .btn-red-border {
+  width: 80%;
   display: inline-block;
   padding: 0.5em 1em;
   margin: 5px;
@@ -185,6 +187,22 @@ list-style-type: none!important;
   transition: .4s;
 }
 .btn-red-border:hover {
+  background: #fcf0ce;
+}
+
+/* スレッド 一覧 緑枠線 */
+.btn-green-border {
+  width: 80%;
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 5px;
+  text-decoration: none;
+  color: #0c5f13;
+  border: double 4px #67ff67;
+  border-radius: 3px;
+  transition: .4s;
+}
+.btn-green-border:hover {
   background: #fcf0ce;
 }
 
@@ -269,26 +287,6 @@ list-style-type: none!important;
   width: 50%;
 }
 
-/* アンケートボタン */
-.btn-polls {
-  font-size: xx-large;
-  display: inline-block;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  border-radius: 4px;
-  color: #ffffff;
-  background-image: linear-gradient( 135deg, #F6D242 10%, #FF52E5 100%);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
-  border-bottom: solid 3px #c58668;
-}
-
-.btn-polls:active {
-  -webkit-transform: translateY(4px);
-  transform: translateY(4px);
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
-  border-bottom: none;
-}
-
 /* フォント */
 *{
   font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
@@ -300,7 +298,7 @@ list-style-type: none!important;
   img { width: 100%; }
 
   .textarea_width{
-    width: 100%;
+    width: 90%;
   }
 
   *{
