@@ -33,11 +33,7 @@
     </div>
 
     <!-- アンケート -->
-    <div class="parent">
-        <div class="inner">
-            <a href="{% url 'polls:index' %}" class="btn-polls"><span>アンケートにご協力ください</span></a><br>
-        </div>
-    </div>
+    <a href="{% url 'polls:index' %}" class="btn-polls"><span>アンケートにご協力ください</span></a><br>
 
     <!-- 最新スレッド -->
     {% if latest_thread_list %}

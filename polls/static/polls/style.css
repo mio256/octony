@@ -5,6 +5,13 @@ h1 {
   /*線の種類（点線）2px 線色*/
   border-bottom: dashed 2px #6594e0;
 }
+/* スレッド見出し */
+h2 {
+  font-size: 40px;
+  color: #6594e0;/*文字色*/
+  /*線の種類（点線）2px 線色*/
+  border-bottom: dashed 2px #6594e0;
+}
 
 /* オレンジ [ボタン] */
 .btn-brackets {
@@ -267,6 +274,26 @@ list-style-type: none!important;
 /* テキストエリア */
 .textarea_width{
   width: 50%;
+}
+
+/* アンケートボタン */
+.btn-polls {
+  font-size: xx-large;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background-image: linear-gradient( 135deg, #F6D242 10%, #FF52E5 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #c58668;
+}
+
+.btn-polls:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
 }
 
 /*スマホ用*/

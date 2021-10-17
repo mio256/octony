@@ -270,21 +270,6 @@ list-style-type: none!important;
 }
 
 /* アンケートボタン */
-.parent{
-  position: relative;
-  height: 150px;
-  width: 100%;
-}
-.inner{
-  width: 50%;
-  height: 100px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: absolute;
-  margin: auto;
-}
 .btn-polls {
   font-size: xx-large;
   display: inline-block;
