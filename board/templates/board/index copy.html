@@ -13,10 +13,8 @@
 </head>
 
 <body>
-    <footer>
-        <!-- ロゴ -->
-        <a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony"></a>
-    </footer>
+    <!-- ロゴ -->
+    <a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony"></a>
 
     <!-- 付箋 -->
     <p class="box8">Octony-OctoAnonymous 8人の匿名者</p>
@@ -57,11 +55,6 @@
             <input type="reset" value="リセット">
         </form>
     </div>
-
-    <footer>
-        <!-- ボタン類 -->
-        <a href="{% url 'board:terms' %}" class="btn-brackets">利用規約</a>
-    </footer>
 </body>
 
 </html>

@@ -38,6 +38,11 @@ class ResultsView(generic.DetailView):
     template_name = 'board/results.html'
 
 
+class TermsView(generic.ListView):
+    model = Thread
+    template_name = 'board/terms.html'
+
+
 def create_thread(request):
     try:
         thread = Thread(
