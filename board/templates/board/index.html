@@ -44,16 +44,18 @@
     {% if thread.was_update_recently %}
     <a href="{% url 'board:detail' thread.id %}" class="btn-red-border">
         {{ thread.print_title }} <br>
-        スレ数 : {{ thread.print_count_response}} <br>
-        更新日時 : {{ thread.print_latest_date}}<br>
-        作成日時 : {{ thread.print_pub_date}}</a>
+        レス数 : {{ thread.print_count_response }} <br>
+        おすすめ数 : {{ thread.favorite_num }} <br>
+        更新日時 : {{ thread.print_latest_date }}<br>
+        作成日時 : {{ thread.print_pub_date }}
     </a>
     {% else %}
     <a href="{% url 'board:detail' thread.id %}" class="btn-blue-border">
         {{ thread.print_title }} <br>
-        スレ数 : {{ thread.print_count_response}} <br>
-        更新日時 : {{ thread.print_latest_date}}<br>
-        作成日時 : {{ thread.print_pub_date}}</a>
+        レス数 : {{ thread.print_count_response }} <br>
+        おすすめ数 : {{ thread.favorite_num }} <br>
+        更新日時 : {{ thread.print_latest_date }}<br>
+        作成日時 : {{ thread.print_pub_date }}
     </a>
     {% endif %}
     {% endfor %}
