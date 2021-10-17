@@ -97,7 +97,7 @@ def tweet(request, thread_id):
             tweet.hashset(tweet.name_text.split('$')[-1])
             tweet.name_text = tweet.name_text.split('$')[0]
         else:
-            tweet.hash_text = 0
+            tweet.hash_text = ' '
         tweet.save()
         thread.update_date()
         thread.save()
