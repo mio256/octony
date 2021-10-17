@@ -63,6 +63,7 @@ def create_thread(request):
             thread_text=request.POST['thread_str'],
             pub_date=timezone.now(),
             latest_date=timezone.now(),
+            favorite_num=0,
         )
     except (KeyError):
         # Redisplay the thread voting form.
@@ -94,6 +95,24 @@ def tweet(request, thread_id):
     else:
         tweet.save()
         thread.update_date()
+        thread.save()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        return HttpResponseRedirect(reverse('board:results', args=(thread.id,)))
+
+
+def add_favorite(request, thread_id):
+    thread = get_object_or_404(Thread, pk=thread_id)
+    try:
+        thread.add_favorite()
+    except (KeyError):
+        # Redisplay the thread voting form.
+        return render(request, 'board/detail.html', {
+            'thread': thread,
+            'error_message': "You didn't have a thread",
+        })
+    else:
         thread.save()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a

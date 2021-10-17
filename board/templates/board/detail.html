@@ -2,6 +2,9 @@
 <html lang="ja">
 
 <head>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+        rel="stylesheet">
     <meta charset="UTF-8">
     <!-- CSS -->
     {% load static %}
@@ -19,9 +22,10 @@
     <!-- スレッド詳細 -->
     <div class="box4">
         <p>{{ thread.thread_text }}</p>
-        <p>スレ数 : {{ thread.print_count_response}}</p>
-        <p>更新日時 : {{ thread.print_latest_date}}</p>
-        <p>作成日時 : {{ thread.print_pub_date}}</p>
+        <p>レス数 : {{ thread.print_count_response }}</p>
+        <p>おすすめ数 : {{ thread.favorite_num }}</p>
+        <p>更新日時 : {{ thread.print_latest_date }}</p>
+        <p>作成日時 : {{ thread.print_pub_date }}</p>
     </div>
 
     <!-- ボタン類 -->
@@ -61,6 +65,7 @@
     <!-- ボタン類 -->
     <a class="btn-brackets" onclick="window.location.reload(true);">更新</a>
     <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
+    <a href="{% url 'board:favorite' thread.id %}" class="btn-brackets">おすすめ</a>
 </body>
 
 </html>

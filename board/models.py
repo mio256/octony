@@ -10,6 +10,7 @@ class Thread(models.Model):
     thread_text = models.CharField(max_length=255)
     pub_date = models.DateTimeField('date published')
     latest_date = models.DateTimeField('date published')
+    favorite_num = models.IntegerField()
 
     def __str__(self):
         return self.thread_text
@@ -31,6 +32,9 @@ class Thread(models.Model):
             return self.thread_text[0:16]+'...'
         else:
             return self.thread_text
+
+    def add_favorite(self):
+        self.favorite_num += 1
 
     @ admin.display(
         boolean=True,
