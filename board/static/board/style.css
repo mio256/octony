@@ -158,8 +158,8 @@ padding: 0.5em;
 list-style-type: none!important;
 }
 
-/* スレッド一覧 */
-.btn-flat-double-border {
+/* スレッド 一覧 青枠線 */
+.btn-blue-border {
   display: inline-block;
   padding: 0.5em 1em;
   margin: 5px;
@@ -168,10 +168,25 @@ list-style-type: none!important;
   border: double 4px #67c5ff;
   border-radius: 3px;
   transition: .4s;
-  }
-  .btn-flat-double-border:hover {
+}
+.btn-blue-border:hover {
   background: #fcf0ce;
-  }
+}
+
+/* スレッド 一覧 赤枠線 */
+.btn-red-border {
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 5px;
+  text-decoration: none;
+  color: #5f0c0c;
+  border: double 4px #ff6767;
+  border-radius: 3px;
+  transition: .4s;
+}
+.btn-red-border:hover {
+  background: #fcf0ce;
+}
 
 /* ページ最下 移動*/
 .btn-cross {
@@ -211,19 +226,19 @@ list-style-type: none!important;
   height: 100%;
 }
 
-/* スレ一覧 */
+/* スレッド 詳細説明 青囲み */
 .box4{
-padding: 8px 19px;
-margin: 2em 0;
-color: #2c2c2f;
-background: #cde4ff;
-border-top: solid 5px #5989cf;
-border-bottom: solid 5px #5989cf;
-}
-.box4 p {
-margin: 0; 
-padding: 0;
-}
+  padding: 8px 19px;
+  margin: 2em 0;
+  color: #2c2c2f;
+  background: #cde4ff;
+  border-top: solid 5px #5989cf;
+  border-bottom: solid 5px #5989cf;
+  }
+  .box4 p {
+  margin: 0; 
+  padding: 0;
+  }
 
 /* 投稿ボックス */
 .box17{
@@ -252,23 +267,6 @@ padding: 0;
 /* テキストエリア */
 .textarea_width{
   width: 50%;
-}
-
-/* テキストボックス 左から右へのアニメーション*/
-.text_underline::before{
-  position: absolute; 
-  left: 0px; /*左配置 ここright: 0px;にすると右から左のアニメーション*/
-  bottom: 0px; /*左配置*/
-  width: 0px; /*アニメーションで0pxから100%に*/
-  height: 1px; /*高さ*/
-  content: '';
-  background-color: #3be5ae; /*アニメーションの色*/
-  transition: all 0.5s;
-  -webkit-transition: all 0.5s;
-}
-
-#text3:focus + .text_underline::before{
-  width: 100%;
 }
 
 /*スマホ用*/

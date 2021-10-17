@@ -40,6 +40,10 @@ class Thread(models.Model):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
+    def was_update_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(hours=12) <= self.latest_date <= now
+
 
 class Response(models.Model):
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE)

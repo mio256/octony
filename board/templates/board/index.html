@@ -35,12 +35,21 @@
     <!-- 最新スレッド -->
     {% if latest_thread_list %}
     {% for thread in latest_thread_list %}
-    <a href="{% url 'board:detail' thread.id %}" class="btn-flat-double-border">
+    {% if thread.was_update_recently %}
+    <a href="{% url 'board:detail' thread.id %}" class="btn-red-border">
         {{ thread.print_title }} <br>
         スレ数 : {{ thread.print_count_response}} <br>
         更新日時 : {{ thread.print_latest_date}}<br>
         作成日時 : {{ thread.print_pub_date}}</a>
     </a>
+    {% else %}
+    <a href="{% url 'board:detail' thread.id %}" class="btn-blue-border">
+        {{ thread.print_title }} <br>
+        スレ数 : {{ thread.print_count_response}} <br>
+        更新日時 : {{ thread.print_latest_date}}<br>
+        作成日時 : {{ thread.print_pub_date}}</a>
+    </a>
+    {% endif %}
     {% endfor %}
     {% else %}
     <p>そして誰も居なくなった...</p>
@@ -48,7 +57,7 @@
     {% endif %}
 
     <!-- すべて表示 -->
-    <a href="{% url 'board:list' %}" class="btn-flat-double-border">
+    <a href="{% url 'board:list' %}" class="btn-blue-border">
         すべて表示
     </a>
 
