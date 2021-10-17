@@ -30,10 +30,7 @@ class Thread(models.Model):
         return self.response_set.count()
 
     def print_title(self):
-        if(len(self.thread_text) > 14):
-            return self.thread_text[0:14]+'...'
-        else:
-            return self.thread_text
+        return self.thread_text
 
     def add_favorite(self):
         self.favorite_num += 1

@@ -1,3 +1,7 @@
+*{
+  font-size: medium;
+}
+
 /* スレッド見出し */
 h1 {
   font-size: 40px;
@@ -295,6 +299,10 @@ list-style-type: none!important;
 /*スマホ用*/
 @media screen and (max-width: 750px) {
 
+  *{
+    font-size: large;
+  }
+
   img { width: 100%; }
 
   .textarea_width{
@@ -304,20 +312,18 @@ list-style-type: none!important;
   /* スレッド 一覧 青枠線 */
   .btn-blue-border {
     width: 80%;
+    font-size: x-large;
   }
-
+  
   /* スレッド 一覧 赤枠線 */
   .btn-red-border {
     width: 80%;
+    font-size: x-large;
   }
-
+  
   /* スレッド 一覧 緑枠線 */
   .btn-green-border {
     width: 80%;
+    font-size: x-large;
   }
-
-  *{
-    font-size: large;
-  }
-
 }
