@@ -26,8 +26,8 @@ class Thread(models.Model):
         return self.response_set.count()
 
     def print_title(self):
-        if(len(self.thread_text) > 19):
-            return self.thread_text[0:19]+'...'
+        if(len(self.thread_text) > 16):
+            return self.thread_text[0:16]+'...'
         else:
             return self.thread_text
 

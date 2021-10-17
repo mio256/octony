@@ -40,7 +40,7 @@ border-bottom: solid 1px #ff7f7f;
 right: 0;
 }
 
-/* オレンジ付箋 */
+/* オレンジ 付箋 */
 .box8 {
 padding: 0.5em 1em;
 margin: 2em 0;
@@ -160,18 +160,18 @@ list-style-type: none!important;
 
 /* スレッド一覧 */
 .btn-flat-double-border {
-display: inline-block;
-padding: 0.5em 1em;
-margin: 5px;
-text-decoration: none;
-color: #0c3f5f;
-border: double 4px #67c5ff;
-border-radius: 3px;
-transition: .4s;
-}
-.btn-flat-double-border:hover {
-background: #fcf0ce;
-}
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 5px;
+  text-decoration: none;
+  color: #0c3f5f;
+  border: double 4px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+  }
+  .btn-flat-double-border:hover {
+  background: #fcf0ce;
+  }
 
 /* ページ最下 移動*/
 .btn-cross {
@@ -282,6 +282,23 @@ padding: 0;
 
   *{
     font-size: large;
+  }
+
+
+/* スレッド一覧 */
+.btn-flat-double-border {
+  width: 100%;
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 5px;
+  text-decoration: none;
+  color: #0c3f5f;
+  border: double 4px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+  }
+  .btn-flat-double-border:hover {
+  background: #fcf0ce;
   }
 
 }
