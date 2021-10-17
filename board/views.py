@@ -24,7 +24,7 @@ class IndexView(generic.ListView):
 
 class ListView(generic.ListView):
     template_name = 'board/list.html'
-    context_object_name = 'latest_thread_list'
+    context_object_name = 'thread_list'
 
     def get_queryset(self):
         """
