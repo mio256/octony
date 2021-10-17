@@ -1,41 +1,60 @@
-<meta name="viewport" content="width=device-width,initial-scale=1">
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
+<!DOCTYPE html>
+<html lang="ja">
 
-<a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony"></a>
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
+    <!-- PC SP 切り替え -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<p class="box8">Octony-OctoAnonymous 8人の匿名者</p>
-<p class="box8">長工生が匿名で交流できる場所</p>
-<p class="box8">ただの雑談から各科の交流まで</p>
+    <title>Octony</title>
+</head>
 
-<div>
-    <ol>
-        <li>好きなスレを探す</li>
-        <li>書き込む</li>
-        <li>新しいスレを作ってみる</li>
-    </ol>
-</div>
+<body>
+    <!-- ロゴ -->
+    <a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony"></a>
 
-{% if latest_thread_list %}
-{% for thread in latest_thread_list %}
-<a href="{% url 'board:detail' thread.id %}" class="btn-flat-double-border">
-    {{ thread.print_title }} <br>
-    スレ数 : {{ thread.print_count_response}} <br>
-    更新日時 : {{ thread.print_latest_date}}<br>
-    作成日時 : {{ thread.print_pub_date}}</a>
-</a>
-{% endfor %}
-{% else %}
-<p>そして誰も居なくなった...</p>
-<p>新規スレを立ててね！</p>
-{% endif %}
+    <!-- 付箋 -->
+    <p class="box8">Octony-OctoAnonymous 8人の匿名者</p>
+    <p class="box8">長工生が匿名で交流できる場所</p>
+    <p class="box8">ただの雑談から各科の交流まで</p>
 
-<div class="box17">
-    <form action="{% url 'board:create_thread' %}" method="post">
-        {% csrf_token %}
-        新規スレ:<br>
-        <textarea name="thread_str" rows="4" class="textarea_width"></textarea> <br>
-        <input type="submit" value="新規">
-        <input type="reset" value="リセット">
-    </form>
-</div>
+    <!-- ステップ -->
+    <div>
+        <ol>
+            <li>好きなスレを探す</li>
+            <li>書き込む</li>
+            <li>新しいスレを作ってみる</li>
+        </ol>
+    </div>
+
+    <!-- 最新スレッド -->
+    {% if latest_thread_list %}
+    {% for thread in latest_thread_list %}
+    <a href="{% url 'board:detail' thread.id %}" class="btn-flat-double-border">
+        {{ thread.print_title }} <br>
+        スレ数 : {{ thread.print_count_response}} <br>
+        更新日時 : {{ thread.print_latest_date}}<br>
+        作成日時 : {{ thread.print_pub_date}}</a>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>そして誰も居なくなった...</p>
+    <p>新規スレを立ててね！</p>
+    {% endif %}
+
+    <!-- 新規スレッド作成 -->
+    <div class="box17">
+        <form action="{% url 'board:create_thread' %}" method="post">
+            {% csrf_token %}
+            新規スレ:<br>
+            <textarea name="thread_str" rows="4" class="textarea_width"></textarea> <br>
+            <input type="submit" value="新規">
+            <input type="reset" value="リセット">
+        </form>
+    </div>
+</body>
+
+</html>

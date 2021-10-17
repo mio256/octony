@@ -1,10 +1,27 @@
-<meta name="viewport" content="width=device-width,initial-scale=1">
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
-<meta http-equiv="Refresh" content="1; {% url 'board:detail' thread.id%}">
+<!DOCTYPE html>
+<html lang="ja">
 
-<h1>{{ thread.thread_text }}</h1>
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
+    <!-- PC SP 切り替え -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- ページ自動更新 -->
+    <meta http-equiv="Refresh" content="1; {% url 'board:detail' thread.id%}">
 
-<div class="box8">
-    <a name="jump">書き込み完了</a>
-</div>
+    <title>Octony</title>
+</head>
+
+<body>
+    <!-- スレッドタイトル -->
+    <h1>{{ thread.thread_text }}</h1>
+
+    <!-- メッセージ -->
+    <div class="box8">
+        <a name="jump">書き込み完了</a>
+    </div>
+</body>
+
+</html>

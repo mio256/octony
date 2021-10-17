@@ -1,45 +1,59 @@
-<meta name="viewport" content="width=device-width,initial-scale=1">
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
+<!DOCTYPE html>
+<html lang="ja">
 
-<h1>{{ thread.thread_text }}</h1>
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
+    <!-- PC SP 切り替え -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<div class="box4">
-    <p>{{ thread.thread_text }}</p>
-    <p>スレ数 : {{ thread.print_count_response}}</p>
-    <p>更新日時 : {{ thread.print_latest_date}}</p>
-    <p>作成日時 : {{ thread.print_pub_date}}</p>
-</div>
+    <title>Octony</title>
+</head>
 
-<a href="#jump" class="btn-cross">最新へ</a>
-<a href="{% url 'board:index' %}" class="btn-brackets">
-    他のスレ
-</a>
+<body>
+    <!-- スレッドタイトル -->
+    <h1>{{ thread.thread_text }}</h1>
 
-<ul>
-    {% for response in thread.response_set.all %}
-    <li>
-        {{ forloop.counter }}.{{ response.name_text }} -- {{ response.print_tweet_date }}<br>
-        {{ response.response_text }}
-    </li>
-    {% endfor %}
-</ul>
+    <!-- スレッド詳細 -->
+    <div class="box4">
+        <p>{{ thread.thread_text }}</p>
+        <p>スレ数 : {{ thread.print_count_response}}</p>
+        <p>更新日時 : {{ thread.print_latest_date}}</p>
+        <p>作成日時 : {{ thread.print_pub_date}}</p>
+    </div>
 
-<div class="box17">
-    <form action="{% url 'board:tweet' thread.id %}" method="post">
-        {% csrf_token %}
-        <a name="jump">書き込み</a><br>
-        <input type="text" value="ななしちゃん" name="name_str" required minlength="1" maxlength="10"> <br>
-        つぶやき : <br>
-        <textarea name="tweet_str" rows="4" class="textarea_width"></textarea> <br>
-        <input type="submit" value="書き込み">
-        <input type="reset" value="リセット">
-    </form>
-</div>
+    <!-- ボタン類 -->
+    <a href="#jump" class="btn-cross">最新へ</a>
+    <a href="{% url 'board:index' %}" class="btn-brackets">他のスレ</a>
 
-<a class="btn-brackets" onclick="window.location.reload(true);">
-    更新
-</a>
-<a href="{% url 'board:index' %}" class="btn-brackets">
-    他のスレ
-</a>
+    <!-- レス一覧 -->
+    <ul>
+        {% for response in thread.response_set.all %}
+        <li>
+            {{ forloop.counter }}.{{ response.name_text }} -- {{ response.print_tweet_date }}<br>
+            {{ response.response_text | linebreaksbr }}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- 書き込み -->
+    <div class="box17">
+        <form action="{% url 'board:tweet' thread.id %}" method="post">
+            {% csrf_token %}
+            <a name="jump">書き込み</a><br>
+            <input type="text" value="ななしちゃん" name="name_str" required minlength="1" maxlength="10"> <br>
+            つぶやき : <br>
+            <textarea name="tweet_str" rows="4" class="textarea_width"></textarea> <br>
+            <input type="submit" value="書き込み">
+            <input type="reset" value="リセット">
+        </form>
+    </div>
+
+    <!-- ボタン類 -->
+    <a class="btn-brackets" onclick="window.location.reload(true);">更新</a>
+    <a href="{% url 'board:index' %}" class="btn-brackets">他のスレ</a>
+</body>
+
+</html>
