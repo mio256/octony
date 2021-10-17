@@ -1,26 +1,27 @@
-{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+    <!-- PC SP 切り替え -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- ページ自動更新 -->
+    <meta http-equiv="Refresh" content="1; {% url 'polls:index' %}">
 
-<h2>{{ question.question_text }}</h2>
+    <title>Octony</title>
+</head>
 
-{% for choice in question.choice_set.all %}
-<div class="ribbon13-wrapper">
-    <div class="ribbon13">
-        <h3>{{ choice.choice_text }}</h3>
+<body>
+    <!-- タイトル -->
+    <h1>{{ question.question_text }}</h1>
+
+    <!-- メッセージ -->
+    <div class="box8">
+        <a name="jump">投稿完了</a>
     </div>
-    <p>{{ choice.votes }} vote{{ choice.votes|pluralize }}</p>
-</div>
-{% endfor %}
+</body>
 
-<p>
-    <a href="{% url 'polls:detail' question.id %}" class="btn-brackets">
-        Vote again?
-    </a>
-</p>
-
-<p>
-    <a href="{% url 'polls:index' %}" class="btn-brackets">
-        Select other question?
-    </a>
-</p>
+</html>

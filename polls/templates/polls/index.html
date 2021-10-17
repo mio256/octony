@@ -1,54 +1,47 @@
-{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+    <!-- PC SP 切り替え -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<h1>Send your feeling.</h1>
+    <title>Octony</title>
+</head>
 
-<div class="box8">
-    <p>It is your voting space.</p>
-</div>
+<body>
+    <!-- タイトル -->
+    <h1>投票所</h1>
 
-{% if latest_question_list %}
-<ul>
-    {% for question in latest_question_list %}
-    <p>
-        <a href="{% url 'polls:detail' question.id %}" class="btn-brackets">
-            {{ question.question_text }}
-        </a>
-    </p>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No polls are available.</p>
-{% endif %}
+    <!-- 付箋 -->
+    <p class="box8">アンケート調査など</p>
 
-<div>
-    <ol>
-        <li>Select menu</li>
-        <li>Vote</li>
-        <li>Follow me</li>
-    </ol>
-</div>
+    <!-- 目次 -->
+    <div>
+        <ol>
+            <li>質問を選ぶ</li>
+            <li>投票</li>
+        </ol>
+    </div>
 
-<div>
-    <!--twitter-->
-    <a class="btn-social-square btn-social-square--twitter">
-        T
-    </a>
-    <!--facebook-->
-    <a class="btn-social-square btn-social-square--facebook">
-        F
-    </a>
-    <!--はてぶ-->
-    <a class="btn-social-square btn-social-square--hatebu">
-        B!
-    </a>
-    <!--pocket-->
-    <a class="btn-social-square btn-social-square--pocket">
-        P
-    </a>
-    <!--feedly-->
-    <a class="btn-social-square btn-social-square--feedly">
-        R
-    </a>
-</div>
+    <!-- 質問一覧 -->
+    {% if latest_question_list %}
+    <ul>
+        {% for question in latest_question_list %}
+        <p>
+            <a href="{% url 'polls:detail' question.id %}" class="btn-brackets">
+                {{ question.question_text }}
+            </a>
+        </p>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No polls are available.</p>
+    {% endif %}
+
+</body>
+
+</html>

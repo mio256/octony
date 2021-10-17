@@ -32,6 +32,13 @@
         </ol>
     </div>
 
+    <!-- アンケート -->
+    <div class="parent">
+        <div class="inner">
+            <a href="{% url 'polls:index' %}" class="btn-polls"><span>アンケートにご協力ください</span></a><br>
+        </div>
+    </div>
+
     <!-- 最新スレッド -->
     {% if latest_thread_list %}
     {% for thread in latest_thread_list %}

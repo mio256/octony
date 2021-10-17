@@ -1,27 +1,43 @@
-{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+    <!-- PC SP 切り替え -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<h2>{{ question.question_text }}</h2>
+    <title>Octony</title>
+</head>
 
-<form action="{% url 'polls:vote' question.id %}" method="post">
-    {% csrf_token %}
+<body>
+    <!-- 質問 -->
+    <h2>{{ question.question_text }}</h2>
 
-    {% if error_message %}
-    <div class="box21">
-        <p>{{ error_message }}</p>
-    </div>
-    {% endif %}
+    <!-- 選択肢 -->
+    <form action="{% url 'polls:vote' question.id %}" method="post">
+        {% csrf_token %}
 
-    {% for choice in question.choice_set.all %}
-    <ul>
-        <li>
-            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-            <label for="choice{{ forloop.counter }}">
-                {{ choice.choice_text }}
-            </label>
-        </li>
-    </ul>
-    {% endfor %}
-    <input type="submit" value="Vote" class="btn-square">
-</form>
+        {% if error_message %}
+        <div class="box21">
+            <p>{{ error_message }}</p>
+        </div>
+        {% endif %}
+
+        {% for choice in question.choice_set.all %}
+        <ul>
+            <li>
+                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                <label for="choice{{ forloop.counter }}">
+                    {{ choice.choice_text }}
+                </label>
+            </li>
+        </ul>
+        {% endfor %}
+        <input type="submit" value="Vote" class="btn-square">
+    </form>
+</body>
+
+</html>

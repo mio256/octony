@@ -1,315 +1,285 @@
+/* スレッド見出し */
 h1 {
-    color: #6594e0;/*文字色*/
-    /*線の種類（点線）2px 線色*/
-    border-bottom: dashed 2px #6594e0;
-  }
-
-  h2 {
-    color: #505050;/*文字色*/
-    padding: 0.5em;/*文字周りの余白*/
-    display: inline-block;/*おまじない*/
-    line-height: 1.3;/*行高*/
-    background: #dbebf8;/*背景色*/
-    vertical-align: middle;
-    border-radius: 25px 0px 0px 25px;/*左側の角を丸く*/
-  }
-  
-  h2:before {
-    content: '●';
-    color: white;
-    margin-right: 8px;
-  }
-  
-li a{
-    color: green;
+  font-size: 40px;
+  color: #6594e0;/*文字色*/
+  /*線の種類（点線）2px 線色*/
+  border-bottom: dashed 2px #6594e0;
 }
 
+/* オレンジ [ボタン] */
 .btn-brackets {
-  display: inline-block;
-  position: relative;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  color: #000;
-  transition: .4s;
+display: inline-block;
+position: relative;
+padding: 0.5em 1em;
+text-decoration: none;
+color: #000;
+transition: .4s;
 }
 .btn-brackets:hover {
-  color:#ff7f7f;
+color:#ff7f7f;
 }
 .btn-brackets:before, .btn-brackets:after {
-  position: absolute;
-  top: 0;
-  content:'';
-  width: 8px;
-  height: 100%;
-  display: inline-block;
+position: absolute;
+top: 0;
+content:'';
+width: 8px;
+height: 100%;
+display: inline-block;
 }
 .btn-brackets:before {
-  border-left: solid 1px #ff7f7f;
-  border-top: solid 1px #ff7f7f;
-  border-bottom: solid 1px #ff7f7f;
-  left: 0;
+border-left: solid 1px #ff7f7f;
+border-top: solid 1px #ff7f7f;
+border-bottom: solid 1px #ff7f7f;
+left: 0;
 }
 .btn-brackets:after {
-  content: '';
-  border-top: solid 1px #ff7f7f;
-  border-right: solid 1px #ff7f7f;
-  border-bottom: solid 1px #ff7f7f;
-  right: 0;
+content: '';
+border-top: solid 1px #ff7f7f;
+border-right: solid 1px #ff7f7f;
+border-bottom: solid 1px #ff7f7f;
+right: 0;
 }
 
+/* オレンジ 付箋 */
 .box8 {
-  padding: 0.5em 1em;
-  margin: 2em 0;
-  color: #232323;
-  background: #fff8e8;
-  border-left: solid 10px #ffc06e;
+padding: 0.5em 1em;
+margin: 2em 0;
+color: #232323;
+background: #fff8e8;
+border-left: solid 10px #ffc06e;
 }
 .box8 p {
-    margin: 0; 
-    padding: 0;
+  margin: 0; 
+  padding: 0;
 }
 
 .btn-social-square {
-  display: inline-block;
-  text-decoration: none;
-  width: 50px;
-  margin:2px;
-  height: 50px;
-  line-height: 50px;
-  font-size: 23px;
-  color:white;
-  border-radius: 12px;
-  text-align: center;
-  overflow: hidden;
-  font-weight: bold;
-  transition: .3s;
+display: inline-block;
+text-decoration: none;
+width: 50px;
+margin:2px;
+height: 50px;
+line-height: 50px;
+font-size: 23px;
+color:white;
+border-radius: 12px;
+text-align: center;
+overflow: hidden;
+font-weight: bold;
+transition: .3s;
 }
 .btn-social-square i {
-  line-height:50px;
+line-height:50px;
 }
 .btn-social-square:hover {
-  -webkit-transform: translateY(-5px);
-  transform: translateY(-5px);
+-webkit-transform: translateY(-5px);
+transform: translateY(-5px);
 }
 .btn-social-square--twitter {
-  background: #22b8ff;
+background: #22b8ff;
 }
 .btn-social-square--facebook {
-  background: #6680d8;
+background: #6680d8;
 }
 .btn-social-square--hatebu {
-  background: #49a8fb;
+background: #49a8fb;
 }
 .btn-social-square--pocket {
-  background: #ff6d82;
+background: #ff6d82;
 }
 .btn-social-square--feedly {
-  background: #7bda72;
+background: #7bda72;
 }
 
+/* ステップ目次 */
 ol {
-  counter-reset:number; /*数字をリセット*/
-  list-style-type: none!important; /*数字を一旦消す*/
-  padding:0.5em;
-  border: solid 2px #5c9ee7;
+counter-reset:number; /*数字をリセット*/
+list-style-type: none!important; /*数字を一旦消す*/
+padding:0.5em;
+border: solid 2px #5c9ee7;
 }
 ol li {
-  position: relative;
-  padding: 0.5em 0.5em 0.5em 35px;
-  line-height: 1.5em;
+position: relative;
+padding: 0.5em 0.5em 0.5em 35px;
+line-height: 1.5em;
 }
 ol li:before{
-  /* 以下数字をつける */
-  position: absolute;
-  counter-increment: number;
-  content: counter(number);
-  /*数字のデザイン変える*/
-  display:inline-block;
-  background: #5c9ee7;
-  color: white;
-  font-family: 'Avenir','Arial Black','Arial',sans-serif;
-  font-weight:bold;
-  font-size: 15px;
-  border-radius: 50%;/*円にする*/
-  left: 0;
-  width: 25px;
-  height: 25px;
-  line-height: 25px;
-  text-align: center;
-  /*以下 上下中央寄せのため*/
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+/* 以下数字をつける */
+position: absolute;
+counter-increment: number;
+content: counter(number);
+/*数字のデザイン変える*/
+display:inline-block;
+background: #5c9ee7;
+color: white;
+font-family: 'Avenir','Arial Black','Arial',sans-serif;
+font-weight:bold;
+font-size: 15px;
+border-radius: 50%;/*円にする*/
+left: 0;
+width: 25px;
+height: 25px;
+line-height: 25px;
+text-align: center;
+/*以下 上下中央寄せのため*/
+top: 50%;
+-webkit-transform: translateY(-50%);
+transform: translateY(-50%);
 }
 ol li:after {/*吹き出しのちょこんと出た部分*/
-  content: '';
-  display: block;
-  position: absolute;
-  left: 20px;/*左からの位置*/
-  height: 0;
-  width: 0;
-  border-top: 7px solid transparent;
-  border-bottom: 7px solid transparent;
-  border-left: 12px solid #5c9ee7;
-  /*以下 上下中央寄せのため*/
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+content: '';
+display: block;
+position: absolute;
+left: 20px;/*左からの位置*/
+height: 0;
+width: 0;
+border-top: 7px solid transparent;
+border-bottom: 7px solid transparent;
+border-left: 12px solid #5c9ee7;
+/*以下 上下中央寄せのため*/
+top: 50%;
+-webkit-transform: translateY(-50%);
+transform: translateY(-50%);
 }
 
-.box25{
-  position: relative;
-  background: #fff0cd;
-  box-shadow: 0px 0px 0px 5px #fff0cd;
-  border: dashed 2px white;
-  padding: 0.2em 0.5em;
-  color: #454545;
-}
-.box25:after{
-  position: absolute;
-  content: '';
-  right: -7px;
-  top: -7px;
-  border-width: 0 15px 15px 0;
-  border-style: solid;
-  border-color: #ffdb88 #fff #ffdb88;
-  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
-}
-.box25 p {
-  margin: 0; 
-  padding: 0;
-}
-
-.btn-square {
-  display: inline-block;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  background: #668ad8;/*ボタン色*/
-  color: #FFF;
-  border-bottom: solid 4px #627295;
-  border-radius: 3px;
-}
-.btn-square:active {
-  /*ボタンを押したとき*/
-  -webkit-transform: translateY(4px);
-  transform: translateY(4px);/*下に動く*/
-  border-bottom: none;/*線を消す*/
-}
-
-.ribbon1 {
-  display: inline-block;
-  position: relative;
-  height: 50px;/*リボンの高さ*/
-  line-height: 50px;/*リボンの高さ*/
-  text-align: center;
-  padding: 0 30px;/*横の大きさ*/
-  font-size: 18px;/*文字の大きさ*/
-  background: #f57a78;/*塗りつぶし色*/
-  color: #FFF;/*文字色*/
-  box-sizing: border-box;
-}
-
-.ribbon1:before, .ribbon1:after {
-  position: absolute;
-  content: '';
-  width: 0px;
-  height: 0px;
-  z-index: 1;
-}
-
-.ribbon1:before {
-  top: 0;
-  left: 0;
-  border-width: 25px 0px 25px 15px;
-  border-color: transparent transparent transparent #fff;
-  border-style: solid;
-}
-
-.ribbon1:after {
-  top: 0;
-  right: 0;
-  border-width: 25px 15px 25px 0px;
-  border-color: transparent #fff transparent transparent;
-  border-style: solid;
-}
-
-.ribbon13-wrapper {  
-  display: block;
-  position: relative;
-  margin: 15px auto;
-  padding: 10px 0;
-  width: 300px;
-  background: #f1f1f1;
-}
-
-.ribbon13 {
-  display: inline-block;
-  position: relative;
-  box-sizing: border-box;
-  padding: 5px 0;
-  margin: 0 0 0 -20px;
-  width: calc(100% + 20px);
-  color: white;
-  background: #70a6ff;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-}
-
-.ribbon13 h3{
-  margin: 0;
-  padding: 0 30px 0 15px;
-  border-top: dashed 1px #FFF;
-  border-bottom: dashed 1px #FFF;
-  font-size: 20px;
-  line-height: 46px;
-}
-
-.ribbon13:after {
-  position: absolute;
-  content: '';
-  z-index: 1;
-  top: 0;
-  right: 0;
-  width: 0px;
-  height: 0px;
-  border-width: 30px 15px 30px 0px;
-  border-color: transparent #f1f1f1 transparent transparent;
-  border-style: solid;
-}
-
-.ribbon13:before {
-  position: absolute;
-  content: '';
-  top: 100%;
-  left: 0;
-  border: none;
-  border-bottom: solid 15px transparent;
-  border-right: solid 20px #6081b7;
-}
-
+/* レス */
 ul {
-  padding: 0;
-  position: relative;
+padding: 0;
+position: relative;
 }
-
 ul li {
-  color: black;
-  border-left: solid 8px orange;/*左側の線*/
-  background: whitesmoke;/*背景色*/
-  margin-bottom: 5px;/*下のバーとの余白*/
-  line-height: 1.5;
-  border-radius: 0 15px 15px 0;/*右側の角だけ丸く*/
-  padding: 0.5em;
-  list-style-type: none!important;
+color: black;
+border-left: solid 8px orange;/*左側の線*/
+background: whitesmoke;/*背景色*/
+margin-bottom: 5px;/*下のバーとの余白*/
+line-height: 1.5;
+border-radius: 0 15px 15px 0;/*右側の角だけ丸く*/
+padding: 0.5em;
+list-style-type: none!important;
 }
 
-.box21{
+/* スレッド 一覧 青枠線 */
+.btn-blue-border {
+  display: inline-block;
   padding: 0.5em 1em;
-  background: -moz-linear-gradient(#ffb03c, #ff708d);
-  background: -webkit-linear-gradient(#ffb03c, #ff708d);
-  background: linear-gradient(to right, #ffb03c, #ff708d);
-  color: #FFF;
+  margin: 5px;
+  text-decoration: none;
+  color: #0c3f5f;
+  border: double 4px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
 }
-.box21 p {
+.btn-blue-border:hover {
+  background: #fcf0ce;
+}
+
+/* スレッド 一覧 赤枠線 */
+.btn-red-border {
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 5px;
+  text-decoration: none;
+  color: #5f0c0c;
+  border: double 4px #ff6767;
+  border-radius: 3px;
+  transition: .4s;
+}
+.btn-red-border:hover {
+  background: #fcf0ce;
+}
+
+/* ページ最下 移動*/
+.btn-cross {
+  display: inline-block;
+  position: relative;
+  padding: 0.25em 1em;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+  text-decoration: none;
+  font-weight: bold;
+  color: #03A9F4;
+}
+.btn-cross:before, .btn-cross:after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  width: 2px;
+  height: -webkit-calc(100% + 14px);
+  height: calc(100% + 14px);
+  background-color: black;
+  transition: .3s;
+}
+.btn-cross:before {
+  left: 7px;
+}
+.btn-cross:after {
+  right: 7px;
+}
+.btn-cross:hover:before {
+  top: 0px;
+  left:0;
+  height: 100%;
+}
+.btn-cross:hover:after {
+  top: 0px;
+  right: 0;
+  height: 100%;
+}
+
+/* スレッド 詳細説明 青囲み */
+.box4{
+  padding: 8px 19px;
+  margin: 2em 0;
+  color: #2c2c2f;
+  background: #cde4ff;
+  border-top: solid 5px #5989cf;
+  border-bottom: solid 5px #5989cf;
+  }
+  .box4 p {
   margin: 0; 
   padding: 0;
+  }
+
+/* 投稿ボックス */
+.box17{
+  margin:2em 0;
+  position: relative;
+  padding: 0.5em 1.5em;
+  border-top: solid 5px black;
+  border-bottom: solid 5px black;
+}
+.box17:before, .box17:after{
+  content: '';
+  position: absolute;
+  top: -5px;
+  width: 5px;
+  height: -webkit-calc(100% + 20px);
+  height: calc(100% + 20px);
+  background-color: black;
+}
+.box17:before {left: 10px;}
+.box17:after {right: 10px;}
+.box17 p {
+  margin: 0; 
+  padding: 0;
+}
+
+/* テキストエリア */
+.textarea_width{
+  width: 50%;
+}
+
+/*スマホ用*/
+@media screen and (max-width: 750px) {
+
+  img { width: 100%; }
+
+  .textarea_width{
+    width: 100%;
+  }
+
+  *{
+    font-size: large;
+  }
+
 }
