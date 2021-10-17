@@ -28,8 +28,8 @@ class Thread(models.Model):
         return self.response_set.count()
 
     def print_title(self):
-        if(len(self.thread_text) > 16):
-            return self.thread_text[0:16]+'...'
+        if(len(self.thread_text) > 14):
+            return self.thread_text[0:14]+'...'
         else:
             return self.thread_text
 
