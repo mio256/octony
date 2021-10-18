@@ -18,7 +18,11 @@
 <body>
     <header>
         <!-- ロゴ -->
-        <a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony"></a>
+        <div style="text-align: center;">
+            <a href="{% url 'board:index' %}">
+                <img src="{% static 'board/images/logo.png' %}" alt="Octony">
+            </a>
+        </div>
     </header>
 
     <!-- 付箋 -->
@@ -34,6 +38,9 @@
             <li>新しいスレを作ってみる</li>
         </ol>
     </div>
+
+    <!-- はじめに -->
+    <a href="{% url 'board:explain' %}" class="btn-green-border">はじめに</a><br>
 
     <!-- 最新スレッド -->
     {% if latest_thread_list %}
@@ -61,7 +68,7 @@
     </a>
 
     <!-- アンケート -->
-    <a href="{% url 'polls:index' %}" class="btn-green-border"><span>アンケートにご協力ください</span></a><br>
+    <a href="{% url 'polls:index' %}" class="btn-green-border">アンケートにご協力ください</a><br>
 
     <!-- 新規スレッド作成 -->
     <div class="box17">
