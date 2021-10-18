@@ -9,6 +9,7 @@
     <!-- CSS -->
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
+    <script type="text/javascript" src="{% static 'board/script.js' %}"></script>
     <!-- PC SP 切り替え -->
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -17,6 +18,9 @@
 
 <body>
     <header>
+        <div id="loading">
+            <div class="spinner"></div>
+        </div>
         <!-- ロゴ -->
         <div style="text-align: center;">
             <a href="{% url 'board:index' %}">

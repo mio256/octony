@@ -1,3 +1,40 @@
+/* Loading Block */
+#loading {
+  width: 100vw;
+  height: 100vh;
+  transition: all 1s;
+  background-color: #0bd;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+/* Loading Animation */
+@keyframes sk-scaleout {
+  0% {
+    transform: scale(0);
+  } 100% {
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+/* Hide Loading Block */
+.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  margin: 200px auto;
+  background-color: #fff;
+  border-radius: 100%;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
 * {
   font-size: medium;
 }
@@ -363,10 +400,16 @@ ul li {
     width: 80%;
     font-size: x-large;
   }
+  .btn-blue-border:hover{
+    font-size: x-large;
+  }
 
   /* スレッド 一覧 赤枠線 */
   .btn-red-border {
     width: 80%;
+    font-size: x-large;
+  }
+  .btn-red-border:hover{
     font-size: x-large;
   }
 
@@ -375,11 +418,7 @@ ul li {
     width: 80%;
     font-size: x-large;
   }
-}
-/* dark mode */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: rgb(119, 119, 119);
-    color: #fff;
+  .btn-green-border:hover{
+    font-size: x-large;
   }
 }
