@@ -44,8 +44,7 @@
     </div>
 
     <!-- はじめに -->
-    <a href="{% url 'board:explain' %}" class="btn-green-border">はじめに</a><br>
-
+    <a href="{% url 'board:explain' %}" class="btn-green-border">はじめに</a>
     <!-- 最新スレッド -->
     {% if latest_thread_list %}
     {% for thread in latest_thread_list %}
