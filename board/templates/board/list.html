@@ -16,8 +16,14 @@
 </head>
 
 <body>
-    <!-- ロゴ -->
-    <a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony"></a><br>
+    <header>
+        <!-- ロゴ -->
+        <div style="text-align: center;">
+            <a href="{% url 'board:index' %}">
+                <img src="{% static 'board/images/logo.png' %}" alt="Octony">
+            </a>
+        </div>
+    </header>
 
     <!-- スレッド一覧 -->
     {% if thread_list %}

@@ -17,7 +17,11 @@
 <body>
   <header>
     <!-- ロゴ -->
-    <a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony" /></a>
+    <div style="text-align: center;">
+      <a href="{% url 'board:index' %}">
+        <img src="{% static 'board/images/logo.png' %}" alt="Octony">
+      </a>
+    </div>
   </header>
 
   <!-- 説明 -->
@@ -92,6 +96,8 @@
     </p>
     <p>「あんごう」は自分の覚えやすい文字列で、秘密にしてください。</p>
     <p>「ななしさん.0」はコテハンが設定されていません。</p>
+  </div>
+  <div class="box5" :>
     <p>ハイパーリンク機能--タップするとそのまま開けるリンク付きのURLです。</p>
     <p>
       Octonyの仕様上、まだURLをそのまま書き込んでもただのテキストになってしまいます。
