@@ -36,8 +36,8 @@
     <ul>
         {% for response in thread.response_set.all %}
         <li>
-            {% if response.was_url %}
             {{ forloop.counter }}.
+            {% if response.was_url %}
             <a href="{{response.name_text}}" target="_blank" rel="noopener noreferrer">{{ response.name_text }}</a><br>
             ----- {{ response.print_tweet_date }}<br>
             {{ response.response_text | linebreaksbr }}

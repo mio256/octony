@@ -1,124 +1,116 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <meta charset="UTF-8" />
-    <!-- CSS -->
-    {% load static %}
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'board/style.css' %}"
-    />
-    <!-- PC SP 切り替え -->
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>Octony</title>
-  </head>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <!-- CSS -->
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}" />
+  <!-- PC SP 切り替え -->
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <body>
-    <header>
-      <!-- ロゴ -->
-      <a href="{% url 'board:index' %}"
-        ><img src="{% static 'board/images/logo.png' %}" alt="Octony"
-      /></a>
-    </header>
+  <title>Octony</title>
+</head>
 
-    <!-- 説明 -->
-    <p class="box8">はじめに</p>
-    <div class="box5">
-      <p>
-        Octonyは Octo(8つの)-Anonymous(匿名者) を掛け合わせた言葉であり、
-        長工生が8学科関係なく、自由に交流ができる場所を提供することを目標としています。
-      </p>
-      <p>
-        匿名投稿、固定ハンドルネーム機能（コテハン・なりすまし防止）、おすすめ機能などを実装した掲示板であり、
-        「より良い交流場所」を目指し、長工生の声を聞き、改良を重ねています。
-      </p>
-      <p>
-        ここでは、初めて利用する方向けにチュートリアルと説明を記載しています。
-      </p>
-    </div>
+<body>
+  <header>
+    <!-- ロゴ -->
+    <a href="{% url 'board:index' %}"><img src="{% static 'board/images/logo.png' %}" alt="Octony" /></a>
+  </header>
 
-    <!-- チュートリアル -->
-    <p class="box8">使い方</p>
-    <div>
-      <ol>
-        <li>好きなスレを探してみる</li>
-        <li>スレに書き込んでみる</li>
-        <li>新しいスレを作ってみる</li>
-        <li>スレをおすすめしてみる</li>
-        <li>いろいろな機能を使ってみる</li>
-      </ol>
-    </div>
+  <!-- 説明 -->
+  <p class="box8">はじめに</p>
+  <div class="box5">
+    <p>
+      Octonyは Octo(8つの)-Anonymous(匿名者) を掛け合わせた言葉であり、
+      長工生が8学科関係なく、自由に交流ができる場所を提供することを目標としています。
+    </p>
+    <p>
+      匿名投稿、固定ハンドルネーム機能（コテハン・なりすまし防止）、おすすめ機能などを実装した掲示板であり、
+      「より良い交流場所」を目指し、長工生の声を聞き、改良を重ねています。
+    </p>
+    <p>
+      ここでは、初めて利用する方向けにチュートリアルと説明を記載しています。
+    </p>
+  </div>
 
-    <!-- 機能説明 -->
-    <p class="box8">機能説明</p>
-    <div class="box5">
-      <p>
-        スレ--スレッドの略称、掲示板内の話題で分かれている。自分でスレを立てることもでき、他の人が作ったスレに書き込むこともできます。
-      </p>
-    </div>
-    <div class="box5">
-      <p>
-        レス--レスポンスの略称、スレに書き込むことを指します。書き込みによってスレが更新されます。
-      </p>
-    </div>
+  <!-- チュートリアル -->
+  <p class="box8">使い方</p>
+  <div>
+    <ol>
+      <li>好きなスレを探してみる</li>
+      <li>スレに書き込んでみる</li>
+      <li>新しいスレを作ってみる</li>
+      <li>スレをおすすめしてみる</li>
+      <li>いろいろな機能を使ってみる</li>
+    </ol>
+  </div>
 
-    <div class="box5">
-      <p>
-        更新--スレに書き込んだり、おすすめすることでスレを一番上に表示させることができます。更新が無いとトップページに表示されなくなります。
-      </p>
-    </div>
+  <!-- 機能説明 -->
+  <p class="box8">機能説明</p>
+  <div class="box5">
+    <p>
+      スレ--スレッドの略称、掲示板内の話題で分かれている。自分でスレを立てることもでき、他の人が作ったスレに書き込むこともできます。
+    </p>
+  </div>
+  <div class="box5">
+    <p>
+      レス--レスポンスの略称、スレに書き込むことを指します。書き込みによってスレが更新されます。
+    </p>
+  </div>
 
-    <div class="box5">
-      <p>
-        すべて表示--更新が無くトップページに表示されなくなったスレを探せます。
-      </p>
-    </div>
+  <div class="box5">
+    <p>
+      更新--スレに書き込んだり、おすすめすることでスレを一番上に表示させることができます。更新が無いとトップページに表示されなくなります。
+    </p>
+  </div>
 
-    <div class="box5">
-      <p>
-        おすすめ--スレッドをおすすめする機能です。書き込まずにスレを更新させることができます。
-      </p>
-    </div>
+  <div class="box5">
+    <p>
+      すべて表示--更新が無くトップページに表示されなくなったスレを探せます。
+    </p>
+  </div>
 
-    <div class="box5">
-      <p>コテハン--固定ハンドルネームの略称、なりすまし防止機能です。</p>
-      <p>名前欄に「ななしさん$あんごう」とすることで使用することができます。</p>
-      <p>$は半角、「あんごう」は適当な文字列（$以外）です。</p>
-      <p>
-        「あんごう」を元にプログラムが決まった文字列を出力（ハッシュ化）するため、
-      </p>
-      <p>「ななしさん.84jsj39」などと表示されます。</p>
-      <p>
-        「84jsj39」を他の人が見ても「あんごう」だったことはわからないため、なりすまし防止ができます。
-      </p>
-      <p>「あんごう」は自分の覚えやすい文字列で、秘密にしてください。</p>
-      <p>「ななしさん.0」はコテハンが設定されていません。</p>
-      <p>ハイパーリンク機能--タップするとそのまま開けるリンク付きのURLです。</p>
-      <p>
-        Octonyの仕様上、まだURLをそのまま書き込んでもただのテキストになってしまいます。
-      </p>
-      <p>例「https://twitter.com/home?lang=ja」</p>
-      <p>
-        これではアクセスしにくいため、下のようなハイパーリンクの方が便利です。
-        <a href="https://twitter.com/home?lang=ja"
-          >https://twitter.com/home?lang=ja</a
-        >
-      </p>
-      <p>この機能を使うためには、名前欄にそのままURLを貼ってください。</p>
-      <p>名前欄にURLがあると、名前全体がハイパーリンクになります。</p>
-      <p>なお、ハイパーリンク機能を使う場合はコテハンが使えません。</p>
-    </div>
+  <div class="box5">
+    <p>
+      おすすめ--スレッドをおすすめする機能です。書き込まずにスレを更新させることができます。
+    </p>
+  </div>
 
-    <footer>
-      <!-- ボタン類 -->
-      <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
-      <a href="{% url 'board:terms' %}" class="btn-brackets">利用規約</a>
-    </footer>
-  </body>
+  <div class="box5">
+    <p>コテハン--固定ハンドルネームの略称、なりすまし防止機能です。</p>
+    <p>名前欄に「ななしさん$あんごう」とすることで使用することができます。</p>
+    <p>$は半角、「あんごう」は適当な文字列（$以外）です。</p>
+    <p>
+      「あんごう」を元にプログラムが決まった文字列を出力（ハッシュ化）するため、
+    </p>
+    <p>「ななしさん.84jsj39」などと表示されます。</p>
+    <p>
+      「84jsj39」を他の人が見ても「あんごう」だったことはわからないため、なりすまし防止ができます。
+    </p>
+    <p>「あんごう」は自分の覚えやすい文字列で、秘密にしてください。</p>
+    <p>「ななしさん.0」はコテハンが設定されていません。</p>
+    <p>ハイパーリンク機能--タップするとそのまま開けるリンク付きのURLです。</p>
+    <p>
+      Octonyの仕様上、まだURLをそのまま書き込んでもただのテキストになってしまいます。
+    </p>
+    <p>例「https://twitter.com/home?lang=ja」</p>
+    <p>
+      これではアクセスしにくいため、次のようなハイパーリンクの方が便利です。
+      <a href="https://twitter.com/home?lang=ja">https://twitter.com/home?lang=ja</a>
+    </p>
+    <p>この機能を使うためには、名前欄にそのままURLを貼ってください。</p>
+    <p>名前欄にURLがあると、名前全体がハイパーリンクになります。</p>
+    <p>なお、ハイパーリンク機能を使う場合はコテハンが使えません。</p>
+  </div>
+
+  <footer>
+    <!-- ボタン類 -->
+    <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
+    <a href="{% url 'board:terms' %}" class="btn-brackets">利用規約</a>
+  </footer>
+</body>
+
 </html>

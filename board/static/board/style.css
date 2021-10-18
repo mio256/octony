@@ -183,16 +183,23 @@ ul li {
 .btn-blue-border {
   width: 25%;
   display: inline-block;
-  padding: 0.5em 1em;
   margin: 5px;
   text-decoration: none;
   color: #0c3f5f;
   border: double 4px #67c5ff;
   border-radius: 3px;
   transition: 0.4s;
+  padding: 10px;
+  font-size: 18px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all  0.3s ease;
 }
 .btn-blue-border:hover {
-  background: #fcf0ce;
+  background-color: #fbffc9;
+  padding: 25px;
+  font-size: 20px;
 }
 
 /* スレッド 一覧 赤枠線 */
@@ -206,9 +213,17 @@ ul li {
   border: double 4px #ff6767;
   border-radius: 3px;
   transition: 0.4s;
+  padding: 10px;
+  font-size: 18px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all  0.3s ease;
 }
 .btn-red-border:hover {
-  background: #fcf0ce;
+  background-color: #fbffc9;
+  padding: 25px;
+  font-size: 20px;
 }
 
 /* スレッド 一覧 緑枠線 */
@@ -222,9 +237,17 @@ ul li {
   border: double 4px #67ff67;
   border-radius: 3px;
   transition: 0.4s;
+  padding: 10px;
+  font-size: 18px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all  0.3s ease;
 }
 .btn-green-border:hover {
-  background: #fcf0ce;
+  background-color: #fbffc9;
+  padding: 25px;
+  font-size: 20px;
 }
 
 /* ページ最下 移動*/
@@ -356,7 +379,7 @@ ul li {
 /* dark mode */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #000;
+    background-color: rgb(119, 119, 119);
     color: #fff;
   }
 }
