@@ -218,73 +218,98 @@ ul li {
 
 /* スレッド 一覧 青枠線 */
 .btn-blue-border {
+  /* サイズ類 */
   width: 25%;
+  height: 100px;
   display: inline-block;
+  vertical-align:  top;    /* 上揃えにする */
+  padding: 10px;
   margin: 5px;
-  text-decoration: none;
+  /* テキスト類 */
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* 色類 */
   color: #0c3f5f;
   border: double 4px #67c5ff;
+  /* 動き類 */
+  font-size: 18px;/* マウスオフ 小さい */
+  text-decoration: none;
   border-radius: 3px;
   transition: 0.4s;
-  padding: 10px;
-  font-size: 18px;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all  0.3s ease;
 }
 .btn-blue-border:hover {
-  background-color: #fbffc9;
   padding: 25px;
-  font-size: 20px;
+  background-color: #fbffc9;
+  font-size: 20px;/* マウスオン 大きい */
 }
 
 /* スレッド 一覧 赤枠線 */
 .btn-red-border {
+  /* サイズ類 */
   width: 25%;
+  height: 100px;
   display: inline-block;
-  padding: 0.5em 1em;
+  vertical-align:  top;    /* 上揃えにする */
+  padding: 10px;
   margin: 5px;
-  text-decoration: none;
+  /* テキスト類 */
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* 色類 */
   color: #5f0c0c;
   border: double 4px #ff6767;
+  /* 動き類 */
+  font-size: 18px;/* マウスオフ 小さい */
+  text-decoration: none;
   border-radius: 3px;
   transition: 0.4s;
-  padding: 10px;
-  font-size: 18px;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all  0.3s ease;
 }
 .btn-red-border:hover {
-  background-color: #fbffc9;
   padding: 25px;
-  font-size: 20px;
+  background-color: #fbffc9;
+  font-size: 20px;/* マウスオン 大きい */
 }
 
 /* スレッド 一覧 緑枠線 */
 .btn-green-border {
+  /* サイズ類 */
   width: 25%;
+  height: 100px;
   display: inline-block;
-  padding: 0.5em 1em;
+  vertical-align:  top;    /* 上揃えにする */
+  padding: 10px;
   margin: 5px;
-  text-decoration: none;
+  /* テキスト類 */
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* 色類 */
   color: #0c5f13;
   border: double 4px #67ff67;
+  /* 動き類 */
+  font-size: 18px;/* マウスオフ 小さい */
+  text-decoration: none;
   border-radius: 3px;
   transition: 0.4s;
-  padding: 10px;
-  font-size: 18px;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all  0.3s ease;
 }
 .btn-green-border:hover {
-  background-color: #fbffc9;
   padding: 25px;
-  font-size: 20px;
+  background-color: #fbffc9;
+  font-size: 20px;/* マウスオン 大きい */
 }
 
 /* ページ最下 移動*/

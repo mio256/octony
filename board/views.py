@@ -19,7 +19,7 @@ class IndexView(generic.ListView):
         """
         return Thread.objects.filter(
             pub_date__lte=timezone.now()
-        ).order_by('-latest_date')[:10]
+        ).order_by('-latest_date')[:7]
 
 
 class ListView(generic.ListView):
@@ -55,7 +55,7 @@ class ResultsView(generic.DetailView):
 class TermsView(generic.ListView):
     model = Thread
     template_name = 'board/terms.html'
-    
+
 
 class ExplainView(generic.ListView):
     model = Thread
