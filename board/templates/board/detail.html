@@ -29,8 +29,8 @@
     </div>
 
     <!-- ボタン類 -->
-    <a name="start" href="#end" class="btn-cross">最新へ</a>
     <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
+    <a name="start" href="#end" class="btn-cross">最新へ</a>
 
     <!-- レス一覧 -->
     <ul>
@@ -66,10 +66,10 @@
 
     <footer>
         <!-- ボタン類 -->
+        <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
         <a name="end" href="#start" class="btn-cross">最初へ</a>
         <a class="btn-brackets" onclick="window.location.reload(true);">更新</a>
-        <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
-        <a href="{% url 'board:favorite' thread.id %}" class="btn-brackets">おすすめ</a>
+        <a href="{% url 'board:favorite' thread.id %}" class="btn-gradient-radius">おすすめ</a>
     </footer>
 </body>
 
