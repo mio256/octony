@@ -1,6 +1,9 @@
 import datetime
 import re
 import hashlib
+import csv
+from os import read
+import pprint
 
 
 from django.db import models
@@ -58,6 +61,15 @@ class Response(models.Model):
     tweet_date = models.DateTimeField('date published')
 
     def __str__(self):
+        return self.response_text
+
+    def print_response_text(self):
+        with open('board/ngword.csv') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                for word in row:
+                    if word in self.response_text:
+                        return "NG WORD"
         return self.response_text
 
     def print_tweet_date(self):
