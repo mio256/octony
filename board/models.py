@@ -64,7 +64,8 @@ class Response(models.Model):
         return self.response_text
 
     def print_response_text(self):
-        with open('board/ngword.csv') as f:
+        with open("/home/mio256/mysite/board/ngword.csv") as f:
+            # with open("board/ngword.csv") as f:
             reader = csv.reader(f)
             for row in reader:
                 for word in row:
