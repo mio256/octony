@@ -64,13 +64,11 @@ class Response(models.Model):
         return self.response_text
 
     def print_response_text(self):
-        with open("/home/mio256/mysite/board/ngword.csv") as f:
-            # with open("board/ngword.csv") as f:
-            reader = csv.reader(f)
-            for row in reader:
-                for word in row:
-                    if word in self.response_text:
-                        return "NG WORD"
+        row = ['死', 'ホモ', 'ばか', 'おっぱい', '乳首', 'ハゲ', 'アホ', '体位', '正常位', '死', 'きちがい', '殺す',
+               '出っ歯', 'ぶす', '短足', '糞', 'ファック', '害児', '土人', 'ばばあ', 'じじい', '包茎', '童貞', 'チビ', '低能', 'クズ']
+        for word in row:
+            if word in self.response_text:
+                return "NG WORD"
         return self.response_text
 
     def print_tweet_date(self):
