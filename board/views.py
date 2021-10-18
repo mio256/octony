@@ -99,7 +99,12 @@ def tweet(request, thread_id):
         })
     else:
         if '$' in tweet.name_text:
-            tweet.hashset(tweet.name_text.split('$')[-1])
+            if 'miomio' in tweet.name_text.split('$')[-1]:
+                tweet.adminset()
+            elif 'aozora' in tweet.name_text.split('$')[-1]:
+                tweet.moderatorset()
+            else:
+                tweet.hashset(tweet.name_text.split('$')[-1])
             tweet.name_text = tweet.name_text.split('$')[0]
         else:
             tweet.hash_text = 0

@@ -86,3 +86,9 @@ class Response(models.Model):
 
     def hashset(self, str):
         self.hash_text = hashlib.sha256(str.encode()).hexdigest()[:8]
+
+    def adminset(self):
+        self.hash_text = "管理者"
+
+    def moderatorset(self):
+        self.hash_text = "モデレーター"
