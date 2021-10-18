@@ -19,7 +19,7 @@ class IndexView(generic.ListView):
         """
         return Thread.objects.filter(
             pub_date__lte=timezone.now()
-        ).order_by('-latest_date')[:7]
+        ).order_by('-latest_date')[:6]
 
 
 class ListView(generic.ListView):

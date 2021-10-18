@@ -219,7 +219,7 @@ ul li {
 /* スレッド 一覧 青枠線 */
 .btn-blue-border {
   /* サイズ類 */
-  width: 25%;
+  width: 30%;
   height: 100px;
   display: inline-block;
   vertical-align:  top;    /* 上揃えにする */
@@ -251,7 +251,7 @@ ul li {
 /* スレッド 一覧 赤枠線 */
 .btn-red-border {
   /* サイズ類 */
-  width: 25%;
+  width: 30%;
   height: 100px;
   display: inline-block;
   vertical-align:  top;    /* 上揃えにする */
@@ -283,7 +283,7 @@ ul li {
 /* スレッド 一覧 緑枠線 */
 .btn-green-border {
   /* サイズ類 */
-  width: 25%;
+  width: 30%;
   height: 100px;
   display: inline-block;
   vertical-align:  top;    /* 上揃えにする */
