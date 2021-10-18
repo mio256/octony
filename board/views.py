@@ -55,6 +55,11 @@ class ResultsView(generic.DetailView):
 class TermsView(generic.ListView):
     model = Thread
     template_name = 'board/terms.html'
+    
+
+class ExplainView(generic.ListView):
+    model = Thread
+    template_name = 'board/explain.html'
 
 
 def create_thread(request):
