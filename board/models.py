@@ -1,10 +1,6 @@
 import datetime
 import re
 import hashlib
-import csv
-from os import read
-import pprint
-
 
 from django.db import models
 from django.utils import timezone
@@ -63,26 +59,22 @@ class Response(models.Model):
     def __str__(self):
         return self.response_text
 
+    def print_tweet_date(self):
+        return (self.tweet_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+
     def print_response_text(self):
         row = ['死', 'ホモ', 'ばか', 'おっぱい', '乳首', 'ハゲ', 'アホ', '体位', '正常位', '死', 'きちがい', '殺す',
-               '出っ歯', 'ぶす', '短足', '糞', 'ファック', '害児', '土人', 'ばばあ', 'じじい', '包茎', '童貞', 'チビ', '低能', 'クズ']
+               '出っ歯', 'ぶす', '短足', '糞', 'ファック', '害児', '土人', 'ばばあ', 'じじい', '包茎', '童貞', 'チビ',
+                '低能', 'クズ','バカ']
         for word in row:
             if word in self.response_text:
                 return "NG WORD"
         return self.response_text
 
-    def print_tweet_date(self):
-        return (self.tweet_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
-
-    def print_url(self):
-        return self.name_text[8:30]
-
-    def was_url(self):
+    def print_urls(self):
         pattern = "https?://[\w/:%#\$&\?\(\)~\.=\+\-]+"
-        if re.match(pattern, self.name_text):
-            return True
-        else:
-            return False
+        urls = re.findall(pattern, self.response_text)    
+        return urls
 
     def hashset(self, str):
         self.hash_text = hashlib.sha256(str.encode()).hexdigest()[:8]
