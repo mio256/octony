@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head>
-    {% load static %}
-    <link rel="stylesheet" media="only screen and (max-width:800px)" href="{% static 'board/sp_style.css' %}">
-    <link rel="stylesheet" media="screen and (min-width:800px)" href="{% static 'board/pc_style.css' %}">
-    <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
-    <script src="{% static 'board/script.js' %}"></script>
-    <title>Octony</title>
-</head>
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,user-scalable=no" />
+        <link rel="stylesheet" href="{% static 'board/style.css' %}">
+        <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
+        <script src="{% static 'board/script.js' %}"></script>
+        <title>Octony</title>
+    </head>
 
 <body>
     <header>
@@ -30,7 +31,7 @@
     <p class="box8">ただの雑談から各科の交流まで</p>
 
     <!-- はじめに -->
-    <a href="{% url 'board:explain' %}" class="btn-green-border">
+    <a href="{% url 'board:explain' %}" class="threads green-box">
         はじめに<br>
         用語解説<br>
         機能説明<br>
@@ -39,12 +40,12 @@
     {% if latest_thread_list %}
     {% for thread in latest_thread_list %}
     {% if thread.was_update_recently %}
-    <a href="{% url 'board:detail' thread.id %}" class="btn-red-border">
+    <a href="{% url 'board:detail' thread.id %}" class="threads red-box">
         {{ thread.print_title }} <br>
         レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
     </a>
     {% else %}
-    <a href="{% url 'board:detail' thread.id %}" class="btn-blue-border">
+    <a href="{% url 'board:detail' thread.id %}" class="threads blue-box">
         {{ thread.print_title }} <br>
         レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
     </a>
@@ -56,12 +57,12 @@
     {% endif %}
 
     <!-- すべて表示 -->
-    <a href="{% url 'board:list' %}" class="btn-blue-border">
+    <a href="{% url 'board:list' %}" class="threads blue-box">
         すべて表示
     </a>
 
     <!-- アンケート -->
-    <a href="{% url 'polls:index' %}" class="btn-green-border">アンケートにご協力ください</a><br>
+    <a href="{% url 'polls:index' %}" class="threads green-box">アンケートにご協力ください</a><br>
 
     <!-- 新規スレッド作成 -->
     <div class="box17">

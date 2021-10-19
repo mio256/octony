@@ -2,16 +2,15 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <!-- CSS -->
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-    <!-- PC SP 切り替え -->
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
+    <script src="{% static 'board/script.js' %}"></script>
+    <title>Octony</title>
     <!-- ページ自動更新 -->
     <meta http-equiv="Refresh" content="3; {% url 'polls:index' %}">
-
-    <title>Octony</title>
 </head>
 
 <body>
@@ -19,7 +18,8 @@
     <h1>{{ question.question_text }}</h1>
 
     <!-- メッセージ -->
-    <p class="box8">投稿完了 5秒後に自動で戻ります</p>
+    <p class="box8">-投稿完了-</p>
+    <p class="box8">3秒後に自動で戻ります</p>
 </body>
 
 </html>
