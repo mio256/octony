@@ -2,16 +2,11 @@
 <html lang="ja">
 
 <head>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
-        rel="stylesheet">
-    <meta charset="UTF-8">
-    <!-- CSS -->
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}">
-    <!-- PC SP 切り替え -->
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-
+    <link rel="stylesheet" media="only screen and (max-width:800px)" href="{% static 'board/sp_style.css' %}">
+    <link rel="stylesheet" media="screen and (min-width:800px)" href="{% static 'board/pc_style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
+    <script src="{% static 'board/script.js' %}"></script>
     <title>Octony</title>
 </head>
 

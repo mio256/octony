@@ -9,7 +9,6 @@
   left: 0;
   z-index: 9999;
 }
-
 /* Loading Animation */
 @keyframes sk-scaleout {
   0% {
@@ -19,13 +18,11 @@
     opacity: 0;
   }
 }
-
 /* Hide Loading Block */
 .loaded {
   opacity: 0;
   visibility: hidden;
 }
-
 .spinner {
   width: 100px;
   height: 100px;
@@ -35,8 +32,20 @@
   animation: sk-scaleout 1.0s infinite ease-in-out;
 }
 
+/* 全体 フォント */
 * {
-  font-size: medium;
+  font-size: large;
+  font-family: "Lato", "Noto Sans JP", "ヒラギノ角ゴ ProN",
+    "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック",
+    "MS PGothic", sans-serif;
+}
+
+/* フルウィンドウ */
+img {
+  width: 100%;
+}
+.textarea_width {
+  width: 90%;
 }
 
 /* スレッド見出し */
@@ -216,97 +225,78 @@ ul li {
   list-style-type: none !important;
 }
 
-/* スレッド 一覧 青枠線 */
-.btn-blue-border {
-  /* サイズ類 */
-  width: 30%;
-  height: 100px;
-  display: inline-block;
-  vertical-align:  top;    /* 上揃えにする */
-  padding: 10px;
-  margin: 5px;
-  /* テキスト類 */
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  /* 色類 */
-  color: #0c3f5f;
-  border: double 4px #67c5ff;
-  /* 動き類 */
-  font-size: 18px;/* マウスオフ 小さい */
-  text-decoration: none;
-  border-radius: 3px;
-  transition: 0.4s;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all  0.3s ease;
-}
-.btn-blue-border:hover {
-  background-color: #fbffc9;
-  font-size: 20px;/* マウスオン 大きい */
-}
-
-/* スレッド 一覧 赤枠線 */
+/* スレッド 一覧 */
 .btn-red-border {
-  /* サイズ類 */
-  width: 30%;
+  width: 95%;
   height: 100px;
+
   display: inline-block;
-  vertical-align:  top;    /* 上揃えにする */
-  padding: 10px;
+  vertical-align: top;
   margin: 5px;
-  /* テキスト類 */
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  /* 色類 */
+  padding: 0;
   color: #5f0c0c;
   border: double 4px #ff6767;
-  /* 動き類 */
-  font-size: 18px;/* マウスオフ 小さい */
-  text-decoration: none;
-  border-radius: 3px;
-  transition: 0.4s;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all  0.3s ease;
-}
-.btn-red-border:hover {
-  background-color: #fbffc9;
-  font-size: 20px;/* マウスオン 大きい */
-}
-
-/* スレッド 一覧 緑枠線 */
-.btn-green-border {
-  /* サイズ類 */
-  width: 30%;
-  height: 100px;
-  display: inline-block;
-  vertical-align:  top;    /* 上揃えにする */
-  padding: 10px;
-  margin: 5px;
-  /* テキスト類 */
-  text-align: center;
+  border-radius: 5px;
+  
+  font-size: x-large;
   overflow: hidden;
   text-overflow: ellipsis;
-  /* 色類 */
-  color: #0c5f13;
-  border: double 4px #67ff67;
-  /* 動き類 */
-  font-size: 18px;/* マウスオフ 小さい */
   text-decoration: none;
-  border-radius: 3px;
+  text-align: center;
+  
   transition: 0.4s;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all  0.3s ease;
 }
-.btn-green-border:hover {
-  background-color: #fbffc9;
-  font-size: 20px;/* マウスオン 大きい */
+.btn-blue-border {
+  width: 95%;
+  height: 100px;
+
+  display: inline-block;
+  vertical-align: top;
+  margin: 5px;
+  padding: 0;
+  color: #0c3f5f;
+  border: double 4px #67c5ff;
+  border-radius: 5px;
+  
+  font-size: x-large;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  text-align: center;
+  
+  transition: 0.4s;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all  0.3s ease;
+}
+.btn-green-border {
+  width: 95%;
+  height: 100px;
+
+  display: inline-block;
+  vertical-align: top;
+  margin: 5px;
+  padding: 0;
+  color: #0c5f13;
+  border: double 4px #67ff67;
+  border-radius: 5px;
+  
+  font-size: x-large;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  text-align: center;
+  
+  transition: 0.4s;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all  0.3s ease;
 }
 
 /* ページ最下 移動*/
@@ -403,58 +393,4 @@ ul li {
 .box17 p {
   margin: 0;
   padding: 0;
-}
-
-/* テキストエリア */
-.textarea_width {
-  width: 50%;
-}
-
-/* フォント */
-* {
-  font-family: "Lato", "Noto Sans JP", "ヒラギノ角ゴ ProN",
-    "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック",
-    "MS PGothic", sans-serif;
-}
-
-/*スマホ用*/
-@media screen and (max-width: 750px) {
-  * {
-    font-size: large;
-  }
-
-  img {
-    width: 100%;
-  }
-
-  .textarea_width {
-    width: 90%;
-  }
-
-  /* スレッド 一覧 青枠線 */
-  .btn-blue-border {
-    width: 80%;
-    font-size: x-large;
-  }
-  .btn-blue-border:hover{
-    font-size: x-large;
-  }
-
-  /* スレッド 一覧 赤枠線 */
-  .btn-red-border {
-    width: 80%;
-    font-size: x-large;
-  }
-  .btn-red-border:hover{
-    font-size: x-large;
-  }
-
-  /* スレッド 一覧 緑枠線 */
-  .btn-green-border {
-    width: 80%;
-    font-size: x-large;
-  }
-  .btn-green-border:hover{
-    font-size: x-large;
-  }
 }
