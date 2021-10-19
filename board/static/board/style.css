@@ -219,7 +219,7 @@ ul li {
 /* スレッド 一覧 青枠線 */
 .btn-blue-border {
   /* サイズ類 */
-  width: 27%;
+  width: 30%;
   height: 100px;
   display: inline-block;
   vertical-align:  top;    /* 上揃えにする */
@@ -243,7 +243,6 @@ ul li {
   transition: all  0.3s ease;
 }
 .btn-blue-border:hover {
-  padding: 25px;
   background-color: #fbffc9;
   font-size: 20px;/* マウスオン 大きい */
 }
@@ -251,7 +250,7 @@ ul li {
 /* スレッド 一覧 赤枠線 */
 .btn-red-border {
   /* サイズ類 */
-  width: 27%;
+  width: 30%;
   height: 100px;
   display: inline-block;
   vertical-align:  top;    /* 上揃えにする */
@@ -275,7 +274,6 @@ ul li {
   transition: all  0.3s ease;
 }
 .btn-red-border:hover {
-  padding: 25px;
   background-color: #fbffc9;
   font-size: 20px;/* マウスオン 大きい */
 }
@@ -283,7 +281,7 @@ ul li {
 /* スレッド 一覧 緑枠線 */
 .btn-green-border {
   /* サイズ類 */
-  width: 27%;
+  width: 30%;
   height: 100px;
   display: inline-block;
   vertical-align:  top;    /* 上揃えにする */
@@ -307,7 +305,6 @@ ul li {
   transition: all  0.3s ease;
 }
 .btn-green-border:hover {
-  padding: 25px;
   background-color: #fbffc9;
   font-size: 20px;/* マウスオン 大きい */
 }
