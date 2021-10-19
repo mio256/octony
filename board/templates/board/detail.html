@@ -27,22 +27,16 @@
     <!-- ボタン類 -->
     <a name="start" href="#end" class="btn-cross">最新へ</a>
     <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
-
+    
     <!-- レス一覧 -->
     <ul>
         {% for response in thread.response_set.all %}
         <li>
             {{ forloop.counter }}.
-            {% if response.was_url %}
-            <a href="{{response.name_text}}" target="_blank" rel="noopener noreferrer">{{ response.print_url }}</a>
-            .{{response.hash_text }}<br>
-            ----- {{ response.print_tweet_date }}<br>
-            {{ response.print_response_text | linebreaksbr }}
-            {% else %}
             {{ response.name_text }}.{{ response.hash_text }}<br>
             ----- {{response.print_tweet_date }}<br>
-            {{ response.print_response_text | linebreaksbr }}
-            {% endif %}
+            {{ response.print_response_text | linebreaksbr }}<br>
+            {% for url in response.print_urls %}<a href="{{ url }}">{{ url }}</a><br>{% endfor %}
         </li>
         {% endfor %}
     </ul>

@@ -215,6 +215,10 @@ ul li {
     border-radius: 0 15px 15px 0; /*右側の角だけ丸く*/
     padding: 0.5em;
     list-style-type: none !important;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
 }
 
 /* ページ最下 移動*/
@@ -339,6 +343,9 @@ ul li {
     /* フォントサイズ */
     * {
         font-size: medium;
+    }
+    .textarea_width {
+        width: 50%;
     }
 
     /* スレッド一覧 */
