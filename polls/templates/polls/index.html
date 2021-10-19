@@ -2,18 +2,18 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <!-- CSS -->
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-    <!-- PC SP 切り替え -->
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
+    <script src="{% static 'board/script.js' %}"></script>
     <title>Octony</title>
 </head>
 
 <body>
     <header>
+        <!-- ローディング -->
         <div id="loading">
             <div class="spinner"></div>
         </div>
@@ -41,7 +41,7 @@
     {% if latest_question_list %}
     <ul>
         {% for question in latest_question_list %}
-        <a href="{% url 'polls:detail' question.id %}" class="btn-green-border">
+        <a href="{% url 'polls:detail' question.id %}" class="threads green-box">
             {{ question.question_text }}
         </a>
         {% endfor %}

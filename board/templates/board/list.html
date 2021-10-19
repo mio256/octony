@@ -3,8 +3,9 @@
 
 <head>
     {% load static %}
-    <link rel="stylesheet" media="only screen and (max-width:800px)" href="{% static 'board/sp_style.css' %}">
-    <link rel="stylesheet" media="screen and (min-width:800px)" href="{% static 'board/pc_style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'board/style.css' %}">
     <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
     <script src="{% static 'board/script.js' %}"></script>
     <title>Octony</title>
@@ -21,17 +22,17 @@
     </header>
 
     <!-- はじめに -->
-    <a href="{% url 'board:explain' %}" class="btn-green-border">はじめに</a>
+    <a href="{% url 'board:explain' %}" class="threads green-box">はじめに</a>
     <!-- 最新スレッド -->
     {% if thread_list %}
     {% for thread in thread_list %}
     {% if thread.was_update_recently %}
-    <a href="{% url 'board:detail' thread.id %}" class="btn-red-border">
+    <a href="{% url 'board:detail' thread.id %}" class="threads red-box">
         {{ thread.print_title }} <br>
         レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
     </a>
     {% else %}
-    <a href="{% url 'board:detail' thread.id %}" class="btn-blue-border">
+    <a href="{% url 'board:detail' thread.id %}" class="threads blue-box">
         {{ thread.print_title }} <br>
         レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
     </a>
