@@ -35,7 +35,9 @@
         【解説】URL貼れるようになったよ！<br>
     </a>
     <!-- アンケート -->
-    <a href="{% url 'polls:index' %}" class="threads green-box">【総裁選】次のビックプロジェクトを投票で決めます。</a><br>
+    <a href="{% url 'polls:index' %}" class="threads green-box">
+        【総裁選】次のビックプロジェクトを投票で決めます。<br>
+    </a>
     <!-- 最新スレッド -->
     {% if latest_thread_list %}
     {% for thread in latest_thread_list %}
