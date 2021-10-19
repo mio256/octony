@@ -32,10 +32,10 @@
 
     <!-- はじめに -->
     <a href="{% url 'board:explain' %}" class="threads green-box">
-        はじめに<br>
-        用語解説<br>
-        機能説明<br>
+        【解説】URL貼れるようになったよ！<br>
     </a>
+    <!-- アンケート -->
+    <a href="{% url 'polls:index' %}" class="threads green-box">【総裁選】次のビックプロジェクトを投票で決めます。</a><br>
     <!-- 最新スレッド -->
     {% if latest_thread_list %}
     {% for thread in latest_thread_list %}
@@ -60,9 +60,6 @@
     <a href="{% url 'board:list' %}" class="threads blue-box">
         すべて表示
     </a>
-
-    <!-- アンケート -->
-    <a href="{% url 'polls:index' %}" class="threads green-box">アンケートにご協力ください</a><br>
 
     <!-- 新規スレッド作成 -->
     <div class="box17">
