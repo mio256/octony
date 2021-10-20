@@ -53,6 +53,11 @@ h1 {
     padding: 0.5em 1em;
     margin: 2em 0;
     border: double 5px #4ec4d3;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    text-align: center;
 }
 .box5 p {
     margin: 0;
@@ -109,44 +114,6 @@ h1 {
 .box8 p {
     margin: 0;
     padding: 0;
-}
-
-.btn-social-square {
-    display: inline-block;
-    text-decoration: none;
-    width: 50px;
-    margin: 2px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 23px;
-    color: white;
-    border-radius: 12px;
-    text-align: center;
-    overflow: hidden;
-    font-weight: bold;
-    transition: 0.3s;
-}
-.btn-social-square i {
-    line-height: 50px;
-}
-.btn-social-square:hover {
-    -webkit-transform: translateY(-5px);
-    transform: translateY(-5px);
-}
-.btn-social-square--twitter {
-    background: #22b8ff;
-}
-.btn-social-square--facebook {
-    background: #6680d8;
-}
-.btn-social-square--hatebu {
-    background: #49a8fb;
-}
-.btn-social-square--pocket {
-    background: #ff6d82;
-}
-.btn-social-square--feedly {
-    background: #7bda72;
 }
 
 /* ステップ目次 */
