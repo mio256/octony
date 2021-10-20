@@ -76,6 +76,12 @@ class Response(models.Model):
         urls = re.findall(pattern, self.response_text)    
         return urls
 
+    def was_special(self):
+        if self.hash_text in ['管理者','モデレーター']:
+            return True
+        else:
+            return False
+
     def hashset(self, str):
         self.hash_text = hashlib.sha256(str.encode()).hexdigest()[:8]
 

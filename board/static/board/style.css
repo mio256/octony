@@ -48,71 +48,30 @@ h1 {
     border-bottom: dashed 2px #6594e0;
 }
 
-/* explain box */
-.box5 {
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    border: double 5px #4ec4d3;
-
+/* パラグラフ URL対策*/
+p{
     overflow: hidden;
     text-overflow: ellipsis;
     text-decoration: none;
 }
-.box5 p {
-    margin: 0;
-    padding: 0;
-}
-.box5 pre {
-    margin: 0;
-    padding: 0;
-}
 
-/* オレンジ [ボタン] */
-.btn-brackets {
-    display: inline-block;
-    position: relative;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    color: #000;
-    transition: 0.4s;
-}
-.btn-brackets:hover {
-    color: #ff7f7f;
-}
-.btn-brackets:before,
-.btn-brackets:after {
-    position: absolute;
-    top: 0;
-    content: "";
-    width: 8px;
-    height: 100%;
-    display: inline-block;
-}
-.btn-brackets:before {
-    border-left: solid 1px #ff7f7f;
-    border-top: solid 1px #ff7f7f;
-    border-bottom: solid 1px #ff7f7f;
-    left: 0;
-}
-.btn-brackets:after {
-    content: "";
-    border-top: solid 1px #ff7f7f;
-    border-right: solid 1px #ff7f7f;
-    border-bottom: solid 1px #ff7f7f;
-    right: 0;
-}
-
-/* オレンジ 付箋 */
-.box8 {
-    padding: 0.5em 1em;
+/* スレッド 詳細説明 青囲み */
+.box4 {
+    padding: 8px 19px;
     margin: 2em 0;
-    color: #232323;
-    background: #fff8e8;
-    border-left: solid 10px #ffc06e;
+    color: #2c2c2f;
+    background: #e4eefa;
+    border-top: solid 5px #5989cf;
+    border-bottom: solid 5px #5989cf;
 }
-.box8 p {
+.box4 p {
     margin: 0;
     padding: 0;
+}
+/* p 揃え*/
+span{
+    display: inline-block;
+    width: 5em;
 }
 
 /* ステップ目次 */
@@ -167,36 +126,68 @@ ol li:after {
     transform: translateY(-50%);
 }
 
-/* レス */
-ul {
-    padding: 0;
-    position: relative;
-}
-ul li {
-    color: black;
-    border-left: solid 8px orange; /*左側の線*/
-    background: whitesmoke; /*背景色*/
-    margin-bottom: 5px; /*下のバーとの余白*/
-    line-height: 1.5;
-    border-radius: 0 15px 15px 0; /*右側の角だけ丸く*/
-    padding: 0.5em;
-    list-style-type: none !important;
+/* explain box */
+.box5 {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #4ec4d3;
 
     overflow: hidden;
     text-overflow: ellipsis;
     text-decoration: none;
 }
+.box5 p {
+    margin: 0;
+    padding: 0;
+}
+.box5 pre {
+    margin: 0;
+    padding: 0;
+}
 
-/* ページ最下 移動*/
+/* オレンジ 付箋 */
+.box8 {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+}
+.box8 p {
+    margin: 0;
+    padding: 0;
+}
+
+/* レス */
+.response {
+    color: black;
+    border-left: solid 8px #9ee5d8; /*左側の線*/
+    background: whitesmoke; /*背景色*/
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    line-height: 1.5;
+    border-radius: 0 15px 15px 0; /*右側の角だけ丸く*/
+    padding: 0.5em;
+    list-style-type: none !important;
+}
+.red-res {
+    color: black;
+    border-left: solid 8px #f58d7b; /*左側の線*/
+}
+
+/* 移動ボタン 黒囲い*/
 .btn-cross {
     display: inline-block;
     position: relative;
+    margin: 15px;
     padding: 0.25em 1em;
     border-top: solid 2px black;
     border-bottom: solid 2px black;
     text-decoration: none;
     font-weight: bold;
     color: #03a9f4;
+    
+    text-align: center;
 }
 .btn-cross:before,
 .btn-cross:after {
@@ -226,23 +217,52 @@ ul li {
     height: 100%;
 }
 
-/* スレッド 詳細説明 青囲み */
-.box4 {
-    padding: 8px 19px;
-    margin: 2em 0;
-    color: #2c2c2f;
-    background: #cde4ff;
-    border-top: solid 5px #5989cf;
-    border-bottom: solid 5px #5989cf;
+/* オレンジ [ボタン] */
+.btn-brackets {
+    display: inline-block;
+    position: relative;
+    margin: 5px;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color: #000;
+    transition: 0.4s;
+    background-color: #faebeb;
 }
-.box4 p {
-    margin: 0;
-    padding: 0;
+.btn-brackets:hover {
+    color: #ff7f7f;
+}
+.btn-brackets:before,
+.btn-brackets:after {
+    position: absolute;
+    top: 0;
+    content: "";
+    width: 8px;
+    height: 100%;
+    display: inline-block;
+}
+.btn-brackets:before {
+    border-left: solid 1px #ff7f7f;
+    border-top: solid 1px #ff7f7f;
+    border-bottom: solid 1px #ff7f7f;
+    left: 0;
+}
+.btn-brackets:after {
+    content: "";
+    border-top: solid 1px #ff7f7f;
+    border-right: solid 1px #ff7f7f;
+    border-bottom: solid 1px #ff7f7f;
+    right: 0;
+}
+.fix-right-bottom {
+    position:fixed;
+    right:20px;
+    bottom:20px;
 }
 
 /* おすすめボタン */
 .btn-gradient-radius {
     display: inline-block;
+    margin: 5px;
     padding: 7px 20px;
     border-radius: 25px;
     text-decoration: none;
@@ -261,6 +281,8 @@ ul li {
     padding: 0.5em 1.5em;
     border-top: solid 5px black;
     border-bottom: solid 5px black;
+
+    text-align: center;
 }
 .box17:before,
 .box17:after {

@@ -21,6 +21,9 @@
         </div>
     </header>
 
+    <!-- ボタン類 -->
+    <a href="{% url 'board:index' %}" class="btn-brackets fix-right-bottom">戻る</a>
+
     <!-- 最新スレッド -->
     {% if thread_list %}
     {% for thread in thread_list %}
@@ -53,8 +56,6 @@
     </div>
 
     <footer>
-        <!-- ボタン類 -->
-        <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
         <a class="btn-brackets" onclick="window.location.reload(true);">再読込</a>
     </footer>
 </body>

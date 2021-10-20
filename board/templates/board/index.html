@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-    <head>
-        {% load static %}
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,user-scalable=no" />
-        <link rel="stylesheet" href="{% static 'board/style.css' %}">
-        <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
-        <script src="{% static 'board/script.js' %}"></script>
-        <title>Octony</title>
-    </head>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'board/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
+    <script src="{% static 'board/script.js' %}"></script>
+    <title>Octony</title>
+</head>
 
 <body>
     <header>
@@ -33,32 +33,28 @@
     <!-- はじめに -->
     <a href="{% url 'board:explain' %}" class="threads green-box">
         【解説】はじめに<br>
-        【アップデート】書き込み後、ページ最下部へ
+        【アップデート】<br>
+        右下に戻るボタン！<br>
+        全体的に中央揃え<br>
     </a>
     <!-- アンケート -->
     <a href="{% url 'polls:index' %}" class="threads green-box">
         【総裁選】次のビックプロジェクトを投票で決めます。<br>
     </a>
     <!-- 最新スレッド -->
-    {% if latest_thread_list %}
     {% for thread in latest_thread_list %}
-    {% if thread.was_update_recently %}
-    <a href="{% url 'board:detail' thread.id %}" class="threads red-box">
-        {{ thread.print_title }} <br>
-        レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
-    </a>
-    {% else %}
-    <a href="{% url 'board:detail' thread.id %}" class="threads blue-box">
-        {{ thread.print_title }} <br>
-        レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
-    </a>
-    {% endif %}
+        {% if thread.was_update_recently %}
+            <a href="{% url 'board:detail' thread.id %}" class="threads red-box">
+                {{ thread.print_title }} <br>
+                レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
+            </a>
+        {% else %}
+            <a href="{% url 'board:detail' thread.id %}" class="threads blue-box">
+                {{ thread.print_title }} <br>
+                レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
+            </a>
+        {% endif %}
     {% endfor %}
-    {% else %}
-    <p>そして誰も居なくなった...</p>
-    <p>新規スレを立ててね！</p>
-    {% endif %}
-
     <!-- すべて表示 -->
     <a href="{% url 'board:list' %}" class="threads blue-box">
         すべて表示
@@ -68,16 +64,17 @@
     <div class="box17">
         <form action="{% url 'board:create_thread' %}" method="post">
             {% csrf_token %}
-            新規スレ:<br>
+            新規スレ<br>
             <textarea name="thread_str" rows="4" class="textarea_width"></textarea> <br>
-            <input type="submit" value="新規" class="btn-cross">
-            <input type="reset" value="リセット" class="btn-cross">
+            <input type="submit" value="新規スレ作成" class="btn-cross">
         </form>
     </div>
 
-    <footer>
-        <!-- ボタン類 -->
+    <footer style="text-align: center;">
         <a href="{% url 'board:terms' %}" class="btn-brackets">利用規約</a>
+        <p>
+            Octony - Since 2021.10.1
+        </p>
     </footer>
 </body>
 

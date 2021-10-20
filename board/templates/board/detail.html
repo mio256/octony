@@ -17,49 +17,86 @@
 
     <!-- スレッド詳細 -->
     <div class="box4">
-        <p>{{ thread.thread_text }}</p>
-        <p>レス数 : {{ thread.print_count_response }}</p>
-        <p>おすすめ数 : {{ thread.favorite_num }}</p>
-        <p>更新日時 : {{ thread.print_latest_date }}</p>
-        <p>作成日時 : {{ thread.print_pub_date }}</p>
+        <p>
+            <span> タイトル </span> {{ thread.thread_text }} <br>
+            <span> レス数 </span> {{ thread.print_count_response }} <br>
+            <span> おすすめ </span> {{ thread.favorite_num }} <br>
+            <span> 更新日時 </span> {{ thread.print_latest_date }} <br>
+            <span> 作成日時 </span> {{ thread.print_pub_date }}
+        </p>
     </div>
 
     <!-- ボタン類 -->
-    <a name="start" href="#end" class="btn-cross">最新へ</a>
-    <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
+    <a href="{% url 'board:index' %}" class="btn-brackets fix-right-bottom">戻る</a>
+    <div style="text-align: center;">
+        <a name="start" href="#end" class="btn-cross">最新へ</a>
+    </div>
 
     <!-- レス一覧 -->
-    <ul>
-        {% for response in thread.response_set.all %}
-        <li>
-            {{ forloop.counter }}.
-            {{ response.name_text }}.{{ response.hash_text }}<br>
-            ----- {{response.print_tweet_date }}<br>
-            {{ response.print_response_text | linebreaksbr }}<br>
-            {% for url in response.print_urls %}<a href="{{ url }}"  target="_blank" rel="noopener noreferrer">{{ url }}</a><br>{% endfor %}
-        </li>
-        {% endfor %}
-    </ul>
+    {% for response in thread.response_set.all %}
+        {% if response.was_special %}
+            <div class="response red-res">
+                <p>
+                    {{ forloop.counter }}.
+                    {{ response.name_text }}.{{ response.hash_text }}<br>
+                </p>
+                <p style="text-align: right;">
+                    {{ response.print_tweet_date }}
+                </p>
+                <p>
+                    {{ response.print_response_text | linebreaksbr }}
+                </p>
+                <p>
+                    {% for url in response.print_urls %}
+                        <a href="{{ url }}" target="_blank" rel="noopener noreferrer">
+                            {{ url }}
+                        </a><br>
+                    {% endfor %}
+                </p>
+            </div>
+        {% else %}
+            <div class="response">
+                <p>
+                    {{ forloop.counter }}.
+                    {{ response.name_text }}.{{ response.hash_text }}<br>
+                </p>
+                <p style="text-align: right;">
+                    {{ response.print_tweet_date }}
+                </p>
+                <p>
+                    {{ response.print_response_text | linebreaksbr }}
+                </p>
+                <p>
+                    {% for url in response.print_urls %}
+                        <a href="{{ url }}" target="_blank" rel="noopener noreferrer">
+                            {{ url }}
+                        </a><br>
+                    {% endfor %}
+                </p>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <!-- おすすめ -->
+    <a href="{% url 'board:favorite' thread.id %}" class="btn-gradient-radius">おすすめ</a>
 
     <!-- 書き込み -->
+    <a name="jump"></a>
     <div class="box17">
         <form action="{% url 'board:tweet' thread.id %}" method="post">
             {% csrf_token %}
-            <a name="jump">書き込み</a><br>
+            名前$コテハン<br>
             <input type="text" value="ななしちゃん" name="name_str" required minlength="1" maxlength="255"> <br>
-            つぶやき : <br>
+            つぶやき<br>
             <textarea name="tweet_str" rows="4" class="textarea_width"></textarea> <br>
             <input type="submit" value="投稿" class="btn-cross">
-            <input type="reset" value="リセット" class="btn-cross">
         </form>
     </div>
 
-    <footer>
+    <footer style="text-align: center;">
         <!-- ボタン類 -->
-        <a name="end" href="#start" class="btn-cross">最初へ</a>
-        <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
-        <a class="btn-brackets" onclick="window.location.reload(true);">再読込</a>
-        <a href="{% url 'board:favorite' thread.id %}" class="btn-gradient-radius">おすすめ</a>
+        <a class="btn-brackets" onclick="window.location.reload(true);">再読込</a><br>
+        <a name="end" href="#start" class="btn-cross">最初へ</a><br>
     </footer>
 </body>
 

@@ -21,6 +21,9 @@
         </div>
     </header>
 
+    <!-- ボタン類 -->
+    <a href="{% url 'board:index' %}" class="btn-brackets fix-right-bottom">戻る</a>
+
     <!-- はじめに -->
     <p class="box8">はじめに</p>
     <p>
@@ -129,10 +132,13 @@
     <div class="box5">
         <p>管理板<br>
             管理者が設置している板です。<br>
-            【要望等】アイデア求む -- 一番歴史が長い板、みんなの意見や開発者のメモなどが書き込んであります。<br>
-            ---- アイデアや感想などOctonyをより良くする書き込みを待っています。<br>
-            【テスト】ご自由に -- テスト板、管理者が定期的にリセットするので好きなように使ってください。<br>
-            【お問い合わせ】削除・変更 ---- スレ・レスの削除や変更などの管理者への依頼がある場合に書き込んでください。
+            <a href="{% url 'board:detail' 21 %}">【要望等】アイデア求む</a><br>
+            一番歴史が長い板、みんなの意見や開発者のメモなどが書き込んであります。<br>
+            遠慮なく、アイデアや感想などOctonyをより良くする書き込みをお願いします。<br>
+            <a href="{% url 'board:detail' 54 %}">【テスト】ご自由に</a><br>
+            テスト板、管理者が定期的にリセットするので好きなように使ってください。<br>
+            <a href="{% url 'board:detail' 21 %}">【お問い合わせ】削除・変更</a><br>
+            スレ・レスの削除や変更などの管理者へ用件がある場合に書き込んでください。
         </p>
     </div>
     <div class="box5">
@@ -149,9 +155,7 @@
         </p>
     </div>
 
-    <footer>
-        <!-- ボタン類 -->
-        <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
+    <footer style="text-align: center;">
         <a href="{% url 'board:terms' %}" class="btn-brackets">利用規約</a>
     </footer>
 </body>
