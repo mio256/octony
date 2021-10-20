@@ -33,13 +33,13 @@
     <!-- はじめに -->
     <a href="{% url 'board:explain' %}" class="threads green-box">
         【解説】はじめに<br>
-        【アップデート】<br>
-        右下に戻るボタン！<br>
-        全体的に中央揃え<br>
+        <br>
+        ID機能を実装！
     </a>
     <!-- アンケート -->
     <a href="{% url 'polls:index' %}" class="threads green-box">
-        【総裁選】次のビックプロジェクトを投票で決めます。<br>
+        【総裁選】<br>
+        次のビックプロジェクトを投票で決めます。<br>
     </a>
     <!-- 最新スレッド -->
     {% for thread in latest_thread_list %}

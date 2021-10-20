@@ -68,7 +68,7 @@
         <form action="{% url 'board:tweet' thread.id %}" method="post">
             {% csrf_token %}
             名前$コテハン<br>
-            <input type="text" value="ななしちゃん" name="name_str" required minlength="1" maxlength="255"> <br>
+            <input type="text" value="{{ cookie_name }}" name="name_str" required minlength="1" maxlength="255"> <br>
             つぶやき<br>
             <textarea name="tweet_str" rows="4" class="textarea_width"></textarea> <br>
             <input type="submit" value="投稿" class="btn-cross">

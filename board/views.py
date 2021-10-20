@@ -39,6 +39,14 @@ class ListView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Thread
     template_name = 'board/detail.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.session.get('name'):
+            context['cookie_name'] = self.request.session.get('name')
+        else:
+            context['cookie_name'] = 'ななしちゃん'
+        return context
 
     def get_queryset(self):
         """
@@ -100,10 +108,12 @@ def tweet(request, thread_id):
         client_addr = request.META.get('REMOTE_ADDR')
 
     try:
+        name_str=request.POST['name_str']
+
         tweet = thread.response_set.create(
             response_text=request.POST['tweet_str'],
-            name_text=request.POST['name_str'],
-            tweet_date=datetime.now(),
+            name_text=name_str,
+            tweet_date=timezone.now(),
             ip=client_addr
         )
     except (KeyError):
@@ -129,6 +139,8 @@ def tweet(request, thread_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
+        
+        request.session['name'] = name_str
         return HttpResponseRedirect(reverse('board:results', args=(thread.id,)))
 
 
