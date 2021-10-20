@@ -36,32 +36,15 @@
     {% for response in thread.response_set.all %}
         {% if response.was_special %}
             <div class="response red-res">
-                <p>
-                    {{ forloop.counter }}.
-                    {{ response.name_text }}.{{ response.hash_text }}<br>
-                </p>
-                <p style="text-align: right;">
-                    {{ response.print_tweet_date }}
-                </p>
-                <p>
-                    {{ response.print_response_text | linebreaksbr }}
-                </p>
-                <p>
-                    {% for url in response.print_urls %}
-                        <a href="{{ url }}" target="_blank" rel="noopener noreferrer">
-                            {{ url }}
-                        </a><br>
-                    {% endfor %}
-                </p>
-            </div>
         {% else %}
             <div class="response">
+        {% endif %}
                 <p>
                     {{ forloop.counter }}.
                     {{ response.name_text }}.{{ response.hash_text }}<br>
                 </p>
                 <p style="text-align: right;">
-                    {{ response.print_tweet_date }}
+                    {{ response.print_tweet_date }}-{{ response.get_id }}
                 </p>
                 <p>
                     {{ response.print_response_text | linebreaksbr }}
@@ -74,7 +57,6 @@
                     {% endfor %}
                 </p>
             </div>
-        {% endif %}
     {% endfor %}
 
     <!-- おすすめ -->

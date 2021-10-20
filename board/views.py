@@ -8,25 +8,6 @@ from django.utils import timezone
 from .models import Thread
 from .forms import NameForm
 
-def get_name(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = NameForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = NameForm()
-
-    return render(request, 'name.html', {'form': form})
-
-
 class IndexView(generic.ListView):
     template_name = 'board/index.html'
     context_object_name = 'latest_thread_list'
@@ -108,11 +89,22 @@ def create_thread(request):
 
 def tweet(request, thread_id):
     thread = get_object_or_404(Thread, pk=thread_id)
+
+    # 'HTTP_X_FORWARDED_FOR'ヘッダを参照して転送経路のIPアドレスを取得する。
+    forwarded_addresses = request.META.get('HTTP_X_FORWARDED_FOR')
+    if forwarded_addresses:
+        # 'HTTP_X_FORWARDED_FOR'ヘッダがある場合: 転送経路の先頭要素を取得する。
+        client_addr = forwarded_addresses.split(',')[0]
+    else:
+        # 'HTTP_X_FORWARDED_FOR'ヘッダがない場合: 直接接続なので'REMOTE_ADDR'ヘッダを参照する。
+        client_addr = request.META.get('REMOTE_ADDR')
+
     try:
         tweet = thread.response_set.create(
             response_text=request.POST['tweet_str'],
             name_text=request.POST['name_str'],
-            tweet_date=datetime.now()
+            tweet_date=datetime.now(),
+            ip=client_addr
         )
     except (KeyError):
         # Redisplay the thread voting form.

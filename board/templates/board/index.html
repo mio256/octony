@@ -43,18 +43,15 @@
     </a>
     <!-- 最新スレッド -->
     {% for thread in latest_thread_list %}
-        {% if thread.was_update_recently %}
-            <a href="{% url 'board:detail' thread.id %}" class="threads red-box">
-                {{ thread.print_title }} <br>
-                レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
-            </a>
-        {% else %}
-            <a href="{% url 'board:detail' thread.id %}" class="threads blue-box">
-                {{ thread.print_title }} <br>
-                レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
-            </a>
-        {% endif %}
-    {% endfor %}
+    {% if thread.was_update_recently %}
+        <a href="{% url 'board:detail' thread.id %}" class="threads red-box">
+    {% else %}
+        <a href="{% url 'board:detail' thread.id %}" class="threads blue-box">
+    {% endif %}
+            {{ thread.print_title }} <br>
+            レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
+        </a>
+{% endfor %}
     <!-- すべて表示 -->
     <a href="{% url 'board:list' %}" class="threads blue-box">
         すべて表示

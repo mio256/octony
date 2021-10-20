@@ -9,7 +9,6 @@ urlpatterns = [
     path('create', views.create_thread, name='create_thread'),
     path('terms', views.TermsView.as_view(), name='terms'),
     path('explain', views.ExplainView.as_view(), name='explain'),
-    path('name', views.NameView.as_view(), name='name'),
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
     path('<int:thread_id>/favorite/', views.add_favorite, name='favorite'),

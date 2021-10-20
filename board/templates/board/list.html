@@ -25,37 +25,28 @@
     <a href="{% url 'board:index' %}" class="btn-brackets fix-right-bottom">戻る</a>
 
     <!-- 最新スレッド -->
-    {% if thread_list %}
     {% for thread in thread_list %}
-    {% if thread.was_update_recently %}
-    <a href="{% url 'board:detail' thread.id %}" class="threads red-box">
-        {{ thread.print_title }} <br>
-        レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
-    </a>
-    {% else %}
-    <a href="{% url 'board:detail' thread.id %}" class="threads blue-box">
-        {{ thread.print_title }} <br>
-        レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
-    </a>
-    {% endif %}
+        {% if thread.was_update_recently %}
+            <a href="{% url 'board:detail' thread.id %}" class="threads red-box">
+        {% else %}
+            <a href="{% url 'board:detail' thread.id %}" class="threads blue-box">
+        {% endif %}
+                {{ thread.print_title }} <br>
+                レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
+            </a>
     {% endfor %}
-    {% else %}
-    <p>そして誰も居なくなった...</p>
-    <p>新規スレを立ててね！</p>
-    {% endif %}
 
     <!-- 新規スレッド作成 -->
     <div class="box17">
         <form action="{% url 'board:create_thread' %}" method="post">
             {% csrf_token %}
-            新規スレ:<br>
+            新規スレ<br>
             <textarea name="thread_str" rows="4" class="textarea_width"></textarea> <br>
-            <input type="submit" value="新規" class="btn-cross">
-            <input type="reset" value="リセット" class="btn-cross">
+            <input type="submit" value="新規スレ作成" class="btn-cross">
         </form>
     </div>
 
-    <footer>
+    <footer style="text-align: center;">
         <a class="btn-brackets" onclick="window.location.reload(true);">再読込</a>
     </footer>
 </body>

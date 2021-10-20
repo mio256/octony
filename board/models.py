@@ -55,6 +55,7 @@ class Response(models.Model):
     name_text = models.CharField(max_length=255)
     hash_text = models.CharField(max_length=255)
     tweet_date = models.DateTimeField('date published')
+    ip= models.CharField(max_length=32)
 
     def __str__(self):
         return self.response_text
@@ -90,3 +91,7 @@ class Response(models.Model):
 
     def moderatorset(self):
         self.hash_text = "モデレーター"
+
+    def get_id(self):
+        str = self.ip + self.tweet_date.strftime('%Y%m%d')
+        return hashlib.sha256(str.encode()).hexdigest()[:8]
