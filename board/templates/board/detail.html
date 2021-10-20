@@ -27,7 +27,7 @@
     <!-- ボタン類 -->
     <a name="start" href="#end" class="btn-cross">最新へ</a>
     <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
-    
+
     <!-- レス一覧 -->
     <ul>
         {% for response in thread.response_set.all %}
@@ -36,7 +36,7 @@
             {{ response.name_text }}.{{ response.hash_text }}<br>
             ----- {{response.print_tweet_date }}<br>
             {{ response.print_response_text | linebreaksbr }}<br>
-            {% for url in response.print_urls %}<a href="{{ url }}">{{ url }}</a><br>{% endfor %}
+            {% for url in response.print_urls %}<a href="{{ url }}"  target="_blank" rel="noopener noreferrer">{{ url }}</a><br>{% endfor %}
         </li>
         {% endfor %}
     </ul>

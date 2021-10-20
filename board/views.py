@@ -5,7 +5,26 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Thread, Response
+from .models import Thread
+from .forms import NameForm
+
+def get_name(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = NameForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponseRedirect('/thanks/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = NameForm()
+
+    return render(request, 'name.html', {'form': form})
 
 
 class IndexView(generic.ListView):
@@ -60,6 +79,10 @@ class TermsView(generic.ListView):
 class ExplainView(generic.ListView):
     model = Thread
     template_name = 'board/explain.html'
+
+class NameView(generic.ListView):
+    model = Thread
+    template_name = 'board/name.html'
 
 
 def create_thread(request):
