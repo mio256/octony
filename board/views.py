@@ -34,7 +34,7 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Thread.objects.filter(
             pub_date__lte=timezone.now()
-        ).order_by('-update_date')[:6]
+        ).order_by('-update_date')[:9]
 
 
 class ThreadView(generic.ListView):

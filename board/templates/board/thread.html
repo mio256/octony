@@ -1,53 +1,165 @@
-<!DOCTYPE html>
-<html lang="ja">
+<!doctype html>
+<html class="no-js" lang="ja">
 
 <head>
     {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no" />
-    <link rel="stylesheet" href="{% static 'board/style.css' %}">
-    <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
-    <script src="{% static 'board/script.js' %}"></script>
+    {% load widget_tweaks %}
+
+    <meta charset="utf-8">
     <title>Octony</title>
+    <meta name="description" content="Octony-OctoAnonymous 8人の匿名者 長工生が匿名で交流できる場所 ただの雑談から各科の交流まで">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'board/style.css' %}">
+
+    <script src="{% static 'board/script.js' %}"></script>
+
+    <meta name="theme-color" content="#fafafa">
 </head>
 
 <body>
-    <header>
+    <!-- ローディング -->
+    <div id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="container-lg">
+
+        <header class="sticky-top" style="background-color: aliceblue;">
+            <!-- ナビゲーション -->
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'board:index' %}">
+                        トップ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'board:explain' %}">
+                        はじめに
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'board:thread' %}">
+                        スレ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'polls:index' %}">
+                        投票
+                    </a>
+                </li>
+            </ul>
+        </header>
+
         <!-- ロゴ -->
         <div style="text-align: center;">
             <a href="{% url 'board:index' %}">
-                <img src="{% static 'board/images/logo.png' %}" alt="Octony">
+                <img class="img-fluid my-2" src="{% static 'board/images/logo.png' %}" alt="Octony">
             </a>
         </div>
-    </header>
 
-    <!-- ボタン類 -->
-    <a href="{% url 'board:index' %}" class="btn-brackets fix-right-bottom">戻る</a>
+        <a name="top"></a>
 
-    <!-- 最新スレッド -->
-    {% for thread in thread_list %}
-    {% if thread.was_update_recently %}
-    <a href="{% url 'board:response' thread.id %}" class="threads red-box">
-        {% else %}
-        <a href="{% url 'board:response' thread.id %}" class="threads blue-box">
-            {% endif %}
-            {{ thread.get_title }} <br>
-            レス : {{ thread.get_responses }} おすすめ : {{ thread.favorites }}
-        </a>
-    {% endfor %}
+        <!-- スレッド一覧 -->
+        <div class="row">
+            {% for thread in thread_list %}
+            <div class="col-md-4 div-link my-3">
+                {% if thread.was_update_recently %}
+                <div class="card border-primary mb-1 h-100">
+                    <div class="card-header">{{ thread.get_update_date }}</div>
+                    <div class="card-body text-primary">
+                        <h5 class="card-title">{{ thread.get_title }}</h5>
+                        <p class="card-text">
+                            {{ thread.get_responses }}レス<br>
+                            {{ thread.favorites }}おすすめ
+                        </p>
+                    </div>
+                    <a class="link" href="{% url 'board:response' thread.id%}"></a>
+                </div>
+                {% else %}
+                <div class="card border-success mb-3  h-100">
+                    <div class="card-header">{{ thread.get_update_date }}</div>
+                    <div class="card-body text-success">
+                        <h5 class="card-title">{{ thread.get_title }}</h5>
+                        <p class="card-text">
+                            {{ thread.get_responses }}レス<br>
+                            {{ thread.favorites }}おすすめ
+                        </p>
+                    </div>
+                    <a class="link" href="{% url 'board:response' thread.id%}"></a>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
 
-    <!-- 新規スレッド作成 -->
-    <div class="box17">
+        <a name="bottom"></a>
+
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-primary mx-4 mb-3" onclick="window.location.reload(true);">
+                再読込
+            </button>
+        </div>
+
+        <!-- 新規スレッド作成 -->
         <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn-cross">新規スレ作成</button>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">
+                    スレッド名
+                </label>
+                {{form.title|add_class:"form-control"}}
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">新規スレ作成</button>
         </form>
+
+        <footer style="text-align: center;">
+            <button type="button" onclick="Linkterms()" class="btn btn-info m-2">
+                利用規約
+            </button>
+            <script>
+                function Linkterms() {
+                    window.location.href = "{% url 'board:terms' %}";
+                }
+            </script>
+            <p>
+                Octony - Since 2021.10.1
+            </p>
+        </footer>
     </div>
 
-    <footer style="text-align: center;">
-        <a class="btn-brackets" onclick="window.location.reload(true);">再読込</a>
-    </footer>
+    <!-- ボタン類 -->
+    <div style="position:fixed;right:50px;bottom:50px;">
+        <div class="div-link">
+            <button type="submit" class="btn btn-primary">
+                戻る
+            </button>
+            <a href="{% url 'board:index' %}" class="link"></a>
+        </div>
+        <div class="div-link">
+            <button type="submit" class="btn btn-primary">
+                上へ
+            </button>
+            <a href="#top" class="link"></a>
+        </div>
+        <div class="div-link">
+            <button type="submit" class="btn btn-primary">
+                下へ
+            </button>
+            <a href="#bottom" class="link"></a>
+        </div>
+    </div>
 </body>
+
 
 </html>
