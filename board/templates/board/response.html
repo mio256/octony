@@ -13,25 +13,26 @@
 
 <body>
     <!-- スレッドタイトル -->
-    <h1>{{ thread.thread_text }}</h1>
+    <h1>{{ thread.get_title }}</h1>
 
     <!-- スレッド詳細 -->
     <div class="box4">
         <p>
-            <span> タイトル </span> {{ thread.thread_text }} <br>
-            <span> レス数 </span> {{ thread.print_count_response }} <br>
-            <span> おすすめ </span> {{ thread.favorite_num }} <br>
-            <span> 更新日時 </span> {{ thread.print_latest_date }} <br>
-            <span> 作成日時 </span> {{ thread.print_pub_date }}
+            <span> タイトル </span> {{ thread.get_title }} <br>
+            <span> レス数 </span> {{ thread.get_responses }} <br>
+            <span> おすすめ </span> {{ thread.get_favorites }} <br>
+            <span> 更新日時 </span> {{ thread.get_update_date }} <br>
+            <span> 作成日時 </span> {{ thread.get_pub_data }}
         </p>
     </div>
 
     <!-- ボタン類 -->
     <a href="{% url 'board:index' %}" class="btn-brackets fix-right-bottom">戻る</a>
     <div style="text-align: center;">
-        <a name="start" href="#end" class="btn-cross">最新へ</a>
+        <a href="#end" class="btn-cross">最新へ</a>
     </div>
 
+    <a name="start"></a>
     <!-- レス一覧 -->
     {% for response in thread.response_set.all %}
         {% if response.was_special %}
@@ -41,16 +42,16 @@
         {% endif %}
                 <p>
                     {{ forloop.counter }}.
-                    {{ response.name_text }}.{{ response.hash_text }}<br>
+                    {{ response.get_name }}.{{ response.get_trip }}<br>
                 </p>
                 <p style="text-align: right;">
-                    {{ response.print_tweet_date }}-{{ response.get_id }}
+                    {{ response.get_date }}-{{ response.get_id }}
                 </p>
                 <p>
-                    {{ response.print_response_text | linebreaksbr }}
+                    {{ response.get_content | linebreaksbr }}
                 </p>
                 <p>
-                    {% for url in response.print_urls %}
+                    {% for url in response.get_urls %}
                         <a href="{{ url }}" target="_blank" rel="noopener noreferrer">
                             {{ url }}
                         </a><br>
@@ -65,21 +66,20 @@
     </div>
 
     <!-- 書き込み -->
-    <a name="jump"></a>
+    <a name="end"></a>
     <div class="box17">
-        <form action="{% url 'board:tweet' thread.id %}" method="post">
+        <form method="POST">
             {% csrf_token %}
-            名前$コテハン<br>
-            <input type="text" value="{{ cookie_name }}" name="name_str" required minlength="1" maxlength="255"> <br>
-            つぶやき<br>
-            <textarea name="tweet_str" rows="4" class="textarea_width"></textarea> <br>
-            <input type="submit" value="投稿" class="btn-cross">
+            <table>
+                {{ form.as_p }}
+            </table>
+            <button type="submit" class="btn-cross">書き込む</button>
         </form>
     </div>
 
     <footer style="text-align: center;">
-        <a href="{% url 'board:favorite' thread.id %}" class="btn-gradient-radius">おすすめ</a>
-        <a name="end" href="#start" class="btn-cross">最初へ</a><br>
+        <a href="{% url 'board:favorite' thread.id %}" class="favorite">おすすめ</a>
+        <a href="#start" class="btn-cross">最初へ</a><br>
     </footer>
 </body>
 

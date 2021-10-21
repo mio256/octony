@@ -8,90 +8,92 @@ from django.contrib import admin
 
 
 class Thread(models.Model):
-    thread_text = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
     pub_date = models.DateTimeField('date published')
-    latest_date = models.DateTimeField('date published')
-    favorite_num = models.IntegerField()
+    update_date = models.DateTimeField('date published')
+    favorites = models.IntegerField()
 
     def __str__(self):
-        return self.thread_text
-
-    def print_pub_date(self):
-        return (self.pub_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
-
-    def update_date(self):
-        self.latest_date = timezone.now()
-
-    def print_latest_date(self):
-        return (self.latest_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
-
-    def print_count_response(self):
-        return self.response_set.count()
-
-    def print_title(self):
-        return self.thread_text
-
-    def add_favorite(self):
-        self.favorite_num += 1
-        self.update_date()
+        return self.title
 
     @ admin.display(
         boolean=True,
-        ordering='pub_date',
-        description='Published recently?',
+        ordering='update_date',
     )
-    def was_published_recently(self):
-        now = timezone.now()
-        return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
     def was_update_recently(self):
         now = timezone.now()
-        return now - datetime.timedelta(hours=12) <= self.latest_date <= now
+        return now - datetime.timedelta(hours=12) <= self.update_date <= now
+
+    def get_title(self):
+        return self.title
+
+    def get_pub_date(self):
+        return (self.pub_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+
+    def get_update_date(self):
+        return (self.update_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+
+    def get_favorites(self):
+        return self.get_favorites
+
+    def get_responses(self):
+        return self.response_set.count()
+
+    def add_favorite(self):
+        self.favorites += 1
+        self.update()
+
+    def update(self):
+        self.update_date = timezone.now()
 
 
 class Response(models.Model):
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE)
-    response_text = models.CharField(max_length=255)
-    name_text = models.CharField(max_length=255)
-    hash_text = models.CharField(max_length=255)
-    tweet_date = models.DateTimeField('date published')
-    ip= models.CharField(max_length=32)
+    content = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    date = models.DateTimeField('date published')
+    ip = models.CharField(max_length=32)
+    trip = models.CharField(max_length=32)
 
     def __str__(self):
-        return self.response_text
-
-    def print_tweet_date(self):
-        return (self.tweet_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
-
-    def print_response_text(self):
-        row = ['死', 'ホモ', 'ばか', 'おっぱい', '乳首', 'ハゲ', 'アホ', '体位', '正常位', '死', 'きちがい', '殺す',
-               '出っ歯', 'ぶす', '短足', '糞', 'ファック', '害児', '土人', 'ばばあ', 'じじい', '包茎', '童貞', 'チビ',
-                '低能', 'クズ','バカ']
-        for word in row:
-            if word in self.response_text:
-                return "NG WORD"
-        return self.response_text
-
-    def print_urls(self):
-        pattern = "https?://[\w/:%#\$&\?\(\)~\.=\+\-]+"
-        urls = re.findall(pattern, self.response_text)    
-        return urls
+        return self.content
 
     def was_special(self):
-        if self.hash_text in ['管理者','モデレーター']:
+        if self.trip in ['管理者','モデレーター']:
             return True
         else:
             return False
 
-    def hashset(self, str):
-        self.hash_text = hashlib.sha256(str.encode()).hexdigest()[:8]
+    def get_thread(self):
+        return self.thread
 
-    def adminset(self):
-        self.hash_text = "管理者"
+    def get_content(self):
+        ngwords = ['死', 'ホモ', 'ばか', 'おっぱい', '乳首', 'ハゲ', 'アホ', '体位', '正常位', '死', 'きちがい', '殺す',
+               '出っ歯', 'ぶす', '短足', '糞', 'ファック', '害児', '土人', 'ばばあ', 'じじい', '包茎', '童貞', 'チビ',
+               '低能', 'クズ', 'バカ']
+        for word in ngwords:
+            if word in self.content:
+                return "---NG WORD---"
+        return self.content
 
-    def moderatorset(self):
-        self.hash_text = "モデレーター"
+    def get_name(self):
+        return self.name
+
+    def get_date(self):
+        return (self.date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+
+    def get_ip(self):
+        return self.ip
+
+    def get_trip(self):
+        return self.trip
+
+    def get_urls(self):
+        pattern = "https?://[\w/:%#\$&\?\(\)~\.=\+\-]+"
+        urls = re.findall(pattern, self.content)
+        return urls
 
     def get_id(self):
-        str = self.ip + self.tweet_date.strftime('%Y%m%d')
+        str = self.ip + self.date.strftime('%Y%m%d')
         return hashlib.sha256(str.encode()).hexdigest()[:8]

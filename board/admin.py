@@ -9,15 +9,11 @@ class ResponseInline(admin.TabularInline):
 
 
 class ThreadAdmin(admin.ModelAdmin):
-    list_filter = ['latest_date']
-    search_fields = ['thread_text']
-    list_display = ('thread_text', 'latest_date', 'was_published_recently')
+    list_filter = ['update_date']
+    search_fields = ['title']
+    list_display = ('title', 'update_date')
     fieldsets = [
-        (None,               {'fields': ['thread_text']}),
-        ('pub_date', {'fields': [
-         'pub_date'], 'classes': ['collapse']}),
-        ('latest_data', {'fields': [
-         'latest_date'], 'classes': ['collapse']}),
+        (None,{'fields': ['title']}),
     ]
     inlines = [ResponseInline]
 
