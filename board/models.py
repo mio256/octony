@@ -35,7 +35,7 @@ class Thread(models.Model):
         return (self.update_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
 
     def get_favorites(self):
-        return self.get_favorites
+        return self.favorites
 
     def get_responses(self):
         return self.response_set.count()
