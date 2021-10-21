@@ -59,8 +59,10 @@
             </div>
     {% endfor %}
 
-    <!-- おすすめ -->
-    <a href="{% url 'board:favorite' thread.id %}" class="btn-gradient-radius">おすすめ</a>
+    <div style="text-align: center;">
+        <!-- ボタン類 -->
+        <a class="btn-brackets" onclick="window.location.reload(true);">再読込</a><br>
+    </div>
 
     <!-- 書き込み -->
     <a name="jump"></a>
@@ -76,8 +78,7 @@
     </div>
 
     <footer style="text-align: center;">
-        <!-- ボタン類 -->
-        <a class="btn-brackets" onclick="window.location.reload(true);">再読込</a><br>
+        <a href="{% url 'board:favorite' thread.id %}" class="btn-gradient-radius">おすすめ</a>
         <a name="end" href="#start" class="btn-cross">最初へ</a><br>
     </footer>
 </body>

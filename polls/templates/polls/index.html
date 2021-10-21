@@ -39,13 +39,11 @@
 
     <!-- 質問一覧 -->
     {% if latest_question_list %}
-    <ul>
         {% for question in latest_question_list %}
         <a href="{% url 'polls:detail' question.id %}" class="threads green-box">
             {{ question.question_text }}
         </a>
         {% endfor %}
-    </ul>
     {% else %}
     <p>No polls are available.</p>
     {% endif %}
