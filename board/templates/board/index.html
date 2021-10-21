@@ -38,16 +38,16 @@
     <!-- 最新スレッド -->
     {% for thread in latest_thread_list %}
     {% if thread.was_update_recently %}
-    <a href="{% url 'board:detail' thread.id %}" class="threads red-box">
+    <a href="{% url 'board:response' thread.id %}" class="threads red-box">
         {% else %}
-        <a href="{% url 'board:detail' thread.id %}" class="threads blue-box">
+        <a href="{% url 'board:response' thread.id %}" class="threads blue-box">
             {% endif %}
-            {{ thread.print_title }} <br>
-            レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
+            {{ thread.get_title }} <br>
+            レス : {{ thread.get_responses }} おすすめ : {{ thread.favorites }}
         </a>
     {% endfor %}
     <!-- すべて表示 -->
-    <a href="{% url 'board:list' %}" class="threads blue-box">
+    <a href="{% url 'board:thread' %}" class="threads blue-box">
         すべて表示
     </a>
     <!-- アンケート -->
@@ -60,17 +60,20 @@
     
     <!-- 新規スレッド作成 -->
     <div class="box17">
-        <form action="{% url 'board:create_thread' %}" method="post">
+        <form method="POST">
             {% csrf_token %}
-            新規スレ<br>
-            <textarea name="thread_str" rows="4" class="textarea_width"></textarea> <br>
-            <input type="submit" value="新規スレ作成" class="btn-cross">
+            {{ form.as_p }}
+            <button type="submit" class="btn-cross">新規スレ作成</button>
         </form>
     </div>
     
     <!-- アップデート情報 -->
     <div class="box4">
-        <a href="{% url 'board:detail' 21 %}" class="btn-brackets">大型アップデート情報</a><br>
+        <a href="{% url 'board:response' 21 %}" class="btn-brackets">大型アップデート情報</a><br>
+        <p>
+            10/21<br>
+            内部構造を0から作り直し、高速かつ安全な通信を実装しました！
+        </p>
         <p>
             10/21<br>
             書き込みの名前が自動で保存・入力されるようになりました！

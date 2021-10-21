@@ -1,103 +1,126 @@
-from datetime import datetime
+import hashlib
+
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
 from .models import Thread
-from .forms import NameForm
+from .forms import ThreadForm, ResponseForm
+
 
 class IndexView(generic.ListView):
+    model = Thread
     template_name = 'board/index.html'
     context_object_name = 'latest_thread_list'
 
-    def get_queryset(self):
-        """
-        Return the last five published questions (not including those set to be
-        published in the future).
-        """
-        return Thread.objects.filter(
-            pub_date__lte=timezone.now()
-        ).order_by('-latest_date')[:6]
+    def post(self, request, *args, **kwargs):
+        thread = Thread(
+            title = request.POST['title'],
+            pub_date = timezone.now(),
+            update_date = timezone.now(),
+            favorites = 0,
+        )
+        thread.save()
 
+        return HttpResponseRedirect(reverse('board:index'))
 
-class ListView(generic.ListView):
-    template_name = 'board/list.html'
-    context_object_name = 'thread_list'
-
-    def get_queryset(self):
-        """
-        Return the last five published questions (not including those set to be
-        published in the future).
-        """
-        return Thread.objects.filter(
-            pub_date__lte=timezone.now()
-        ).order_by('-latest_date')
-
-
-class DetailView(generic.DetailView):
-    model = Thread
-    template_name = 'board/detail.html'
-    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if self.request.session.get('name'):
-            context['cookie_name'] = self.request.session.get('name')
-        else:
-            context['cookie_name'] = 'ななしちゃん'
+        context['form'] = ThreadForm()
         return context
 
     def get_queryset(self):
-        """
-        Excludes any questions that aren't published yet.
-        """
-        return Thread.objects.filter(pub_date__lte=timezone.now())
+        return Thread.objects.filter(
+            pub_date__lte=timezone.now()
+        ).order_by('-update_date')[:6]
 
 
-class ResultsView(generic.DetailView):
+class ThreadView(generic.ListView):
     model = Thread
-    template_name = 'board/results.html'
+    template_name = 'board/thread.html'
+    context_object_name = 'thread_list'
+
+    def post(self, request, *args, **kwargs):
+        thread = Thread(
+            title = request.POST['title'],
+            pub_date = timezone.now(),
+            update_date = timezone.now(),
+            favorites = 0,
+        )
+        thread.save()
+
+        return HttpResponseRedirect(reverse('board:index'))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = ThreadForm()
+        return context
+
+    def get_queryset(self):
+        return Thread.objects.filter(
+            pub_date__lte=timezone.now()
+        ).order_by('-update_date')
 
 
-class TermsView(generic.ListView):
+class ResponseView(generic.DetailView):
     model = Thread
+    template_name = 'board/response.html'
+    context_object_name = 'thread'
+
+    def post(self, request, *args, **kwargs):
+        thread = get_object_or_404(Thread, id=self.kwargs.get('pk', ''))
+
+        names = request.POST['name']
+        request.session['name'] = names
+        if '$' in names:
+            name = names.split('$')[0]
+            str = names.split('$')[-1]
+            if 'miomio' in str:
+                trip = '管理者'
+            elif 'aozora' in str:
+                trip = 'モデレーター'
+            else:
+                trip = hashlib.sha256(str.encode()).hexdigest()[:8]
+        else:
+            name = names
+            trip = '0'
+
+        response = thread.response_set.create(
+            content = request.POST['content'],
+            date = timezone.now(),
+            name = name,
+            ip = get_cookie(request),
+            trip = trip
+        )
+
+        thread.update()
+        thread.save()
+
+        return HttpResponseRedirect(reverse('board:response', args=(thread.id,))+'#end')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        if self.request.session.get('name'):
+            initial_dict = dict(name=self.request.session.get('name'))
+        else:
+            initial_dict = dict(name='ななしちゃん')
+        context['form'] = ResponseForm(initial=initial_dict)
+
+        return context
+
+
+class TermsView(generic.TemplateView):
     template_name = 'board/terms.html'
 
 
-class ExplainView(generic.ListView):
-    model = Thread
+class ExplainView(generic.TemplateView):
     template_name = 'board/explain.html'
 
-class NameView(generic.ListView):
-    model = Thread
-    template_name = 'board/name.html'
 
-
-def create_thread(request):
-    try:
-        thread = Thread(
-            thread_text=request.POST['thread_str'],
-            pub_date=timezone.now(),
-            latest_date=timezone.now(),
-            favorite_num=0,
-        )
-    except (KeyError):
-        # Redisplay the thread voting form.
-        return render(request, 'board/index.html', {
-            'error_message': "Error",
-        })
-    else:
-        thread.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('board:index'))
-
-
-def tweet(request, thread_id):
-    thread = get_object_or_404(Thread, pk=thread_id)
-
+def get_cookie(request):
     # 'HTTP_X_FORWARDED_FOR'ヘッダを参照して転送経路のIPアドレスを取得する。
     forwarded_addresses = request.META.get('HTTP_X_FORWARDED_FOR')
     if forwarded_addresses:
@@ -106,57 +129,10 @@ def tweet(request, thread_id):
     else:
         # 'HTTP_X_FORWARDED_FOR'ヘッダがない場合: 直接接続なので'REMOTE_ADDR'ヘッダを参照する。
         client_addr = request.META.get('REMOTE_ADDR')
+    return client_addr
 
-    try:
-        name_str=request.POST['name_str']
-
-        tweet = thread.response_set.create(
-            response_text=request.POST['tweet_str'],
-            name_text=name_str,
-            tweet_date=timezone.now(),
-            ip=client_addr
-        )
-    except (KeyError):
-        # Redisplay the thread voting form.
-        return render(request, 'board/detail.html', {
-            'thread': thread,
-            'error_message': "You didn't have a tweet.",
-        })
-    else:
-        if '$' in tweet.name_text:
-            if 'miomio' in tweet.name_text.split('$')[-1]:
-                tweet.adminset()
-            elif 'aozora' in tweet.name_text.split('$')[-1]:
-                tweet.moderatorset()
-            else:
-                tweet.hashset(tweet.name_text.split('$')[-1])
-            tweet.name_text = tweet.name_text.split('$')[0]
-        else:
-            tweet.hash_text = 0
-        tweet.save()
-        thread.update_date()
-        thread.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        
-        request.session['name'] = name_str
-        return HttpResponseRedirect(reverse('board:results', args=(thread.id,)))
-
-
-def add_favorite(request, thread_id):
-    thread = get_object_or_404(Thread, pk=thread_id)
-    try:
-        thread.add_favorite()
-    except (KeyError):
-        # Redisplay the thread voting form.
-        return render(request, 'board/detail.html', {
-            'thread': thread,
-            'error_message': "You didn't have a thread",
-        })
-    else:
-        thread.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('board:results', args=(thread.id,)))
+def add_favorite(request,thread_id):
+    thread = get_object_or_404(Thread, id=thread_id)
+    thread.add_favorite()
+    thread.save()
+    return HttpResponseRedirect(reverse('board:index',))
