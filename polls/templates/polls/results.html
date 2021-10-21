@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
+    <script src="{% static 'board/script.js' %}"></script>
+    <title>Octony</title>
+    <!-- ページ自動更新 -->
+    <meta http-equiv="Refresh" content="3; {% url 'polls:index' %}">
+</head>
+
+<body>
+    <!-- タイトル -->
+    <h1>{{ question.question_text }}</h1>
+
+    <!-- メッセージ -->
+    <div class="box8">
+        <p>書き込み完了</p>
+    </div>
+</body>
+
+</html>

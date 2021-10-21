@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
+    <script src="{% static 'board/script.js' %}"></script>
+    <title>Octony</title>
+</head>
+
+<body>
+    <header>
+        <!-- ローディング -->
+        <div id="loading">
+            <div class="spinner"></div>
+        </div>
+        <!-- ロゴ -->
+        <div style="text-align: center;">
+            <a href="{% url 'board:index' %}">
+                <img src="{% static 'board/images/logo.png' %}" alt="Octony">
+            </a>
+        </div>
+    </header>
+
+    <!-- 付箋 -->
+    <p class="box8">アンケート調査</p>
+
+    <!-- 目次 -->
+    <div>
+        <ol>
+            <li>質問を選ぶ</li>
+            <li>投票</li>
+            <li>より良いOctonyへ</li>
+        </ol>
+    </div>
+
+    <!-- 質問一覧 -->
+    {% if latest_question_list %}
+        {% for question in latest_question_list %}
+        <a href="{% url 'polls:detail' question.id %}" class="threads green-box">
+            {{ question.question_text }}
+        </a>
+        {% endfor %}
+    {% else %}
+    <p>No polls are available.</p>
+    {% endif %}
+
+    <footer>
+        <!-- ボタン類 -->
+        <a href="{% url 'board:index' %}" class="btn-brackets">戻る</a>
+    </footer>
+</body>
+
+</html>

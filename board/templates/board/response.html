@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'board/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
+    <script src="{% static 'board/script.js' %}"></script>
+    <title>Octony</title>
+</head>
+
+<body>
+    <!-- スレッドタイトル -->
+    <h1>{{ thread.get_title }}</h1>
+
+    <!-- スレッド詳細 -->
+    <div class="box4">
+        <p>
+            <span> タイトル </span> {{ thread.get_title }} <br>
+            <span> レス数 </span> {{ thread.get_responses }} <br>
+            <span> おすすめ </span> {{ thread.get_favorites }} <br>
+            <span> 更新日時 </span> {{ thread.get_update_date }} <br>
+            <span> 作成日時 </span> {{ thread.get_pub_data }}
+        </p>
+    </div>
+
+    <!-- ボタン類 -->
+    <a href="{% url 'board:index' %}" class="btn-brackets fix-right-bottom">戻る</a>
+    <div style="text-align: center;">
+        <a href="#end" class="btn-cross">最新へ</a>
+    </div>
+
+    <a name="start"></a>
+    <!-- レス一覧 -->
+    {% for response in thread.response_set.all %}
+        {% if response.was_special %}
+            <div class="response red-res">
+        {% else %}
+            <div class="response">
+        {% endif %}
+                <p>
+                    {{ forloop.counter }}.
+                    {{ response.get_name }}.{{ response.get_trip }}<br>
+                </p>
+                <p style="text-align: right;">
+                    {{ response.get_date }}-{{ response.get_id }}
+                </p>
+                <p>
+                    {{ response.get_content | linebreaksbr }}
+                </p>
+                <p>
+                    {% for url in response.get_urls %}
+                        <a href="{{ url }}" target="_blank" rel="noopener noreferrer">
+                            {{ url }}
+                        </a><br>
+                    {% endfor %}
+                </p>
+            </div>
+    {% endfor %}
+
+    <div style="text-align: center;">
+        <!-- ボタン類 -->
+        <a class="btn-brackets" onclick="window.location.reload(true);">再読込</a><br>
+    </div>
+
+    <!-- 書き込み -->
+    <a name="end"></a>
+    <div class="box17">
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+                {{ form.as_p }}
+            </table>
+            <button type="submit" class="btn-cross">書き込む</button>
+        </form>
+    </div>
+
+    <footer style="text-align: center;">
+        <a href="{% url 'board:favorite' thread.id %}" class="favorite">おすすめ</a>
+        <a href="#start" class="btn-cross">最初へ</a><br>
+    </footer>
+</body>
+
+</html>
