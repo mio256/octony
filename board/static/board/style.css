@@ -65,8 +65,8 @@ p{
     border-bottom: solid 5px #5989cf;
 }
 .box4 p {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 5px;
 }
 /* p 揃え*/
 span{
@@ -129,7 +129,7 @@ ol li:after {
 /* explain box */
 .box5 {
     padding: 0.5em 1em;
-    margin: 2em 0;
+    margin: 0.5em 0;
     border: double 5px #4ec4d3;
 
     overflow: hidden;
@@ -148,7 +148,7 @@ ol li:after {
 /* オレンジ 付箋 */
 .box8 {
     padding: 0.5em 1em;
-    margin: 2em 0;
+    margin: 0.5em 0;
     color: #232323;
     background: #fff8e8;
     border-left: solid 10px #ffc06e;
@@ -393,7 +393,7 @@ ol li:after {
         width: 95%;
         height: 100px;
 
-        font-size: x-large;
+        font-size: large;
 	}
     .red-box {
         color: #5f0c0c;

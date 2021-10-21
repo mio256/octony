@@ -29,34 +29,35 @@
     <p class="box8">Octony-OctoAnonymous 8人の匿名者</p>
     <p class="box8">長工生が匿名で交流できる場所</p>
     <p class="box8">ただの雑談から各科の交流まで</p>
-
+    
+    
     <!-- はじめに -->
     <a href="{% url 'board:explain' %}" class="threads green-box">
         【解説】はじめに<br>
-        <br>
-        ID機能を実装！
-    </a>
-    <!-- アンケート -->
-    <a href="{% url 'polls:index' %}" class="threads green-box">
-        【総裁選】<br>
-        次のビックプロジェクトを投票で決めます。<br>
     </a>
     <!-- 最新スレッド -->
     {% for thread in latest_thread_list %}
     {% if thread.was_update_recently %}
-        <a href="{% url 'board:detail' thread.id %}" class="threads red-box">
-    {% else %}
+    <a href="{% url 'board:detail' thread.id %}" class="threads red-box">
+        {% else %}
         <a href="{% url 'board:detail' thread.id %}" class="threads blue-box">
-    {% endif %}
+            {% endif %}
             {{ thread.print_title }} <br>
             レス : {{ thread.print_count_response }} おすすめ : {{ thread.favorite_num }}
         </a>
-{% endfor %}
+    {% endfor %}
     <!-- すべて表示 -->
     <a href="{% url 'board:list' %}" class="threads blue-box">
         すべて表示
     </a>
-
+    <!-- アンケート -->
+    <a href="{% url 'polls:index' %}" class="threads green-box">
+        【アンケート】<br>
+        長工生の<br>
+        長工生による<br>
+        長工生のためのOctony
+    </a>
+    
     <!-- 新規スレッド作成 -->
     <div class="box17">
         <form action="{% url 'board:create_thread' %}" method="post">
@@ -66,7 +67,40 @@
             <input type="submit" value="新規スレ作成" class="btn-cross">
         </form>
     </div>
-
+    
+    <!-- アップデート情報 -->
+    <div class="box4">
+        <a href="{% url 'board:detail' 21 %}" class="btn-brackets">大型アップデート情報</a><br>
+        <p>
+            10/21<br>
+            書き込みの名前が自動で保存・入力されるようになりました！
+        </p>
+        <p>
+            10/20 <br>
+            <a href="{% url 'board:explain' %}#id">ID機能</a>
+            で大体同一人物かどうかわかりようになりました！
+        </p>
+        <p>
+            10/20 <br>
+            サイトデザインを大改良！スマホ完全対応/中央揃え/右下に[戻る]ボタン
+        </p>
+        <p>
+            10/19 <br>
+            URLを投稿すると、下部に
+            <a href="{% url 'board:explain' %}#link">ハイパーリンク</a>
+            が生成されるようになりました！
+        </p>
+        <p>
+            10/18 <br>
+            <a href="{% url 'board:explain' %}#hash">コテハン</a>
+            でなりすまし防止ができるようになりました！
+        </p>
+        <p>
+            10/16 <br>
+            仮運用を始めました！
+        </p>
+    </div>
+        
     <footer style="text-align: center;">
         <a href="{% url 'board:terms' %}" class="btn-brackets">利用規約</a>
         <p>

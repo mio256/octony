@@ -13,27 +13,25 @@
 
 <body>
     <!-- 質問 -->
-    <h2>{{ question.question_text }}</h2>
+    <h1>{{ question.question_text }}</h1>
 
     <!-- 選択肢 -->
     <form action="{% url 'polls:vote' question.id %}" method="post">
         {% csrf_token %}
 
         {% if error_message %}
-        <div class="box21">
+        <div class="response">
             <p>{{ error_message }}</p>
         </div>
         {% endif %}
 
         {% for choice in question.choice_set.all %}
-        <ul>
-            <li>
+        <div class="response">
                 <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
                 <label for="choice{{ forloop.counter }}">
                     {{ choice.choice_text }}
                 </label>
-            </li>
-        </ul>
+        </div>
         {% endfor %}
         <input type="submit" value="Vote" class="btn-cross">
     </form>
