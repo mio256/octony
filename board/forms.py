@@ -12,10 +12,11 @@ class ThreadForm(forms.ModelForm):
 class ResponseForm(forms.ModelForm):
     class Meta:
         model=Response
-        fields=['name','content']
+        fields=['name','content','image']
         labels={
             'name':'名前',
             'content':'内容',
+            'image':'画像',
         }
         widgets = {
             'content': forms.Textarea(attrs={'rows':4,}),

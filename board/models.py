@@ -55,6 +55,7 @@ class Response(models.Model):
     date = models.DateTimeField('date published')
     ip = models.CharField(max_length=32)
     trip = models.CharField(max_length=32)
+    image = models.ImageField(upload_to='images',blank=True, null=True)
 
     def __str__(self):
         return self.content

@@ -95,41 +95,47 @@
                 {% else %}
                 <div class="card-body" style="background-color: #f0f2ff;">
                     {% endif %}
-                <p>
-                    {{ forloop.counter }}.
-                    {{ response.get_name }}.{{ response.get_trip }}<br>
-                </p>
-                <p style="text-align: right;">
-                    {{ response.get_date }}-{{ response.get_id }}
-                </p>
-                <p>
-                    {{ response.get_content | linebreaksbr }}
-                </p>
-                <p>
-                    {% for url in response.get_urls %}
-                    <a href="{{ url }}" target="_blank" rel="noopener noreferrer">
-                        {{ url }}
-                    </a><br>
-                    {% endfor %}
-                </p>
+                    <p>
+                        {{ forloop.counter }}.
+                        {{ response.get_name }}.{{ response.get_trip }}<br>
+                    </p>
+                    <p style="text-align: right;">
+                        {{ response.get_date }}-{{ response.get_id }}
+                    </p>
+                    <p>
+                        {{ response.get_content | linebreaksbr }}
+                    </p>
+                    <p>
+                        {% for url in response.get_urls %}
+                        <a href="{{ url }}" target="_blank" rel="noopener noreferrer">
+                            {{ url }}
+                        </a><br>
+                        {% endfor %}
+                    </p>
+                    {% if response.image %}
+                    <div style="position: relative;">
+                        <img class="img-fluid rounded" src="{{ response.image.url }}" alt="image" style="height: 10em;">
+                        <a href="{{ response.image.url }}" class="stretched-link"></a>
+                    </div>
+                    {% endif %}
+                </div>
             </div>
-        </div>
-        {% endfor %}
+            {% endfor %}
 
-        <a name="bottom"></a>
+            <a name="bottom"></a>
 
-        <div style="text-align: center;">
-            <button type="submit" class="btn btn-primary mx-4 m-1" onclick="window.location.reload(true);">
-                再読込
-            </button>
-        </div>
+            <div style="text-align: center;">
+                <button type="submit" class="btn btn-primary mx-4 m-1" onclick="window.location.reload(true);">
+                    再読込
+                </button>
+            </div>
 
-        <!-- 書き込み -->
-        <form method="POST">
-            {% csrf_token %}
-            <div class="mb-3">
-                <a name="end"></a>
-                {% for field in form %}
+            <!-- 書き込み -->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <a name="end"></a>
+                    {% for field in form %}
                     {{ field.label_tag }}
 
                     {% if form.is_bound %}
@@ -154,49 +160,50 @@
                         {{ field.help_text }}
                     </small>
                     {% endif %}
-                {% endfor %}
-            </div>
-            <button type="submit" class="btn btn-primary mb-3">書き込む</button>
-        </form>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-primary mb-3">書き込む</button>
+            </form>
 
-        <a href="{% url 'board:favorite' thread.id %}" class="btn btn-success">おすすめ</a>
+            <a href="{% url 'board:favorite' thread.id %}" class="btn btn-success">おすすめ</a>
 
-        <footer style="text-align: center;">
-            <button type="button" onclick="Linkterms()" class="btn btn-info m-2">
-                利用規約
-            </button>
-            <script>
-                function Linkterms() {
-                    window.location.href = "{% url 'board:terms' %}";
-                }
-            </script>
-            <p>
-                Octony - Since 2021.10.1
-            </p>
-        </footer>
-    </div>
+            <footer style="text-align: center;">
+                <button type="button" onclick="Linkterms()" class="btn btn-info m-2">
+                    利用規約
+                </button>
+                <script>
+                    function Linkterms() {
+                        window.location.href = "{% url 'board:terms' %}";
+                    }
+                </script>
+                <p>
+                    Octony - Since 2021.10.1
+                </p>
+            </footer>
+        </div>
 
 </body>
 
-    <!-- ボタン類 -->
-    <div style="position:fixed;right:10%;bottom:5%;">
-        <div class="div-link">
-            <button type="submit" class="btn btn-primary">
-                戻る
-            </button>
-            <a href="{% url 'board:index' %}" class="link"></a>
-        </div>
-        <div class="div-link">
-            <button type="submit" class="btn btn-primary">
-                上へ
-            </button>
-            <a href="#top" class="link"></a>
-        </div>
-        <div class="div-link">
-            <button type="submit" class="btn btn-primary">
-                下へ
-            </button>
-            <a href="#bottom" class="link"></a>
-        </div>
+<!-- ボタン類 -->
+<div style="position:fixed;right:10%;bottom:5%;">
+    <div class="div-link">
+        <button type="submit" class="btn btn-primary">
+            戻る
+        </button>
+        <a href="{% url 'board:index' %}" class="link"></a>
     </div>
+    <div class="div-link">
+        <button type="submit" class="btn btn-primary">
+            上へ
+        </button>
+        <a href="#top" class="link"></a>
+    </div>
+    <div class="div-link">
+        <button type="submit" class="btn btn-primary">
+            下へ
+        </button>
+        <a href="#bottom" class="link"></a>
+    </div>
+</div>
+
 </html>

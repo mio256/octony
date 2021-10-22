@@ -94,6 +94,11 @@ class ResponseView(generic.DetailView):
             ip = get_cookie(request),
             trip = trip
         )
+        try:
+            response.image=request.FILES['image']
+        except KeyError:
+            pass
+        response.save()
 
         thread.update()
         thread.save()
