@@ -40,7 +40,7 @@
             <!-- ナビゲーション -->
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'board:index' %}">
+                    <a class="nav-link" aria-current="page" href="{% url 'board:index' %}">
                         トップ
                     </a>
                 </li>
@@ -69,59 +69,59 @@
             </a>
         </div>
 
-        <div class="alert alert-success" role="alert">
-            10/22 大型アップデート 内部構造・スタイルを大改良
-        </div>
-
-        <div class="alert alert-success" role="alert" style="position: relative;">
-            Todoリスト作りました。
-            <a href="{% url 'todo:index' %}" class="stretched-link"></a>
-        </div>
-
         <!-- スレッド一覧 -->
         <div class="row">
-            {% for thread in latest_thread_list %}
+            {% for task in user.task_set.all %}
             <div class="col-md-4 div-link my-3">
-                {% if thread.was_update_recently %}
-                <div class="card border-primary mb-1 h-100">
-                    <div class="card-header">{{ thread.get_update_date }}</div>
-                    <div class="card-body text-primary">
-                        <h5 class="card-title">{{ thread.get_title }}</h5>
-                        <p class="card-text">
-                            {{ thread.get_responses }}レス<br>
-                            {{ thread.favorites }}おすすめ
-                        </p>
-                    </div>
-                    <a class="link" href="{% url 'board:response' thread.id%}"></a>
-                </div>
-                {% else %}
                 <div class="card border-success mb-3  h-100">
-                    <div class="card-header">{{ thread.get_update_date }}</div>
                     <div class="card-body text-success">
-                        <h5 class="card-title">{{ thread.get_title }}</h5>
+                        <h5 class="card-title">{{ task.get_title }}</h5>
                         <p class="card-text">
-                            {{ thread.get_responses }}レス<br>
-                            {{ thread.favorites }}おすすめ
+                            {{ task.get_content }}
                         </p>
+                        <a href="{% url 'todo:done' user.id task.id%}" class="btn btn-primary">完了</a>
                     </div>
-                    <a class="link" href="{% url 'board:response' thread.id%}"></a>
                 </div>
-                {% endif %}
             </div>
             {% endfor %}
         </div>
 
-        <!-- 新規スレッド作成 -->
-        <form method="POST">
+        <!-- 書き込み -->
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">
-                    スレッド名
-                </label>
-                {{form.title|add_class:"form-control"}}
+                <a name="end"></a>
+                {% for field in form %}
+                {{ field.label_tag }}
+
+                {% if form.is_bound %}
+                {% if field.errors %}
+
+                {% render_field field class="form-control is-invalid" %}
+                {% for error in field.errors %}
+                <div class="invalid-feedback">
+                    {{ error }}
+                </div>
+                {% endfor %}
+
+                {% else %}
+                {% render_field field class="form-control is-valid" %}
+                {% endif %}
+                {% else %}
+                {% render_field field class="form-control" %}
+                {% endif %}
+
+                {% if field.help_text %}
+                <small class="form-text text-muted">
+                    {{ field.help_text }}
+                </small>
+                {% endif %}
+                {% endfor %}
             </div>
-            <button type="submit" class="btn btn-primary mb-3">新規スレ作成</button>
+            <button type="submit" class="btn btn-primary mb-3">書き込む</button>
         </form>
+
+        <a href="{% url 'todo:kill' user.id%}" class="btn btn-danger">削除</a>
 
         <footer style="text-align: center;" id="bottom">
             <button type="button" onclick="Linkterms()" class="btn btn-info m-2">
@@ -138,7 +138,7 @@
         </footer>
 
     </div>
-    
+
 </body>
 
 </html>
