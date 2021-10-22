@@ -33,11 +33,11 @@
     animation: sk-scaleout 1s infinite ease-in-out;
 }
 
-.div-link{
-    position:relative;
+.div-link {
+    position: relative;
 }
 
-.div-link .link{
+.div-link .link {
     display: block;
     position: absolute;
     top: 0;
