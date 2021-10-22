@@ -21,6 +21,9 @@ class Question(models.Model):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
+    def get_date(self):
+        return (self.pub_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)

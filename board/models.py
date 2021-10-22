@@ -20,7 +20,6 @@ class Thread(models.Model):
         boolean=True,
         ordering='update_date',
     )
-
     def was_update_recently(self):
         now = timezone.now()
         return now - datetime.timedelta(hours=12) <= self.update_date <= now
@@ -55,13 +54,13 @@ class Response(models.Model):
     date = models.DateTimeField('date published')
     ip = models.CharField(max_length=32)
     trip = models.CharField(max_length=32)
-    image = models.ImageField(upload_to='images',blank=True, null=True)
+    image = models.ImageField(upload_to='images', blank=True, null=True)
 
     def __str__(self):
         return self.content
 
     def was_special(self):
-        if self.trip in ['管理者','モデレーター']:
+        if self.trip in ['管理者', 'モデレーター']:
             return True
         else:
             return False
@@ -71,8 +70,8 @@ class Response(models.Model):
 
     def get_content(self):
         ngwords = ['死', 'ホモ', 'ばか', 'おっぱい', '乳首', 'ハゲ', 'アホ', '体位', '正常位', '死', 'きちがい', '殺す',
-               '出っ歯', 'ぶす', '短足', '糞', 'ファック', '害児', '土人', 'ばばあ', 'じじい', '包茎', '童貞', 'チビ',
-               '低能', 'クズ', 'バカ']
+                   '出っ歯', 'ぶす', '短足', '糞', 'ファック', '害児', '土人', 'ばばあ', 'じじい', '包茎', '童貞', 'チビ',
+                   '低能', 'クズ', 'バカ']
         for word in ngwords:
             if word in self.content:
                 return "---NG WORD---"
