@@ -13,7 +13,8 @@ class ThreadAdmin(admin.ModelAdmin):
     search_fields = ['title']
     list_display = ('title', 'update_date')
     fieldsets = [
-        (None,{'fields': ['title']}),
+        (None,               {'fields': ['title']}),
+        ('Date information', {'fields': ['update_date']}),
     ]
     inlines = [ResponseInline]
 

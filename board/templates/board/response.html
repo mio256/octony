@@ -91,9 +91,9 @@
         {% for response in thread.response_set.all %}
         <div class="card m-2">
             {% if response.was_special %}
-            <div class="card-body" style="background-color: #fff0f0;">
+            <div class="card-body" style="background-color: rgb(255, 250, 250);">
                 {% else %}
-                <div class="card-body" style="background-color: #f0f2ff;">
+                <div class="card-body" style="background-color: rgb(250, 250, 255);">
                     {% endif %}
                     <p>
                         {{ forloop.counter }}.
