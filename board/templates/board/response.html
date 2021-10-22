@@ -34,7 +34,7 @@
         <div class="spinner"></div>
     </div>
 
-    <div class="container-lg">
+    <div class="container-lg" id="top">
 
         <header class="sticky-top" style="background-color: aliceblue;">
             <!-- ナビゲーション -->
@@ -167,7 +167,7 @@
 
             <a href="{% url 'board:favorite' thread.id %}" class="btn btn-success">おすすめ</a>
 
-            <footer style="text-align: center;">
+            <footer style="text-align: center;" id="bottom">
                 <button type="button" onclick="Linkterms()" class="btn btn-info m-2">
                     利用規約
                 </button>
@@ -180,30 +180,31 @@
                     Octony - Since 2021.10.1
                 </p>
             </footer>
+
+        </div>
+
+        <!-- ボタン類 -->
+        <div style="position:fixed;right:10%;bottom:5%;">
+            <div class="div-link">
+                <button type="submit" class="btn btn-primary">
+                    戻る
+                </button>
+                <a href="{% url 'board:index' %}" class="link"></a>
+            </div>
+            <div class="div-link">
+                <button type="submit" class="btn btn-primary">
+                    上へ
+                </button>
+                <a href="#top" class="link"></a>
+            </div>
+            <div class="div-link">
+                <button type="submit" class="btn btn-primary">
+                    下へ
+                </button>
+                <a href="#bottom" class="link"></a>
+            </div>
         </div>
 
 </body>
-
-<!-- ボタン類 -->
-<div style="position:fixed;right:10%;bottom:5%;">
-    <div class="div-link">
-        <button type="submit" class="btn btn-primary">
-            戻る
-        </button>
-        <a href="{% url 'board:index' %}" class="link"></a>
-    </div>
-    <div class="div-link">
-        <button type="submit" class="btn btn-primary">
-            上へ
-        </button>
-        <a href="#top" class="link"></a>
-    </div>
-    <div class="div-link">
-        <button type="submit" class="btn btn-primary">
-            下へ
-        </button>
-        <a href="#bottom" class="link"></a>
-    </div>
-</div>
 
 </html>

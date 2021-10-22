@@ -30,6 +30,21 @@
     <script src="{% static 'board/script.js' %}"></script>
 
     <meta name="theme-color" content="#fafafa">
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path
+                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path
+                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+        </symbol>
+    </svg>
 </head>
 
 <body>
@@ -38,7 +53,7 @@
         <div class="spinner"></div>
     </div>
 
-    <div class="container-lg">
+    <div class="container-lg" id="top">
 
         <header class="sticky-top" style="background-color: aliceblue;">
             <!-- ナビゲーション -->
@@ -84,14 +99,17 @@
                             はじめに
                         </h5>
                         <p class="card-text">
-                            Octonyは Octo(8つの)-Anonymous(匿名者) を掛け合わせた言葉です。
+                            Octonyは Octo(8つの)Anonymous(匿名者) を掛け合わせた言葉です。
                         </p>
                         <p class="card-text">
-                            Octonyという言葉には、「長工生が学科関係なく、自由に交流ができる場所を提供する」という信念が込められています。
+                            この言葉には「長工生が学科関係なく、自由に交流ができる場所を提供する」という信念が込められています。
                         </p>
                         <p class="card-text">
-                            匿名投稿・コテハン・おすすめ機能などの多くの便利機能を実装した掲示板であり、<br>
-                            「より良い交流場所」を目指し、長工生の声を聞き、改良を重ねています。
+                            100回以上の改良を繰り返し、数多くの便利機能を実装してきたOctonyは、<br>
+                            「より良い交流場所」を目指し、長工生の声を聞き、改良を重ね続けています。
+                        </p>
+                        <p class="card-text">
+                            すべては「長工生の自由な交流」を実現するために。
                         </p>
                         <p class="card-text">
                             Octonyを使い、長工生間の交流が増えることを願います。
@@ -313,17 +331,16 @@
                             名前欄に「ななしさん$あんごう」と入力します。
                         </p>
                         <p class="card-text">
-                            「$は半角」「あんごうは適当な文字列で秘密にする」の2つを守ってください。
+                            「$は半角」「あんごうは秘密の適当な文字列」の2つを守ってください。
                         </p>
                         <p class="card-text">
-                            例）「ななしさん$さきいか」
-                            例）「ぱおぱお$toto48」
+                            例）「ななしさん$さきいか」「ぱおぱお$toto48」
                         </p>
                         <p class="card-text">
-                            「あんごう」が「fes4re85」などに変換され表示されます。
+                            「あんごう」が「fes4re85」のように変換され表示されます。
                         </p>
                         <p class="card-text">
-                            「fes4re85」を他の人が見ても「あんごう」だとわからないためなりすましを防止できます。
+                            「fes4re85」を他の人が見ても「あんごう」だとわからないため、なりすましを防止できます。
                         </p>
                     </div>
                 </div>
@@ -401,8 +418,8 @@
                         </h5>
                         <p class="card-text">
                             <a href="{% url 'board:response' 21 %}">【要望等】アイデア求む</a><br>
-                            一番歴史が長い板、みんなの意見や開発者のメモなどが書き込んであります。<br>
-                            遠慮なく、アイデアや感想などOctonyをより良くする書き込みをお願いします。<br>
+                            一番歴史が長い板、みんなの意見や開発者のメモなどが多く書き込んであります。<br>
+                            Octonyをより良くするアイデアを遠慮なく書き込んでください。<br>
                         </p>
                         <p class="card-text">
                             <a href="{% url 'board:response' 54 %}">【テスト】ご自由に</a><br>
@@ -410,7 +427,7 @@
                         </p>
                         <p class="card-text">
                             <a href="{% url 'board:response' 28 %}">【お問い合わせ】削除・変更</a><br>
-                            スレ・レスの削除や変更などの管理者へ用件がある場合に書き込んでください。
+                            投稿の削除や変更などの用件やお問い合わせを書き込んでください。
                         </p>
                     </div>
                 </div>
@@ -428,14 +445,45 @@
                         <h5 class="card-title">
                             コテハンの技術的説明
                         </h5>
+                        <ol class="list-group list-group-numbered m-2">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        入力文字を分割する
+                                    </div>
+                                    「ななしさん$あんごう」→['ななしさん','あんごう']
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        平文'あんごう'をSHA256でハッシュ化する
+                                    </div>
+                                    'あんごう'→'7gr55xcvz6878fas4...'
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        平文'あんごう'を破棄する
+                                    </div>
+                                    平文'あんごう'はパスワードなので、データベースには残さない。
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        ハッシュの編集
+                                    </div>
+                                    ハッシュ'7gr55xcvz6878fas4...'の上位8文字を切り抜き、表示しやすくする。
+                                </div>
+                            </li>
+                        </ol>
                         <p class="card-text">
-                            1.入力文字を分割する「ななしさん$あんごう」→['ななしさん','あんごう']<br>
-                            2.平文'あんごう'をSHA256でハッシュ化する 'あんごう'→'7gr55xcvz6878fas4...'<br>
-                            3.平文'あんごう'を破棄し、データベースには残さない<br>
-                            4.ハッシュ化文字列'7gr55xcvz6878fas4...'の上位8文字を切り抜く<br>
-                            5.文字列'7gr55xcv'がコテハンとしてデータベースに保存される<br>
-                            6.文字列'7gr55xcv'がコテハンとして表示される<br>
-                            7.文字列'7gr55xcv'から平文'あんごう'を解読するのは困難なのでなりすましを防止する
+                            '7gr55xcv'から平文'あんごう'を解読するのは困難なのでなりすましを防止する
+                        </p>
+                        <p class="card-text">
+                            詳しくは「SHA256」「ハッシュ化」「暗号化」「暗号化通信方式」などで検索
                         </p>
                     </div>
                 </div>
@@ -453,27 +501,80 @@
                         <h5 class="card-title">
                             IDの技術的説明
                         </h5>
+                        <ol class="list-group list-group-numbered m-2">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        IPアドレスを取得
+                                    </div>
+                                    126.254.10.22
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        日付を取得
+                                    </div>
+                                    2021-10-01
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        IPアドレスと日付の文字列を結合
+                                    </div>
+                                    126.254.10.222021-10-01
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        文字列をハッシュ化する
+                                    </div>
+                                    '126.254.10.222021-10-01'→'7gr55xcvz6878fas4...'
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        ハッシュを編集する
+                                    </div>
+                                    '7gr55xcvz6878fas4...'→'7gr55xcv'
+                                </div>
+                            </li>
+                        </ol>
+                        <div class="alert alert-warning d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+                                <use xlink:href="#exclamation-triangle-fill" />
+                            </svg>
+                            <div>
+                                「IDが一致→同一人物」ではない
+                            </div>
+                        </div>
                         <p class="card-text">
-                            1.投稿時にIPアドレスを取得<br>
-                            2.投稿時に日付を取得<br>
-                            3.IPアドレスと日付の文字列を結合<br>
-                            4.文字列をハッシュ化する<br>
-                            5.ハッシュ化した文字列の上位8文字を切り抜く<br>
-                            6.切り抜いた文字列を表示する<br>
-                            Wifi、キャリア、スマートフォンなどの設定によりIPアドレスは変わる<br>
-                            特に「同じLAN内」や「同じキャリア」であれば同一の物を使っている可能性が高い<br>
-                            そのため、IDが一致していること→同一人物であるとは言えない<br>
-                            IDが不一致でも、本人が別端末を使用している可能性もある<br>
-                            よって、あくまでもIDは補助的な識別信号にすぎない。
+                            Wifi、キャリア、端末などの設定によりIPアドレスは変わる
+                            特に「同じLAN内」や「同じキャリア」であれば他の人と同じIPアドレスになる可能性が高い
+                        </p>
+                        <div class="alert alert-warning d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+                                <use xlink:href="#exclamation-triangle-fill" />
+                            </svg>
+                            <div>
+                                「IDが不一致→別人」ではない
+                            </div>
+                        </div>
+                        <p class="card-text">
+                            本人がWifi、キャリア、端末などを変更するとIPアドレスも変わる。
+                        </p>
+                        <p class="card-text">
+                            あくまで、IDは補助的な要素である。
                         </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <a name="bottom"></a>
-
-        <footer style="text-align: center;">
+        <footer style="text-align: center;" id="bottom">
             <button type="button" onclick="Linkterms()" class="btn btn-info m-2">
                 利用規約
             </button>
@@ -510,4 +611,7 @@
             <a href="#bottom" class="link"></a>
         </div>
     </div>
+
 </body>
+
+</html>
