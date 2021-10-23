@@ -4,33 +4,23 @@
 <head>
     {% load static %}
     {% load widget_tweaks %}
-
     <meta charset="utf-8">
     <title>Octony</title>
     <meta name="description" content="Octony-OctoAnonymous 8人の匿名者 長工生が匿名で交流できる場所 ただの雑談から各科の交流まで">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta property="og:title" content="">
-    <meta property="og:type" content="">
-    <meta property="og:url" content="">
-    <meta property="og:image" content="">
-
-    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
-
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
+    <!-- mine -->
     <link rel="stylesheet" href="{% static 'board/style.css' %}">
-
     <script src="{% static 'board/script.js' %}"></script>
+</head>
 
-    <meta name="theme-color" content="#fafafa">
-
+<body>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
             <path
@@ -45,9 +35,7 @@
                 d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
         </symbol>
     </svg>
-</head>
 
-<body>
     <!-- ローディング -->
     <div id="loading">
         <div class="spinner"></div>
@@ -122,19 +110,19 @@
         <ul class="list-group mb-3">
             <li class="list-group-item">
                 <input class="form-check-input me-1" type="checkbox">
-                好きなスレを探してみる
+                好きなスレを探す
             </li>
             <li class="list-group-item">
                 <input class="form-check-input me-1" type="checkbox">
-                スレに書き込んでみる
+                スレに書き込む
             </li>
             <li class="list-group-item">
                 <input class="form-check-input me-1" type="checkbox">
-                新しいスレを作ってみる
+                スレをおすすめする
             </li>
             <li class="list-group-item">
                 <input class="form-check-input me-1" type="checkbox">
-                スレをおすすめしてみる
+                新しいスレを作る
             </li>
             <li class="list-group-item">
                 <input class="form-check-input me-1" type="checkbox">
@@ -142,365 +130,62 @@
             </li>
             <li class="list-group-item">
                 <input class="form-check-input me-1" type="checkbox">
-                技術的説明を読んでみる
+                仕組みを知る
             </li>
         </ul>
 
-        <ul>
-            <li><a class="dropdown-item" href="#1">スレ</a></li>
-            <li><a class="dropdown-item" href="#2">レス</a></li>
-            <li><a class="dropdown-item" href="#3">スレの更新</a></li>
-            <li><a class="dropdown-item" href="#4">すべて表示</a></li>
-            <li><a class="dropdown-item" href="#5">おすすめ</a></li>
-            <li><a class="dropdown-item" href="#6">ID</a></li>
-            <li><a class="dropdown-item" href="#7">コテハン</a></li>
-            <li><a class="dropdown-item" href="#8">コテハンの使い方</a></li>
-            <li><a class="dropdown-item" href="#9">コテハンの種類</a></li>
-            <li><a class="dropdown-item" href="#10">ハイパーリンク</a></li>
-            <li><a class="dropdown-item" href="#11">管理版</a></li>
-            <li><a class="dropdown-item" href="#12">コテハンの技術的説明</a></li>
-            <li><a class="dropdown-item" href="#13">IDの技術的説明</a></li>
-        </ul>
-
-        <a name="1"></a>
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded" src="https://picsum.photos/300?random=2" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            スレ
-                        </h5>
-                        <p class="card-text">
-                            スレッドの略称、掲示板内の話題で分かれている。
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne">
+                        スレ・レス
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                    aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <p>
+                            スレ（スレッド） 掲示板内の話題
                         </p>
-                        <p class="card-text">
-                            他の人が作ったスレに書き込むこともできます。
+                        <p>
+                            レス（レスポンス） スレに書き込むこと
+                        </p>
+                        <p>
+                            「書き込み」や「おすすめ」により更新され、更新順にトップページに表示されます。
+                        </p>
+                        <p>
+                            「スレ一覧」ですべてのスレを見ることができます。
                         </p>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <a name="2"></a>
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded" src="https://picsum.photos/300?random=3" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            レス
-                        </h5>
-                        <p class="card-text">
-                            レスポンスの略称、スレに書き込むことを指します。
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseTwo">
+                        ID
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingTwo">
+                    <div class="accordion-body">
+                        <p>
+                            自動生成される識別信号
                         </p>
-                        <p class="card-text">
-                            書き込みによってスレが更新されます。
+                        <p>
+                            同じ人の投稿であれば<strong>大体</strong>一緒の文字列になる信号です。
                         </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <a name="3"></a>
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded" src="https://picsum.photos/300?random=4" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            スレの更新
-                        </h5>
-                        <p class="card-text">
-                            書き込んだり、おすすめすることでスレを一番上に表示させることができます。
-                        </p>
-                        <p class="card-text">
-                            更新が無いとトップページに表示されなくなります。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <a name="4"></a>
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded" src="https://picsum.photos/300?random=5" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            すべて表示
-                        </h5>
-                        <p class="card-text">
-                            更新が無くトップページに表示されなくなったスレを探せます。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <a name="5"></a>
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded" src="https://picsum.photos/300/300?random=6" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            おすすめ
-                        </h5>
-                        <p class="card-text">
-                            スレッドをおすすめする機能です。
-                        </p>
-                        <p class="card-text">
-                            書き込まずにスレを更新させることができます。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <a name="6"></a>
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded" src="https://picsum.photos/300?random=7" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            ID
-                        </h5>
-                        <p class="card-text">
-                            自動生成される識別信号です。
-                        </p>
-                        <p class="card-text">
-                            同一人物の投稿を識別するための符号ですが、条件次第で他の人と被る場合もあります。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <a name="7"></a>
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded" src="https://picsum.photos/300?random=8" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            コテハン
-                        </h5>
-                        <p class="card-text">
-                            固定ハンドルネームの略称、なりすまし防止機能です。
-                        </p>
-                        <p class="card-text">
-                            名前欄に「ななしさん$あんごう」と入力して使用します。
-                        </p>
-                        <p class="card-text">
-                            使用は任意ですが、なりすましされたくないときは付けてください。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <a name="8"></a>
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded" src="https://picsum.photos/300?random=9" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            コテハンの使い方
-                        </h5>
-                        <p class="card-text">
-                            名前欄に「ななしさん$あんごう」と入力します。
-                        </p>
-                        <p class="card-text">
-                            「$は半角」「あんごうは秘密の適当な文字列」の2つを守ってください。
-                        </p>
-                        <p class="card-text">
-                            例）「ななしさん$さきいか」「ぱおぱお$toto48」
-                        </p>
-                        <p class="card-text">
-                            「あんごう」が「fes4re85」のように変換され表示されます。
-                        </p>
-                        <p class="card-text">
-                            「fes4re85」を他の人が見ても「あんごう」だとわからないため、なりすましを防止できます。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <a name="9"></a>
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded" src="https://picsum.photos/300?random=10" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            コテハンの種類
-                        </h5>
-                        <p class="card-text">
-                            例）「.7s85ds84」 -- 普通のコテハン
-                        </p>
-                        <p class="card-text">
-                            「.管理者」 -- 管理者のみ使えるコテハン
-                        </p>
-                        <p class="card-text">
-                            「.モデレーター」 -- モデレーター（お手伝いさん）のみ使えるコテハン
-                        </p>
-                        <p class="card-text">
-                            「.0」 -- コテハンなし
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <a name="10"></a>
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded" src="https://picsum.photos/300?random=11" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            ハイパーリンク
-                        </h5>
-                        <p class="card-text">
-                            タップするとそのまま開けるリンク付きのURLです。
-                        </p>
-                        <p class="card-text">
-                            ハイパーリンクあり）
-                            <a
-                                href="https://mio256.pythonanywhere.com/board/">https://mio256.pythonanywhere.com/board/</a><br>
-                        </p>
-                        <p class="card-text">
-                            ハイパーリンクなし）https://mio256.pythonanywhere.com/board/
-                        </p>
-                        <p class="card-text">
-                            書き込みの中にURLがあるとレスの下に自動的にハイパーリンクが生成されます。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <a name="11"></a>
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded" src="https://picsum.photos/300?random=12" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            管理板
-                        </h5>
-                        <p class="card-text">
-                            <a href="{% url 'board:response' 21 %}">【要望等】アイデア求む</a><br>
-                            一番歴史が長い板、みんなの意見や開発者のメモなどが多く書き込んであります。<br>
-                            Octonyをより良くするアイデアを遠慮なく書き込んでください。<br>
-                        </p>
-                        <p class="card-text">
-                            <a href="{% url 'board:response' 54 %}">【テスト】ご自由に</a><br>
-                            テスト板、管理者が定期的にリセットするので好きなように使ってください。<br>
-                        </p>
-                        <p class="card-text">
-                            <a href="{% url 'board:response' 28 %}">【お問い合わせ】削除・変更</a><br>
-                            投稿の削除や変更などの用件やお問い合わせを書き込んでください。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <a name="12"></a>
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded" src="https://picsum.photos/300?random=13" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            コテハンの技術的説明
-                        </h5>
-                        <ol class="list-group list-group-numbered m-2">
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        入力文字を分割する
-                                    </div>
-                                    「ななしさん$あんごう」→['ななしさん','あんごう']
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        平文'あんごう'をSHA256でハッシュ化する
-                                    </div>
-                                    'あんごう'→'7gr55xcvz6878fas4...'
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        平文'あんごう'を破棄する
-                                    </div>
-                                    平文'あんごう'はパスワードなので、データベースには残さない。
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        ハッシュの編集
-                                    </div>
-                                    ハッシュ'7gr55xcvz6878fas4...'の上位8文字を切り抜き、表示しやすくする。
-                                </div>
-                            </li>
-                        </ol>
-                        <p class="card-text">
-                            '7gr55xcv'から平文'あんごう'を解読するのは困難なのでなりすましを防止する
-                        </p>
-                        <p class="card-text">
-                            詳しくは「SHA256」「ハッシュ化」「暗号化」「暗号化通信方式」などで検索
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <a name="13"></a>
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded" src="https://picsum.photos/300?random=14" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            IDの技術的説明
-                        </h5>
+                        <div class="alert alert-primary d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
+                                <use xlink:href="#info-fill" />
+                            </svg>
+                            <div>
+                                仕組み
+                            </div>
+                        </div>
                         <ol class="list-group list-group-numbered m-2">
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
@@ -551,8 +236,10 @@
                                 「IDが一致→同一人物」ではない
                             </div>
                         </div>
-                        <p class="card-text">
+                        <p>
                             Wifi、キャリア、端末などの設定によりIPアドレスは変わる
+                        </p>
+                        <p>
                             特に「同じLAN内」や「同じキャリア」であれば他の人と同じIPアドレスになる可能性が高い
                         </p>
                         <div class="alert alert-warning d-flex align-items-center" role="alert">
@@ -563,12 +250,77 @@
                                 「IDが不一致→別人」ではない
                             </div>
                         </div>
-                        <p class="card-text">
-                            本人がWifi、キャリア、端末などを変更するとIPアドレスも変わる。
+                        <p>
+                            本人がWifi、キャリア、端末などを変更するとIPアドレスも変わる
                         </p>
-                        <p class="card-text">
-                            あくまで、IDは補助的な要素である。
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseThree">
+                        コテハン
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingThree">
+                    <div class="accordion-body">
+                        <p>
+                            固定ハンドルネームの略称、なりすまし防止機能です。
                         </p>
+                        <p>
+                            名前欄に「名前$暗号」で使用します。$は半角で、暗号は秘密の適当な文字列です。
+                        </p>
+                        <p>
+                            例）「ななしさん$さきいか」「ぱおぱお$toto48」
+                        </p>
+                        <p>
+                            「暗号」が「fes4re85」のように変換され表示され、「fes4re85」を他の人が見ても「暗号」だとわからないため、なりすましを防止できます。
+                        </p>
+                        <div class="alert alert-primary d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
+                                <use xlink:href="#info-fill" />
+                            </svg>
+                            <div>
+                                仕組み
+                            </div>
+                        </div>
+                        <ol class="list-group list-group-numbered m-2">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        入力文字を分割する
+                                    </div>
+                                    「ななしさん$あんごう」→['ななしさん','あんごう']
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        平文'あんごう'をSHA256でハッシュ化する
+                                    </div>
+                                    'あんごう'→'7gr55xcvz6878fas4...'
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        平文'あんごう'を破棄する
+                                    </div>
+                                    平文'あんごう'はパスワードなので、データベースには残さない。
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">
+                                        ハッシュの編集
+                                    </div>
+                                    ハッシュ'7gr55xcvz6878fas4...'の上位8文字を切り抜き、表示しやすくする。
+                                </div>
+                            </li>
+                        </ol>
                     </div>
                 </div>
             </div>
