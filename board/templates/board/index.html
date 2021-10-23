@@ -104,7 +104,7 @@
         </div>
 
         <!-- 新規スレッド作成 -->
-        <form method="POST" onsubmit="submitted=true; this.querySelector('input[type=submit]').disabled=true;">
+        <form method="POST">
             {% csrf_token %}
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">
