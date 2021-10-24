@@ -32,7 +32,7 @@
             <!-- ナビゲーション -->
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'board:index' %}">
+                    <a class="nav-link" aria-current="page" href="{% url 'board:index' %}">
                         トップ
                     </a>
                 </li>
@@ -68,6 +68,11 @@
         <div class="alert alert-danger" role="alert" style="position: relative;">
             はじめての方はこちらをお読みください。
             <a href="{% url 'board:explain' %}" class="stretched-link"></a>
+        </div>
+
+        <div class="alert alert-warning" role="alert" style="position: relative;">
+            質問箱を実装しました
+            <a href="{% url 'board:question' %}" class="stretched-link"></a>
         </div>
 
         <!-- 質問一覧 -->
@@ -146,6 +151,22 @@
             </p>
         </footer>
 
+    </div>
+
+    <!-- ボタン類 -->
+    <div style="position:fixed;right:10%;bottom:5%;">
+        <div class="div-link">
+            <button type="submit" class="btn btn-primary">
+                掲示板
+            </button>
+            <a href="{% url 'board:index' %}" class="link"></a>
+        </div>
+        <div class="div-link">
+            <button type="submit" class="btn btn-primary">
+                質問箱
+            </button>
+            <a href="{% url 'board:question' %}" class="link"></a>
+        </div>
     </div>
 
 </body>
