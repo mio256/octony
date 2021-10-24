@@ -225,7 +225,7 @@ class QuestionView(generic.ListView):
         return context
 
     def get_queryset(self):
-        list = Thread.objects.order_by('-update_date')[:9]
+        list = Question.objects.order_by('-update_date')[:9]
         return list
 
 
