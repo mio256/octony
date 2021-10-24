@@ -6,8 +6,8 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Thread
-from .forms import ThreadForm, ResponseForm
+from .models import Question, Thread
+from .forms import ThreadForm, ResponseForm, QuestionForm, AnswerForm
 
 
 class IndexView(generic.ListView):
@@ -17,10 +17,10 @@ class IndexView(generic.ListView):
 
     def post(self, request, *args, **kwargs):
         thread = Thread(
-            title = request.POST['title'],
-            pub_date = timezone.now(),
-            update_date = timezone.now(),
-            favorites = 0,
+            title=request.POST['title'],
+            pub_date=timezone.now(),
+            update_date=timezone.now(),
+            favorites=0,
         )
         thread.save()
 
@@ -37,6 +37,33 @@ class IndexView(generic.ListView):
         ).order_by('-update_date')[:9]
 
 
+class QuestionView(generic.ListView):
+    model = Question
+    template_name = 'board/question.html'
+    context_object_name = 'latest_question_list'
+
+    def post(self, request, *args, **kwargs):
+        queiston = Question(
+            title=request.POST['title'],
+            content=request.POST['content'],
+            pub_date=timezone.now(),
+            update_date=timezone.now(),
+        )
+        queiston.save()
+
+        return HttpResponseRedirect(reverse('board:question'))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = QuestionForm()
+        return context
+
+    def get_queryset(self):
+        return Question.objects.filter(
+            pub_date__lte=timezone.now()
+        ).order_by('-update_date')[:9]
+
+
 class ThreadView(generic.ListView):
     model = Thread
     template_name = 'board/thread.html'
@@ -44,10 +71,10 @@ class ThreadView(generic.ListView):
 
     def post(self, request, *args, **kwargs):
         thread = Thread(
-            title = request.POST['title'],
-            pub_date = timezone.now(),
-            update_date = timezone.now(),
-            favorites = 0,
+            title=request.POST['title'],
+            pub_date=timezone.now(),
+            update_date=timezone.now(),
+            favorites=0,
         )
         thread.save()
 
@@ -62,6 +89,42 @@ class ThreadView(generic.ListView):
         return Thread.objects.filter(
             pub_date__lte=timezone.now()
         ).order_by('-update_date')
+
+
+class AnswerView(generic.DetailView):
+    model = Question
+    template_name = 'board/answer.html'
+    context_object_name = 'question'
+
+    def post(self, request, *args, **kwargs):
+        question = get_object_or_404(Question, id=self.kwargs.get('pk', ''))
+
+        answer = question.answer_set.create(
+            content=request.POST['content'],
+            date=timezone.now(),
+            name=request.POST['name'],
+        )
+        try:
+            answer.image = request.FILES['image']
+        except KeyError:
+            pass
+        answer.save()
+
+        question.update()
+        question.save()
+
+        return HttpResponseRedirect(reverse('board:answer', args=(question.id,))+'#end')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        if self.request.session.get('name'):
+            initial_dict = dict(name=self.request.session.get('name'))
+        else:
+            initial_dict = dict(name='ななしちゃん')
+        context['form'] = AnswerForm(initial=initial_dict)
+
+        return context
 
 
 class ResponseView(generic.DetailView):
@@ -88,14 +151,14 @@ class ResponseView(generic.DetailView):
             trip = '0'
 
         response = thread.response_set.create(
-            content = request.POST['content'],
-            date = timezone.now(),
-            name = name,
-            ip = get_cookie(request),
-            trip = trip
+            content=request.POST['content'],
+            date=timezone.now(),
+            name=name,
+            ip=get_cookie(request),
+            trip=trip
         )
         try:
-            response.image=request.FILES['image']
+            response.image = request.FILES['image']
         except KeyError:
             pass
         response.save()
@@ -136,7 +199,8 @@ def get_cookie(request):
         client_addr = request.META.get('REMOTE_ADDR')
     return client_addr
 
-def add_favorite(request,thread_id):
+
+def add_favorite(request, thread_id):
     thread = get_object_or_404(Thread, id=thread_id)
     thread.add_favorite()
     thread.save()

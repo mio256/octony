@@ -97,3 +97,67 @@ class Response(models.Model):
     def get_id(self):
         str = self.ip + self.date.strftime('%Y%m%d')
         return hashlib.sha256(str.encode()).hexdigest()[:8]
+
+
+class Question(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.CharField(max_length=255)
+    pub_date = models.DateTimeField('date published')
+    update_date = models.DateTimeField('date published')
+
+    def __str__(self):
+        return self.title
+
+    @ admin.display(
+        boolean=True,
+        ordering='update_date',
+    )
+    def was_update_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(hours=12) <= self.update_date <= now
+
+    def get_title(self):
+        return self.title
+
+    def get_content(self):
+        return self.content
+
+    def get_pub_date(self):
+        return (self.pub_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+
+    def get_update_date(self):
+        return (self.update_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+
+    def get_answers(self):
+        return self.answer_set.count()
+
+    def update(self):
+        self.update_date = timezone.now()
+
+
+class Answer(models.Model):
+    quesiton = models.ForeignKey(Question, on_delete=models.CASCADE)
+    content = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    date = models.DateTimeField('date published')
+    image = models.ImageField(upload_to='images', blank=True, null=True)
+
+    def __str__(self):
+        return self.content
+
+    def get_question(self):
+        return self.quesiton
+
+    def get_content(self):
+        return self.content
+
+    def get_name(self):
+        return self.name
+
+    def get_date(self):
+        return (self.date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+
+    def get_urls(self):
+        pattern = "https?://[\w/:%#\$&\?\(\)~\.=\+\-]+"
+        urls = re.findall(pattern, self.content)
+        return urls
