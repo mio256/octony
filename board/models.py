@@ -12,6 +12,7 @@ class Thread(models.Model):
     pub_date = models.DateTimeField('date published')
     update_date = models.DateTimeField('date published')
     favorites = models.IntegerField()
+    responses = models.IntegerField()
 
     def __str__(self):
         return self.title
@@ -37,7 +38,8 @@ class Thread(models.Model):
         return self.favorites
 
     def get_responses(self):
-        return self.response_set.count()
+        self.responses = self.response_set.count()
+        return self.responses
 
     def add_favorite(self):
         self.favorites += 1

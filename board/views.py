@@ -1,12 +1,12 @@
 import hashlib
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, response
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Question, Thread
+from .models import Question, Response, Thread
 from .forms import ThreadForm, ResponseForm, QuestionForm, AnswerForm
 
 
@@ -59,9 +59,8 @@ class QuestionView(generic.ListView):
         return context
 
     def get_queryset(self):
-        return Question.objects.filter(
-            pub_date__lte=timezone.now()
-        ).order_by('-update_date')[:9]
+        list = Thread.objects.order_by('-update_date')[:9]
+        return list
 
 
 class ThreadView(generic.ListView):
@@ -86,9 +85,64 @@ class ThreadView(generic.ListView):
         return context
 
     def get_queryset(self):
-        return Thread.objects.filter(
-            pub_date__lte=timezone.now()
-        ).order_by('-update_date')
+        list = Thread.objects.order_by('-update_date')
+        return list
+
+
+class RankFavoriteView(generic.ListView):
+    model = Thread
+    template_name = 'board/thread.html'
+    context_object_name = 'thread_list'
+
+    def post(self, request, *args, **kwargs):
+        thread = Thread(
+            title=request.POST['title'],
+            pub_date=timezone.now(),
+            update_date=timezone.now(),
+            favorites=0,
+        )
+        thread.save()
+
+        return HttpResponseRedirect(reverse('board:index'))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = ThreadForm()
+        return context
+
+    def get_queryset(self):
+        list = Thread.objects.order_by('-favorites')
+        return list
+
+
+class RankResponseView(generic.ListView):
+    model = Thread, Response
+    template_name = 'board/thread.html'
+    context_object_name = 'thread_list'
+
+    def post(self, request, *args, **kwargs):
+        thread = Thread(
+            title=request.POST['title'],
+            pub_date=timezone.now(),
+            update_date=timezone.now(),
+            favorites=0,
+        )
+        thread.save()
+
+        return HttpResponseRedirect(reverse('board:index'))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = ThreadForm()
+        return context
+
+    def get_queryset(self):
+        list = Thread.objects.all()
+        for thread in list:
+            thread.get_responses()
+            thread.save()
+        list = Thread.objects.order_by('-responses')
+        return list
 
 
 class AnswerView(generic.DetailView):

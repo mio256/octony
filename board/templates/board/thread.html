@@ -38,7 +38,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'board:explain' %}">
-                        はじめに
+                        解説
                     </a>
                 </li>
                 <li class="nav-item">
@@ -59,6 +59,21 @@
             <a href="{% url 'board:index' %}">
                 <img class="img-fluid my-2" src="{% static 'board/images/logo.png' %}" alt="Octony">
             </a>
+        </div>
+
+        <div class="alert alert-danger" role="alert" style="position: relative;">
+            おすすめ順 表示
+            <a href="{% url 'board:rank_favorite' %}" class="stretched-link"></a>
+        </div>
+
+        <div class="alert alert-danger" role="alert" style="position: relative;">
+            スレ数順 表示
+            <a href="{% url 'board:rank_response' %}" class="stretched-link"></a>
+        </div>
+
+        <div class="alert alert-danger" role="alert" style="position: relative;">
+            新着順 表示
+            <a href="{% url 'board:thread' %}" class="stretched-link"></a>
         </div>
 
         <a name="top"></a>
