@@ -1,6 +1,6 @@
 import hashlib
 
-from django.http import HttpResponseRedirect, response, HttpResponse
+from django.http import HttpResponseRedirect, request, response, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import generic
@@ -196,8 +196,22 @@ def get_ip(request):
     return client_addr
 
 
+class HistoryView(generic.ListView):
+    model = Thread
+    template_name = 'board/history.html'
+    context_object_name = 'thread_list'
+
+    def get_queryset(self):
+        list = []
+        for pk in str(get_history(self.request)).split('-'):
+            if pk != 'None':
+                list.append(int(pk))
+        history = [Thread.objects.get(id=i) for i in list]
+        return history
+
+
 def get_history(request):
-    return HttpResponse(request.session.get('history'))
+    return request.session.get('history')
 
 
 def add_favorite(request, thread_id):
@@ -205,8 +219,8 @@ def add_favorite(request, thread_id):
     thread.add_favorite()
     thread.save()
     try:
-        request.session['history'] = request.session.get('history') + \
-            '-'+str(thread_id)
+        history = request.session.get('history')
+        request.session['history'] = str(history) + '-'+str(thread_id)
     except KeyError:
         request.session['history'] = str(thread_id)
     return HttpResponseRedirect(reverse('board:response', args=(thread.id,))+'#bottom')

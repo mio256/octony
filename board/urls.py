@@ -13,5 +13,5 @@ urlpatterns = [
     path('explain', views.ExplainView.as_view(), name='explain'),
     path('<int:pk>/', views.ResponseView.as_view(), name='response'),
     path('<int:thread_id>/favorite/', views.add_favorite, name='favorite'),
-    path('history', views.get_history, name='history'),
+    path('history', views.HistoryView.as_view(), name='history'),
 ]
