@@ -14,16 +14,5 @@ class ThreadAdmin(admin.ModelAdmin):
     list_display = ('title', 'update_date', 'responses', 'favorites')
     inlines = [ResponseInline]
 
-class AnswerInline(admin.TabularInline):
-    model = Answer
-    extra = 3
-
-
-class QuestionAdmin(admin.ModelAdmin):
-    list_filter = ['update_date']
-    search_fields = ['title']
-    list_display = ('title', 'update_date')
-    inlines = [AnswerInline]
-
 admin.site.register(Thread, ThreadAdmin)
-admin.site.register(Question, QuestionAdmin)
+admin.site.register(Question)
