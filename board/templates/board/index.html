@@ -6,7 +6,7 @@
     {% load widget_tweaks %}
     <meta charset="utf-8">
     <title>Octony</title>
-    <meta name="description" content="Octony-OctoAnonymous 8人の匿名者 長工生が匿名で交流できる場所 ただの雑談から各科の交流まで">
+    <meta name="description" content="Octony-OctoAnonymous 長工生が学科関係なく自由に交流ができる場所">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
     <!-- Bootstrap -->
@@ -27,31 +27,45 @@
     </div>
 
     <div class="container-lg" id="top">
-
         <header class="sticky-top" style="background-color: aliceblue;">
-            <!-- ナビゲーション -->
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'board:index' %}">
-                        トップ
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'board:explain' %}">
-                        解説
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'board:thread' %}">
-                        スレ
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'polls:index' %}">
-                        投票
-                    </a>
-                </li>
-            </ul>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand">メニュー</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{% url 'board:index' %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-house" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                                        <path fill-rule="evenodd"
+                                            d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                                    </svg>
+                                    トップ
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'board:thread' %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-award" viewBox="0 0 16 16">
+                                        <path
+                                            d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
+                                        <path
+                                            d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+                                    </svg>
+                                    ランキング
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </header>
 
         <!-- ロゴ -->
@@ -65,25 +79,20 @@
         </div>
 
         <div class="alert alert-warning" role="alert" style="position: relative;">
-            質問箱を実装しました
-            <a href="{% url 'board:question' %}" class="stretched-link"></a>
-        </div>
-
-        <div class="alert alert-warning" role="alert" style="position: relative;">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award"
                 viewBox="0 0 16 16">
                 <path
                     d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
                 <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
             </svg>
-            10月 最新スレッドランキング！ おすすめ1位、スレ数1位は？
+            10月 最新スレッドランキング！ おすすめ1位、スレ数1位は？ →
             <a href="{% url 'board:thread' %}" class="stretched-link"></a>
         </div>
 
         <!-- スレッド一覧 -->
         <div class="row">
             {% for thread in latest_thread_list %}
-            <div class="col-md-4 div-link my-3">
+            <div class="col-md-4 div-link my-3" style="position: relative;">
                 {% if thread.was_update_recently %}
                 <div class="card border-primary mb-1 h-100">
                     <div class="card-body text-primary">
@@ -93,7 +102,7 @@
                             {{ thread.favorites }}おすすめ
                         </p>
                     </div>
-                    <a class="link" href="{% url 'board:response' thread.id%}"></a>
+                    <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
                 </div>
                 {% else %}
                 <div class="card border-success mb-3  h-100">
@@ -104,7 +113,7 @@
                             {{ thread.favorites }}おすすめ
                         </p>
                     </div>
-                    <a class="link" href="{% url 'board:response' thread.id%}"></a>
+                    <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
                 </div>
                 {% endif %}
             </div>
@@ -116,6 +125,12 @@
             <a href="{% url 'board:thread' %}" class="stretched-link"></a>
         </div>
 
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-primary mx-4 mb-3" onclick="window.location.reload(true);">
+                再読込
+            </button>
+        </div>
+
         <!-- 新規スレッド作成 -->
         <form method="POST">
             {% csrf_token %}
@@ -125,11 +140,27 @@
                 </label>
                 {{form.title|add_class:"form-control"}}
             </div>
-            <button type="submit" class="btn btn-primary mb-3">新規スレ作成</button>
+            <button type="submit" class="btn btn-primary mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-plus-square" viewBox="0 0 16 16">
+                    <path
+                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>
+                新規スレ作成
+            </button>
         </form>
 
         <footer style="text-align: center;" id="bottom">
-            <button type="button" class="btn btn-info m-2" style="position: relative;">
+            <button type="button" class="btn btn-primary m-2" style="position: relative;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-card-text" viewBox="0 0 16 16">
+                    <path
+                        d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                    <path
+                        d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
+                </svg>
                 利用規約
                 <a href="{% url 'board:terms' %}" class="stretched-link"></a>
             </button>
@@ -137,36 +168,27 @@
                 Octony - Since 2021.10.1
             </p>
         </footer>
-
     </div>
 
-    <!-- ボタン類 -->
-    <div style="position:fixed;right:10%;bottom:5%;">
-        <div class="div-link">
-            <button type="submit" class="btn btn-primary">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="m-1">
+            <a type="submit" class="btn btn-primary" href="{% url 'board:index' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-clipboard" viewBox="0 0 16 16">
+                    <path
+                        d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                    <path
+                        d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                </svg>
                 掲示板
-            </button>
-            <a href="{% url 'board:index' %}" class="link"></a>
-        </div>
-        <div class="div-link">
-            <button type="submit" class="btn btn-primary">
-                質問箱
-            </button>
-            <a href="{% url 'board:question' %}" class="link"></a>
+            </a>
         </div>
     </div>
-
 </body>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-81821919-2"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-81821919-2');
-</script>
-
 
 </html>

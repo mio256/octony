@@ -162,7 +162,7 @@ class ResponseView(generic.DetailView):
         thread.update()
         thread.save()
 
-        return HttpResponseRedirect(reverse('board:response', args=(thread.id,))+'#end')
+        return HttpResponseRedirect(reverse('board:response', args=(thread.id,))+'#bottom')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
