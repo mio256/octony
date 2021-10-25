@@ -204,11 +204,11 @@ def add_favorite(request, thread_id):
     thread = get_object_or_404(Thread, id=thread_id)
     thread.add_favorite()
     thread.save()
-    # try:
-    #     request.session['history'] = request.session['history'] + \
-    #         '-'+str(thread_id)
-    # except KeyError:
-    request.session['history'] = str(thread_id)
+    try:
+        request.session['history'] = request.session['history'] + \
+            '-'+str(thread_id)
+    except KeyError:
+        request.session['history'] = str(thread_id)
     return HttpResponseRedirect(reverse('board:response', args=(thread.id,))+'#bottom')
 
 
