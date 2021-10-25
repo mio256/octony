@@ -205,7 +205,7 @@ def add_favorite(request, thread_id):
     thread.add_favorite()
     thread.save()
     try:
-        request.session['history'] = request.session['history'] + \
+        request.session['history'] = request.session.get('history') + \
             '-'+str(thread_id)
     except KeyError:
         request.session['history'] = str(thread_id)
