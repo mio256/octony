@@ -59,11 +59,9 @@
             <a href="{% url 'board:index' %}">
                 <img class="img-fluid my-2" src="{% static 'board/images/logo.png' %}" alt="Octony">
             </a>
-        </div>
-
-        <div class="alert alert-danger" role="alert" style="position: relative;">
-            はじめての方はこちらをお読みください。
-            <a href="{% url 'board:explain' %}" class="stretched-link"></a>
+            <p>
+                ～長工生が学科関係なく自由に交流ができる場所～
+            </p>
         </div>
 
         <div class="alert alert-warning" role="alert" style="position: relative;">
@@ -88,7 +86,6 @@
             <div class="col-md-4 div-link my-3">
                 {% if thread.was_update_recently %}
                 <div class="card border-primary mb-1 h-100">
-                    <div class="card-header">{{ thread.get_update_date }}</div>
                     <div class="card-body text-primary">
                         <h5 class="card-title">{{ thread.get_title }}</h5>
                         <p class="card-text">
@@ -100,7 +97,6 @@
                 </div>
                 {% else %}
                 <div class="card border-success mb-3  h-100">
-                    <div class="card-header">{{ thread.get_update_date }}</div>
                     <div class="card-body text-success">
                         <h5 class="card-title">{{ thread.get_title }}</h5>
                         <p class="card-text">
@@ -113,6 +109,11 @@
                 {% endif %}
             </div>
             {% endfor %}
+        </div>
+
+        <div class="alert alert-primary" role="alert" style="position: relative;">
+            もっと見る
+            <a href="{% url 'board:thread' %}" class="stretched-link"></a>
         </div>
 
         <!-- 新規スレッド作成 -->
