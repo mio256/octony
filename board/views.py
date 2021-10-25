@@ -1,6 +1,6 @@
 import hashlib
 
-from django.http import HttpResponseRedirect, response
+from django.http import HttpResponseRedirect, response, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import generic
@@ -35,7 +35,7 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Thread.objects.filter(
             pub_date__lte=timezone.now()
-        ).order_by('-update_date')[:9]
+        ).order_by('-update_date')[:27]
 
 
 class ThreadView(generic.ListView):
@@ -150,7 +150,7 @@ class ResponseView(generic.DetailView):
             content=request.POST['content'],
             date=timezone.now(),
             name=name,
-            ip=get_cookie(request),
+            ip=get_ip(request),
             trip=trip
         )
         try:
@@ -184,7 +184,7 @@ class ExplainView(generic.TemplateView):
     template_name = 'board/explain.html'
 
 
-def get_cookie(request):
+def get_ip(request):
     # 'HTTP_X_FORWARDED_FOR'ヘッダを参照して転送経路のIPアドレスを取得する。
     forwarded_addresses = request.META.get('HTTP_X_FORWARDED_FOR')
     if forwarded_addresses:
@@ -196,11 +196,20 @@ def get_cookie(request):
     return client_addr
 
 
+def get_history(request):
+    return HttpResponse(request.session.get('history'))
+
+
 def add_favorite(request, thread_id):
     thread = get_object_or_404(Thread, id=thread_id)
     thread.add_favorite()
     thread.save()
-    return HttpResponseRedirect(reverse('board:index',))
+    if request.session['history']:
+        request.session['history'] = request.session['history'] + \
+            '-'+str(thread_id)
+    else:
+        request.session['history'] = str(thread_id)
+    return HttpResponseRedirect(reverse('board:response', args=(thread.id,))+'#bottom')
 
 
 class QuestionView(generic.ListView):

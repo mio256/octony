@@ -91,7 +91,7 @@
 
         <!-- スレッド一覧 -->
         <div class="row">
-            {% for thread in latest_thread_list %}
+            {% for thread in latest_thread_list|slice:"0:9" %}
             <div class="col-md-4 div-link my-3" style="position: relative;">
                 {% if thread.was_update_recently %}
                 <div class="card border-primary mb-1 h-100">
@@ -120,13 +120,90 @@
             {% endfor %}
         </div>
 
-        <div class="alert alert-primary" role="alert" style="position: relative;">
-            もっと見る
-            <a href="{% url 'board:thread' %}" class="stretched-link"></a>
+        <div id="more1">
+            <!-- スレッド一覧 -->
+            <div class="row">
+                {% for thread in latest_thread_list|slice:"9:18" %}
+                <div class="col-md-4 div-link my-3" style="position: relative;">
+                    {% if thread.was_update_recently %}
+                    <div class="card border-primary mb-1 h-100">
+                        <div class="card-body text-primary">
+                            <h5 class="card-title">{{ thread.get_title }}</h5>
+                            <p class="card-text">
+                                {{ thread.get_responses }}レス<br>
+                                {{ thread.favorites }}おすすめ
+                            </p>
+                        </div>
+                        <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
+                    </div>
+                    {% else %}
+                    <div class="card border-success mb-3  h-100">
+                        <div class="card-body text-success">
+                            <h5 class="card-title">{{ thread.get_title }}</h5>
+                            <p class="card-text">
+                                {{ thread.get_responses }}レス<br>
+                                {{ thread.favorites }}おすすめ
+                            </p>
+                        </div>
+                        <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
         </div>
 
+        <div id="more2">
+            <!-- スレッド一覧 -->
+            <div class="row">
+                {% for thread in latest_thread_list|slice:"18:27" %}
+                <div class="col-md-4 div-link my-3" style="position: relative;">
+                    {% if thread.was_update_recently %}
+                    <div class="card border-primary mb-1 h-100">
+                        <div class="card-body text-primary">
+                            <h5 class="card-title">{{ thread.get_title }}</h5>
+                            <p class="card-text">
+                                {{ thread.get_responses }}レス<br>
+                                {{ thread.favorites }}おすすめ
+                            </p>
+                        </div>
+                        <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
+                    </div>
+                    {% else %}
+                    <div class="card border-success mb-3  h-100">
+                        <div class="card-body text-success">
+                            <h5 class="card-title">{{ thread.get_title }}</h5>
+                            <p class="card-text">
+                                {{ thread.get_responses }}レス<br>
+                                {{ thread.favorites }}おすすめ
+                            </p>
+                        </div>
+                        <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <button id="moreButton" type="button" class="btn btn-primary mx-4 mb-3" onclick="clickMore()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots"
+                viewBox="0 0 16 16">
+                <path
+                    d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+            </svg>
+            もっと見る
+        </button>
+
         <div style="text-align: center;">
-            <button type="submit" class="btn btn-primary mx-4 mb-3" onclick="window.location.reload(true);">
+            <button type="button" class="btn btn-primary mx-4 mb-3" onclick="window.location.reload(true);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                    <path
+                        d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                    <path fill-rule="evenodd"
+                        d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                </svg>
                 再読込
             </button>
         </div>
@@ -169,26 +246,27 @@
             </p>
         </footer>
     </div>
-
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-            <h5 id="offcanvasRightLabel">Offcanvas right</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-
-        <div class="m-1">
-            <a type="submit" class="btn btn-primary" href="{% url 'board:index' %}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-clipboard" viewBox="0 0 16 16">
-                    <path
-                        d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                    <path
-                        d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-                </svg>
-                掲示板
-            </a>
-        </div>
-    </div>
 </body>
+
+<script>
+    //初期表示は非表示
+    document.getElementById("more1").style.display = "none";
+    document.getElementById("more2").style.display = "none";
+
+    function clickMore() {
+        const more1 = document.getElementById("more1");
+        const more2 = document.getElementById("more2");
+        const moreButton = document.getElementById("moreButton");
+
+        if (more1.style.display == "none") {
+            // noneで非表示
+            more1.style.display = "block";
+        } else if (more2.style.display == "none") {
+            // noneで非表示
+            more2.style.display = "block";
+            moreButton.disabled = true
+        }
+    }
+</script>
 
 </html>
