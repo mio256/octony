@@ -1,5 +1,5 @@
 from django import forms
-from .models import Thread, Response, Question, Answer
+from .models import Thread, Response, Question, User
 
 
 class ThreadForm(forms.ModelForm):
@@ -50,3 +50,16 @@ class AnswerForm(forms.ModelForm):
         widgets = {
             'content': forms.Textarea(attrs={'rows': 4, }),
         }
+
+
+# class UserForm(forms.ModelForm):
+#     class Meta:
+#         model = User
+#         fields = ['name', 'password']
+#         labels = {
+#             'name': '名前',
+#             'password': 'パスワード',
+#         }
+#         widgets = {
+#             'password': forms.PasswordInput(),
+#         }
