@@ -163,3 +163,14 @@ class Answer(models.Model):
         pattern = "https?://[\w/:%#\$&\?\(\)~\.=\+\-]+"
         urls = re.findall(pattern, self.content)
         return urls
+
+
+# class User(models.Model):
+#     name = models.CharField(max_length=255)
+#     password = models.CharField(max_length=255)
+
+#     def get_name(self):
+#         return self.name
+
+#     def get_name(self):
+#         return self.name
