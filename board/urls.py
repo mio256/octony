@@ -13,7 +13,5 @@ urlpatterns = [
     path('explain', views.ExplainView.as_view(), name='explain'),
     path('<int:pk>/', views.ResponseView.as_view(), name='response'),
     path('<int:thread_id>/favorite/', views.add_favorite, name='favorite'),
-    path('question', views.QuestionView.as_view(), name='question'),
-    path('question/<int:pk>', views.AnswerView.as_view(), name='answer'),
     path('history', views.get_history, name='history'),
 ]
