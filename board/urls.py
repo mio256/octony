@@ -6,6 +6,7 @@ app_name = 'board'
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
+    path('board/', views.IndexView.as_view(), name='index'),
     path('<int:pk>/', views.ResponseView.as_view(), name='response'),
     path('<int:thread_id>/favorite/', views.add_favorite, name='favorite'),
     path('thread', views.ThreadView.as_view(), name='thread'),
