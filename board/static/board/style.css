@@ -33,9 +33,6 @@
     animation: sk-scaleout 1s infinite ease-in-out;
 }
 
-.card{
-    background-color: rgb(247, 247, 255);
-}
-.card:hover{
-    background-color: #fff7cf;
+.card:hover {
+    background-color: #fff3cd;
 }
