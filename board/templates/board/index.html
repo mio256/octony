@@ -109,7 +109,8 @@
                         <h5 class="card-title">{{ thread.get_title }}</h5>
                         <p class="card-text">
                             {{ thread.get_responses }}レス<br>
-                            {{ thread.favorites }}おすすめ
+                            {{ thread.favorites }}おすすめ<br>
+                            {{ thread.get_pn }}
                         </p>
                     </div>
                     <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
@@ -120,7 +121,8 @@
                         <h5 class="card-title">{{ thread.get_title }}</h5>
                         <p class="card-text">
                             {{ thread.get_responses }}レス<br>
-                            {{ thread.favorites }}おすすめ
+                            {{ thread.favorites }}おすすめ<br>
+                            {{ thread.get_pn }}
                         </p>
                     </div>
                     <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
