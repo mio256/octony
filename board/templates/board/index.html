@@ -120,7 +120,8 @@
             <h5 class="card-title">{{ thread.get_title }}</h5>
             <p class="card-text">
               {{ thread.get_responses }}レス<br>
-              {{ thread.favorites }}おすすめ
+              {{ thread.favorites }}おすすめ<br>
+              {{ thread.get_pn }}
             </p>
           </div>
           <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
@@ -131,47 +132,48 @@
             <h5 class="card-title">{{ thread.get_title }}</h5>
             <p class="card-text">
               {{ thread.get_responses }}レス<br>
-              {{ thread.favorites }}おすすめ
+              {{ thread.favorites }}おすすめ<br>
+              {{ thread.get_pn }}
             </p>
           </div>
           <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
         </div>
         {% endif %}
       </div>
-      {% endfor %}
+      <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
     </div>
 
-    <div id="more1">
-      <!-- スレッド一覧 -->
-      <div class="row">
-        {% for thread in latest_thread_list|slice:"9:18" %}
-        <div class="col-md-4 div-link my-3" style="position: relative;">
-          {% if thread.was_update_recently %}
-          <div class="card border-primary mb-1 h-100">
-            <div class="card-body text-primary">
-              <h5 class="card-title">{{ thread.get_title }}</h5>
-              <p class="card-text">
-                {{ thread.get_responses }}レス<br>
-                {{ thread.favorites }}おすすめ
-              </p>
-            </div>
-            <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
+    <!-- スレッド一覧 -->
+    <div class="more1">
+      {% for thread in latest_thread_list|slice:"9:18" %}
+      <div class="col-md-4 div-link my-3" style="position: relative;">
+        {% if thread.was_update_recently %}
+        <div class="card border-primary mb-1 h-100">
+          <div class="card-body text-primary">
+            <h5 class="card-title">{{ thread.get_title }}</h5>
+            <p class="card-text">
+              {{ thread.get_responses }}レス<br>
+              {{ thread.favorites }}おすすめ<br>
+              {{ thread.get_pn }}
+            </p>
           </div>
-          {% else %}
-          <div class="card border-success mb-3  h-100">
-            <div class="card-body text-success">
-              <h5 class="card-title">{{ thread.get_title }}</h5>
-              <p class="card-text">
-                {{ thread.get_responses }}レス<br>
-                {{ thread.favorites }}おすすめ
-              </p>
-            </div>
-            <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
-          </div>
-          {% endif %}
+          <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
         </div>
-        {% endfor %}
+        {% else %}
+        <div class="card border-success mb-3  h-100">
+          <div class="card-body text-success">
+            <h5 class="card-title">{{ thread.get_title }}</h5>
+            <p class="card-text">
+              {{ thread.get_responses }}レス<br>
+              {{ thread.favorites }}おすすめ<br>
+              {{ thread.get_pn }}
+            </p>
+          </div>
+          <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
+        </div>
+        {% endif %}
       </div>
+      <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
     </div>
 
     <div id="more2">
@@ -185,7 +187,8 @@
               <h5 class="card-title">{{ thread.get_title }}</h5>
               <p class="card-text">
                 {{ thread.get_responses }}レス<br>
-                {{ thread.favorites }}おすすめ
+                {{ thread.favorites }}おすすめ<br>
+                {{ thread.get_pn }}
               </p>
             </div>
             <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
@@ -196,7 +199,8 @@
               <h5 class="card-title">{{ thread.get_title }}</h5>
               <p class="card-text">
                 {{ thread.get_responses }}レス<br>
-                {{ thread.favorites }}おすすめ
+                {{ thread.favorites }}おすすめ<br>
+                {{ thread.get_pn }}
               </p>
             </div>
             <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>

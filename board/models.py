@@ -1,6 +1,7 @@
 import datetime
 import re
 import hashlib
+import math
 
 from django.db import models
 from django.utils import timezone
@@ -17,7 +18,7 @@ class Thread(models.Model):
     def __str__(self):
         return self.title
 
-    @ admin.display(
+    @admin.display(
         boolean=True,
         ordering='update_date',
     )
@@ -29,10 +30,12 @@ class Thread(models.Model):
         return self.title
 
     def get_pub_date(self):
-        return (self.pub_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+        return (self.pub_date +
+                datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
 
     def get_update_date(self):
-        return (self.update_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+        return (self.update_date +
+                datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
 
     def get_favorites(self):
         return self.favorites
@@ -40,6 +43,44 @@ class Thread(models.Model):
     def get_responses(self):
         self.responses = self.response_set.count()
         return self.responses
+
+    def get_pn(self):
+        # ネガポジ辞書を読む
+        import csv
+
+        np_dic = {}
+        fp = open("/home/mio256/mysite/pn.csv", "rt", encoding="utf-8")
+        reader = csv.reader(fp, delimiter='\t')
+        for i, row in enumerate(reader):
+            name = row[0]
+            result = row[1]
+            np_dic[name] = result
+            # if i % 500 == 0: print(i)
+
+        # 小説を読み込む
+        responses = self.response_set.all()
+        text = ""
+        for i in responses:
+            text += i.content
+
+        # 形態素解析
+        from janome.tokenizer import Tokenizer
+
+        tok = Tokenizer()
+
+        # 数える
+        res = {"p": 0, "n": 0, "e": 0}
+        for t in tok.tokenize(text):
+            bf = t.base_form  # 基本形
+            # 辞書にあるか確認
+            if bf in np_dic:
+                r = np_dic[bf]
+                if r in res:
+                    res[r] += 1
+
+        # 結果を表示
+        cnt = res["p"] + res["n"] + 1
+        return "ホワイト" + str(math.floor(res["p"] / cnt * 100)) + "%"
 
     def add_favorite(self):
         self.favorites += 1
@@ -71,9 +112,11 @@ class Response(models.Model):
         return self.thread
 
     def get_content(self):
-        ngwords = ['死', 'ホモ', 'ばか', 'おっぱい', '乳首', 'ハゲ', 'アホ', '体位', '正常位', '死', 'きちがい', '殺す',
-                   '出っ歯', 'ぶす', '短足', '糞', 'ファック', '害児', '土人', 'ばばあ', 'じじい', '包茎', '童貞', 'チビ',
-                   '低能', 'クズ', 'バカ']
+        ngwords = [
+            '死', 'ホモ', 'ばか', 'おっぱい', '乳首', 'ハゲ', 'アホ', '体位', '正常位', '死',
+            'きちがい', '殺す', '出っ歯', 'ぶす', '短足', '糞', 'ファック', '害児', '土人', 'ばばあ',
+            'じじい', '包茎', '童貞', 'チビ', '低能', 'クズ', 'バカ'
+        ]
         for word in ngwords:
             if word in self.content:
                 return "---NG WORD---"
@@ -83,7 +126,8 @@ class Response(models.Model):
         return self.name
 
     def get_date(self):
-        return (self.date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+        return (self.date +
+                datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
 
     def get_ip(self):
         return self.ip
@@ -110,7 +154,7 @@ class Question(models.Model):
     def __str__(self):
         return self.title
 
-    @ admin.display(
+    @admin.display(
         boolean=True,
         ordering='update_date',
     )
@@ -125,10 +169,12 @@ class Question(models.Model):
         return self.content
 
     def get_pub_date(self):
-        return (self.pub_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+        return (self.pub_date +
+                datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
 
     def get_update_date(self):
-        return (self.update_date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+        return (self.update_date +
+                datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
 
     def get_answers(self):
         return self.answer_set.count()
@@ -157,7 +203,8 @@ class Answer(models.Model):
         return self.name
 
     def get_date(self):
-        return (self.date+datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
+        return (self.date +
+                datetime.timedelta(hours=9)).strftime('%Y-%m-%d %H:%M:%S')
 
     def get_urls(self):
         pattern = "https?://[\w/:%#\$&\?\(\)~\.=\+\-]+"
