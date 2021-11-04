@@ -2,328 +2,327 @@
 <html class="no-js" lang="ja">
 
 <head>
-    {% load static %}
-    {% load widget_tweaks %}
-    <meta charset="utf-8">
-    <title>Octony</title>
-    <meta name="description" content="Octony-OctoAnonymous 長工生が学科関係なく自由に交流ができる場所">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <!-- mine -->
-    <link rel="stylesheet" href="{% static 'board/style.css' %}">
-    <script src="{% static 'board/script.js' %}"></script>
-    <!-- Google Adsense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9885623483939619"
-        crossorigin="anonymous"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81821919-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+  {% load static %}
+  {% load widget_tweaks %}
+  <meta charset="utf-8">
+  <title>Octony</title>
+  <meta name="description" content="Octony Octo-Anonymou s長工生が自由に交流できる校内掲示板">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <!-- mine -->
+  <link rel="stylesheet" href="{% static 'board/style.css' %}">
+  <script src="{% static 'board/script.js' %}"></script>
+  <!-- Google Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9885623483939619"
+    crossorigin="anonymous"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81821919-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-        gtag('config', 'UA-81821919-2');
-    </script>
+    gtag('config', 'UA-81821919-2');
+  </script>
 </head>
 
 <body style="background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
-    <!-- ローディング -->
-    <div id="loading">
-        <div class="spinner"></div>
-    </div>
+  <!-- ローディング -->
+  <div id="loading">
+    <div class="spinner"></div>
+  </div>
 
-    <div class="container-lg" id="top">
-        <header class="sticky-top" style="background-color: aliceblue;">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand">メニュー</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{% url 'board:index' %}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-house" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-                                        <path fill-rule="evenodd"
-                                            d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-                                    </svg>
-                                    トップ
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'board:thread' %}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-award" viewBox="0 0 16 16">
-                                        <path
-                                            d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
-                                        <path
-                                            d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
-                                    </svg>
-                                    ランキング
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'board:history' %}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-heart" viewBox="0 0 16 16">
-                                        <path
-                                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                    </svg>
-                                    おすすめ履歴
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
-        <!-- ロゴ -->
-        <div style="text-align: center;">
-            <a href="{% url 'board:index' %}">
-                <img class="img-fluid my-2" src="{% static 'board/images/logo.png' %}" alt="Octony">
-            </a>
-            <p>
-                ～長工生が自由に交流できる校内掲示板～
-            </p>
-        </div>
-
-        <div class="alert alert-warning" role="alert" style="position: relative;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award"
-                viewBox="0 0 16 16">
-                <path
-                    d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
-                <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
-            </svg>
-            10月 最新スレッドランキング！ おすすめ1位、スレ数1位は？ →
-            <a href="{% url 'board:thread' %}" class="stretched-link"></a>
-        </div>
-
-        <!-- スレッド一覧 -->
-        <div class="row">
-            {% for thread in latest_thread_list|slice:"0:9" %}
-            <div class="col-md-4 div-link my-3" style="position: relative;">
-                {% if thread.was_update_recently %}
-                <div class="card border-primary mb-1 h-100">
-                    <div class="card-body text-primary">
-                        <h5 class="card-title">{{ thread.get_title }}</h5>
-                        <p class="card-text">
-                            {{ thread.get_responses }}レス<br>
-                            {{ thread.favorites }}おすすめ
-                        </p>
-                    </div>
-                    <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
-                </div>
-                {% else %}
-                <div class="card border-success mb-3  h-100">
-                    <div class="card-body text-success">
-                        <h5 class="card-title">{{ thread.get_title }}</h5>
-                        <p class="card-text">
-                            {{ thread.get_responses }}レス<br>
-                            {{ thread.favorites }}おすすめ
-                        </p>
-                    </div>
-                    <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </div>
-
-        <div id="more1">
-            <!-- スレッド一覧 -->
-            <div class="row">
-                {% for thread in latest_thread_list|slice:"9:18" %}
-                <div class="col-md-4 div-link my-3" style="position: relative;">
-                    {% if thread.was_update_recently %}
-                    <div class="card border-primary mb-1 h-100">
-                        <div class="card-body text-primary">
-                            <h5 class="card-title">{{ thread.get_title }}</h5>
-                            <p class="card-text">
-                                {{ thread.get_responses }}レス<br>
-                                {{ thread.favorites }}おすすめ
-                            </p>
-                        </div>
-                        <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
-                    </div>
-                    {% else %}
-                    <div class="card border-success mb-3  h-100">
-                        <div class="card-body text-success">
-                            <h5 class="card-title">{{ thread.get_title }}</h5>
-                            <p class="card-text">
-                                {{ thread.get_responses }}レス<br>
-                                {{ thread.favorites }}おすすめ
-                            </p>
-                        </div>
-                        <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
-                    </div>
-                    {% endif %}
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-
-        <div id="more2">
-            <!-- スレッド一覧 -->
-            <div class="row">
-                {% for thread in latest_thread_list|slice:"18:27" %}
-                <div class="col-md-4 div-link my-3" style="position: relative;">
-                    {% if thread.was_update_recently %}
-                    <div class="card mb-1 h-100">
-                        <div class="card-body text-primary">
-                            <h5 class="card-title">{{ thread.get_title }}</h5>
-                            <p class="card-text">
-                                {{ thread.get_responses }}レス<br>
-                                {{ thread.favorites }}おすすめ
-                            </p>
-                        </div>
-                        <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
-                    </div>
-                    {% else %}
-                    <div class="card border-success mb-3  h-100">
-                        <div class="card-body text-success">
-                            <h5 class="card-title">{{ thread.get_title }}</h5>
-                            <p class="card-text">
-                                {{ thread.get_responses }}レス<br>
-                                {{ thread.favorites }}おすすめ
-                            </p>
-                        </div>
-                        <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
-                    </div>
-                    {% endif %}
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-
-        <button id="moreButton" type="button" class="btn btn-primary mx-4 mb-3" onclick="clickMore()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots"
-                viewBox="0 0 16 16">
-                <path
-                    d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-            </svg>
-            もっと見る
-        </button>
-
-        <div style="text-align: center;">
-            <button type="button" class="btn btn-primary mx-4 mb-3" onclick="window.location.reload(true);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-                    <path
-                        d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+  <div class="container-lg" id="top">
+    <header class="sticky-top" style="background-color: aliceblue;">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'board:index' %}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house"
+                    viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
-                        d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
-                </svg>
-                再読込
-            </button>
+                      d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                    <path fill-rule="evenodd"
+                      d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                  </svg>
+                  トップ
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'board:thread' %}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
+                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+                  </svg>
+                  ランキング
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'board:history' %}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                  </svg>
+                  おすすめ履歴
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
+      </nav>
+    </header>
 
-        <ol class="list-group list-group-numbered mb-3">
-            <div class="list-group-item d-flex justify-content-between align-items-start">
-                OctonyはOcto(8つの)とAnonymous(匿名者)をかけ合わせた言葉であり、長工生が自由に交流できる校内掲示板です。<br>
-                友達にOctonyを紹介し、Octonyをさらに多くの長工生が集う場所にできます！
-            </div>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold"> 学科間の交流 </div>
-                    普段交流の少ない他学科の生徒と気軽に交流ができます！
-                </div>
-                <span class="badge bg-primary rounded-pill">20</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold"> 学年間の交流 </div>
-                    学年の差を気にせず、匿名で書き込みを行うことができます！
-                </div>
-                <span class="badge bg-primary rounded-pill">5</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold"> 話題別の交流 </div>
-                    ゲーム・日常・勉強など様々な話題で長工生と話し合えます！
-                </div>
-                <span class="badge bg-primary rounded-pill">10</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold"> 出会い </div>
-                    Octonyで知り合った生徒が仲良くなったり、一緒に製作活動を行ったりなど様々な出会いがあります！
-                </div>
-                <span class="badge bg-primary rounded-pill">3</span>
-            </li>
-        </ol>
-
-        <!-- 新規スレッド作成 -->
-        <form method="POST">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">
-                    スレッド名
-                </label>
-                {{form.title|add_class:"form-control"}}
-            </div>
-            <button type="submit" class="btn btn-primary mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-plus-square" viewBox="0 0 16 16">
-                    <path
-                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                    <path
-                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                </svg>
-                新規スレ作成
-            </button>
-        </form>
-
-        <footer style="text-align: center;" id="bottom">
-            <button type="button" class="btn btn-primary m-2" style="position: relative;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-card-text" viewBox="0 0 16 16">
-                    <path
-                        d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                    <path
-                        d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
-                </svg>
-                利用規約
-                <a href="{% url 'board:terms' %}" class="stretched-link"></a>
-            </button>
-            <p>
-                Octony - Since 2021.10.01
-            </p>
-        </footer>
+    <!-- ロゴ -->
+    <div style="text-align: center;">
+      <a href="{% url 'board:index' %}">
+        <img class="img-fluid my-2" src="{% static 'board/images/logo.png' %}" alt="Octony">
+      </a>
+      <p>
+        ～長工生が自由に交流できる校内掲示板～
+      </p>
     </div>
+
+    <div class="alert alert-warning" role="alert" style="position: relative;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award"
+        viewBox="0 0 16 16">
+        <path
+          d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
+        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+      </svg>
+      10月 最新スレッドランキング！ おすすめ1位、スレ数1位は？ →
+      <a href="{% url 'board:thread' %}" class="stretched-link"></a>
+    </div>
+
+    <!-- スレッド一覧 -->
+    <div class="row">
+      {% for thread in latest_thread_list|slice:"0:9" %}
+      <div class="col-md-4 div-link my-3" style="position: relative;">
+        {% if thread.was_update_recently %}
+        <div class="card border-primary mb-1 h-100">
+          <div class="card-body text-primary">
+            <h5 class="card-title">{{ thread.get_title }}</h5>
+            <p class="card-text">
+              {{ thread.get_responses }}レス<br>
+              {{ thread.favorites }}おすすめ
+            </p>
+          </div>
+          <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
+        </div>
+        {% else %}
+        <div class="card border-success mb-3  h-100">
+          <div class="card-body text-success">
+            <h5 class="card-title">{{ thread.get_title }}</h5>
+            <p class="card-text">
+              {{ thread.get_responses }}レス<br>
+              {{ thread.favorites }}おすすめ
+            </p>
+          </div>
+          <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <div id="more1">
+      <!-- スレッド一覧 -->
+      <div class="row">
+        {% for thread in latest_thread_list|slice:"9:18" %}
+        <div class="col-md-4 div-link my-3" style="position: relative;">
+          {% if thread.was_update_recently %}
+          <div class="card border-primary mb-1 h-100">
+            <div class="card-body text-primary">
+              <h5 class="card-title">{{ thread.get_title }}</h5>
+              <p class="card-text">
+                {{ thread.get_responses }}レス<br>
+                {{ thread.favorites }}おすすめ
+              </p>
+            </div>
+            <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
+          </div>
+          {% else %}
+          <div class="card border-success mb-3  h-100">
+            <div class="card-body text-success">
+              <h5 class="card-title">{{ thread.get_title }}</h5>
+              <p class="card-text">
+                {{ thread.get_responses }}レス<br>
+                {{ thread.favorites }}おすすめ
+              </p>
+            </div>
+            <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div id="more2">
+      <!-- スレッド一覧 -->
+      <div class="row">
+        {% for thread in latest_thread_list|slice:"18:27" %}
+        <div class="col-md-4 div-link my-3" style="position: relative;">
+          {% if thread.was_update_recently %}
+          <div class="card mb-1 h-100">
+            <div class="card-body text-primary">
+              <h5 class="card-title">{{ thread.get_title }}</h5>
+              <p class="card-text">
+                {{ thread.get_responses }}レス<br>
+                {{ thread.favorites }}おすすめ
+              </p>
+            </div>
+            <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
+          </div>
+          {% else %}
+          <div class="card border-success mb-3  h-100">
+            <div class="card-body text-success">
+              <h5 class="card-title">{{ thread.get_title }}</h5>
+              <p class="card-text">
+                {{ thread.get_responses }}レス<br>
+                {{ thread.favorites }}おすすめ
+              </p>
+            </div>
+            <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <button id="moreButton" type="button" class="btn btn-primary mx-4 mb-3" onclick="clickMore()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots"
+        viewBox="0 0 16 16">
+        <path
+          d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+      </svg>
+      もっと見る
+    </button>
+
+    <div style="text-align: center;">
+      <button type="button" class="btn btn-primary mx-4 mb-3" onclick="window.location.reload(true);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat"
+          viewBox="0 0 16 16">
+          <path
+            d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+          <path fill-rule="evenodd"
+            d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+        </svg>
+        再読込
+      </button>
+    </div>
+
+    <ol class="list-group list-group-numbered mb-3">
+      <div class="list-group-item d-flex justify-content-between align-items-start">
+        OctonyはOcto(8つの)とAnonymous(匿名者)をかけ合わせた言葉であり、長工生が自由に交流できる校内掲示板です。<br>
+        友達にOctonyを紹介し、Octonyをさらに多くの長工生が集う場所にできます！
+      </div>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold"> 学科間の交流 </div>
+          普段交流の少ない他学科の生徒と気軽に交流ができます！
+        </div>
+        <span class="badge bg-primary rounded-pill">20</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold"> 学年間の交流 </div>
+          学年の差を気にせず、匿名で書き込みを行うことができます！
+        </div>
+        <span class="badge bg-primary rounded-pill">5</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold"> 話題別の交流 </div>
+          ゲーム・日常・勉強など様々な話題で長工生と話し合えます！
+        </div>
+        <span class="badge bg-primary rounded-pill">10</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold"> 出会い </div>
+          Octonyで知り合った生徒が仲良くなったり、一緒に製作活動を行ったりなど様々な出会いがあります！
+        </div>
+        <span class="badge bg-primary rounded-pill">3</span>
+      </li>
+    </ol>
+
+    <!-- 新規スレッド作成 -->
+    <form method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">
+          スレッド名
+        </label>
+        {{form.title|add_class:"form-control"}}
+      </div>
+      <button type="submit" class="btn btn-primary mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square"
+          viewBox="0 0 16 16">
+          <path
+            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+          <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+        </svg>
+        新規スレ作成
+      </button>
+    </form>
+
+    <footer style="text-align: center;" id="bottom">
+      <button type="button" class="btn btn-primary m-2" style="position: relative;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-text"
+          viewBox="0 0 16 16">
+          <path
+            d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+          <path
+            d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
+        </svg>
+        利用規約
+        <a href="{% url 'board:terms' %}" class="stretched-link"></a>
+      </button>
+      <p>
+        Octony - Since 2021.10.01
+      </p>
+    </footer>
+  </div>
 </body>
 
 <script>
-    //初期表示は非表示
-    document.getElementById("more1").style.display = "none";
-    document.getElementById("more2").style.display = "none";
+  //初期表示は非表示
+  document.getElementById("more1").style.display = "none";
+  document.getElementById("more2").style.display = "none";
 
-    function clickMore() {
-        const more1 = document.getElementById("more1");
-        const more2 = document.getElementById("more2");
-        const moreButton = document.getElementById("moreButton");
+  function clickMore() {
+    const more1 = document.getElementById("more1");
+    const more2 = document.getElementById("more2");
+    const moreButton = document.getElementById("moreButton");
 
-        if (more1.style.display == "none") {
-            // noneで非表示
-            more1.style.display = "block";
-        } else if (more2.style.display == "none") {
-            // noneで非表示
-            more2.style.display = "block";
-            moreButton.disabled = true
-        }
+    if (more1.style.display == "none") {
+      // noneで非表示
+      more1.style.display = "block";
+    } else if (more2.style.display == "none") {
+      // noneで非表示
+      more2.style.display = "block";
+      moreButton.disabled = true
     }
+  }
 </script>
 
 </html>
