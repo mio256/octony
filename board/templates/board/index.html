@@ -115,13 +115,12 @@
       {% for thread in latest_thread_list|slice:"0:9" %}
       <div class="col-md-4 div-link my-3" style="position: relative;">
         {% if thread.was_update_recently %}
-        <div class="card mb-1 h-100">
+        <div class="card border-primary mb-3  h-100">
           <div class="card-body text-primary">
             <h5 class="card-title">{{ thread.get_title }}</h5>
             <p class="card-text">
               {{ thread.get_responses }}レス<br>
-              {{ thread.favorites }}おすすめ<br>
-              {{ thread.get_pn }}
+              {{ thread.favorites }}おすすめ
             </p>
           </div>
           <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
@@ -132,8 +131,7 @@
             <h5 class="card-title">{{ thread.get_title }}</h5>
             <p class="card-text">
               {{ thread.get_responses }}レス<br>
-              {{ thread.favorites }}おすすめ<br>
-              {{ thread.get_pn }}
+              {{ thread.favorites }}おすすめ
             </p>
           </div>
           <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
@@ -149,16 +147,17 @@
         {% for thread in latest_thread_list|slice:"9:18" %}
         <div class="col-md-4 div-link my-3" style="position: relative;">
           {% if thread.was_update_recently %}
-          <div class="card mb-1 h-100">
-            <div class="card-body text-primary">
-              <h5 class="card-title">{{ thread.get_title }}</h5>
-              <p class="card-text">
-                {{ thread.get_responses }}レス<br>
-                {{ thread.favorites }}おすすめ<br>
-                {{ thread.get_pn }}
-              </p>
+          <div class="card border-primary mb-3  h-100">
+            <div class="card mb-1 h-100">
+              <div class="card-body text-primary">
+                <h5 class="card-title">{{ thread.get_title }}</h5>
+                <p class="card-text">
+                  {{ thread.get_responses }}レス<br>
+                  {{ thread.favorites }}おすすめ
+                </p>
+              </div>
+              <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
             </div>
-            <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
           </div>
           {% else %}
           <div class="card border-success mb-3  h-100">
@@ -166,8 +165,7 @@
               <h5 class="card-title">{{ thread.get_title }}</h5>
               <p class="card-text">
                 {{ thread.get_responses }}レス<br>
-                {{ thread.favorites }}おすすめ<br>
-                {{ thread.get_pn }}
+                {{ thread.favorites }}おすすめ
               </p>
             </div>
             <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
@@ -189,8 +187,7 @@
               <h5 class="card-title">{{ thread.get_title }}</h5>
               <p class="card-text">
                 {{ thread.get_responses }}レス<br>
-                {{ thread.favorites }}おすすめ<br>
-                {{ thread.get_pn }}
+                {{ thread.favorites }}おすすめ
               </p>
             </div>
             <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
@@ -201,8 +198,7 @@
               <h5 class="card-title">{{ thread.get_title }}</h5>
               <p class="card-text">
                 {{ thread.get_responses }}レス<br>
-                {{ thread.favorites }}おすすめ<br>
-                {{ thread.get_pn }}
+                {{ thread.favorites }}おすすめ
               </p>
             </div>
             <a class="stretched-link" href="{% url 'board:response' thread.id%}"></a>
