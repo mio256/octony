@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Response, Thread,Question,Answer
+from .models import Response, Thread, Question, Answer
 
 
 class ResponseInline(admin.TabularInline):
@@ -13,6 +13,7 @@ class ThreadAdmin(admin.ModelAdmin):
     search_fields = ['title']
     list_display = ('title', 'update_date', 'responses', 'favorites')
     inlines = [ResponseInline]
+
 
 admin.site.register(Thread, ThreadAdmin)
 admin.site.register(Question)

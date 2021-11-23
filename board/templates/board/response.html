@@ -141,9 +141,15 @@
     <div class="card m-2">
       {% if response.was_special %}
       <div class="card-body" style="background-color: rgb(255, 250, 250);">
+        <p>
+          {{ forloop.counter }}.
+          {{ response.get_name }}.{{ response.get_trip }}<br>
+        </p>
+        <p style="text-align: right;">
+          {{ response.get_date }}
+        </p>
         {% else %}
         <div class="card-body" style="background-color: rgb(250, 250, 255);">
-          {% endif %}
           <p>
             {{ forloop.counter }}.
             {{ response.get_name }}.{{ response.get_trip }}<br>
@@ -151,6 +157,7 @@
           <p style="text-align: right;">
             {{ response.get_date }} - ID:{{ response.get_id }}
           </p>
+          {% endif %}
           <p>
             {{ response.get_content | linebreaksbr }}
           </p>
@@ -192,7 +199,6 @@
             </div>
           </div>
         </div>
-
         {% endif %}
       </div>
     </div>
