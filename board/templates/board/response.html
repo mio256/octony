@@ -148,6 +148,9 @@
         <p style="text-align: right;">
           {{ response.get_date }}
         </p>
+        <p>
+          {{ response.content | linebreaksbr }}
+        </p>
         {% else %}
         <div class="card-body" style="background-color: rgb(250, 250, 255);">
           <p>
@@ -157,10 +160,10 @@
           <p style="text-align: right;">
             {{ response.get_date }} - ID:{{ response.get_id }}
           </p>
-          {% endif %}
           <p>
             {{ response.get_content | linebreaksbr }}
           </p>
+          {% endif %}
           <p>
             {% for url in response.get_urls %}
             <a href="{{ url }}" target="_blank" rel="noopener noreferrer">
