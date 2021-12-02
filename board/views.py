@@ -1,13 +1,13 @@
 import hashlib
 
-from django.http import HttpResponseRedirect, request, response, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Question, Response, Thread
-from .forms import ThreadForm, ResponseForm, QuestionForm, AnswerForm
+from .models import Response, Thread
+from .forms import ThreadForm, ResponseForm
 
 
 class IndexView(generic.ListView):
@@ -67,7 +67,7 @@ class ThreadView(generic.ListView):
 
 class RankFavoriteView(generic.ListView):
     model = Thread
-    template_name = 'board/thread.html'
+    template_name = 'board/rank_favorite.html'
     context_object_name = 'thread_list'
 
     def post(self, request, *args, **kwargs):
@@ -94,7 +94,7 @@ class RankFavoriteView(generic.ListView):
 
 class RankResponseView(generic.ListView):
     model = Thread, Response
-    template_name = 'board/thread.html'
+    template_name = 'board/rank_response.html'
     context_object_name = 'thread_list'
 
     def post(self, request, *args, **kwargs):
@@ -224,65 +224,3 @@ def add_favorite(request, thread_id):
     except KeyError:
         request.session['history'] = str(thread_id)
     return HttpResponseRedirect(reverse('board:response', args=(thread.id,))+'#bottom')
-
-
-class QuestionView(generic.ListView):
-    model = Question
-    template_name = 'board/question.html'
-    context_object_name = 'latest_question_list'
-
-    def post(self, request, *args, **kwargs):
-        queiston = Question(
-            title=request.POST['title'],
-            content=request.POST['content'],
-            pub_date=timezone.now(),
-            update_date=timezone.now(),
-        )
-        queiston.save()
-
-        return HttpResponseRedirect(reverse('board:question'))
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = QuestionForm()
-        return context
-
-    def get_queryset(self):
-        list = Question.objects.order_by('-update_date')[:9]
-        return list
-
-
-class AnswerView(generic.DetailView):
-    model = Question
-    template_name = 'board/answer.html'
-    context_object_name = 'question'
-
-    def post(self, request, *args, **kwargs):
-        question = get_object_or_404(Question, id=self.kwargs.get('pk', ''))
-
-        answer = question.answer_set.create(
-            content=request.POST['content'],
-            date=timezone.now(),
-            name=request.POST['name'],
-        )
-        try:
-            answer.image = request.FILES['image']
-        except KeyError:
-            pass
-        answer.save()
-
-        question.update()
-        question.save()
-
-        return HttpResponseRedirect(reverse('board:answer', args=(question.id,))+'#end')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        if self.request.session.get('name'):
-            initial_dict = dict(name=self.request.session.get('name'))
-        else:
-            initial_dict = dict(name='ななしちゃん')
-        context['form'] = AnswerForm(initial=initial_dict)
-
-        return context
