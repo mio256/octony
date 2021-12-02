@@ -88,6 +88,177 @@
       </nav>
     </header>
 
+
+    {% if thread_id == "ここに無礼講スレのスレ番" %}
+    <div style="text-align: center;">
+      <script type="text/javascript">
+        var year = "2021"; var month = "12"; var day = "4"; var hour = "23"; var minute = "0"; var centi = "5";
+        var convert = "1"; var roop = "";
+        var cnt1 = ""; var cnt2 = ":"; var cnt3 = ":"; var cnt4 = "";
+        var baseoffset = "-9"; var cuttime = "";
+        var br1 = "1"; var br2 = ""; var br3 = ""; var br4 = "";
+        var com1 = "無礼講スレ終了まで"; var com2 = ""; var com3 = ""; var com4 = ""; var end = "1";
+        var width = "200"; var height = "75";
+        var font = "arial"; var font2 = "7seg4"; var size = "18"; var t_size = "30"; var l_height = "27"; var t_height = "30"; var bold = ""; var italic = ""; var line = "";
+        var space = "0px 0px 0px 0px";
+        var align = "2"; var img = "";
+        var color1 = "FFFFFF"; var color2 = "00FF00"; var color3 = "000000";
+      </script>
+      <script type="text/javascript" src="//countdown.reportitle.com/js/neo1.js"></script><a
+        href="//countdown.reportitle.com/">カウントダウンタイマー</a>
+      <script type="text/javascript" src="//countdown.reportitle.com/js/neo2.js"></script>
+    </div>
+
+    <!-- レス一覧 -->
+    {% for response in thread.response_set.all %}
+    <div class="card m-2">
+      {% if response.was_special %}
+      <div class="card-body" style="background-color: rgb(255, 250, 250);">
+        <p>
+          {{ forloop.counter }}.
+          {{ response.get_name }}.{{ response.get_trip }}<br>
+        </p>
+        <p>
+          {{ response.content | linebreaksbr }}
+        </p>
+        {% else %}
+        <div class="card-body" style="background-color: rgb(250, 250, 255);">
+          <p>
+            {{ forloop.counter }}. 無礼講ちゃん
+          </p>
+          <p>
+            {{ response.get_content | linebreaksbr }}
+          </p>
+          {% endif %}
+          <p>
+            {% for url in response.get_urls %}
+            <a href="{{ url }}" target="_blank" rel="noopener noreferrer">
+              {{ url }}
+            </a><br>
+            {% endfor %}
+          </p>
+          {% if response.image %}
+
+          <img src="{{ response.image.url }}" class="img-fluid" alt="削除された画像" style="height: 10em;">
+
+          <br>
+
+          <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="{{ response.image.url }}">開く</button>
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class=" modal-body">
+                      <div class="mb-3">
+                        <img src="" class="img-fluid" alt="削除された画像">
+                      </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+
+
+    <div style="text-align: center;">
+      <button type="submit" class="btn btn-primary mx-4 mb-3" onclick="window.location.reload(true);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat"
+          viewBox="0 0 16 16">
+          <path
+            d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+          <path fill-rule="evenodd"
+            d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+        </svg>
+        再読込
+      </button>
+    </div>
+
+    <div class="m-1" style="position: relative;">
+      <button type="submit" class="btn btn-success">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
+          viewBox="0 0 16 16">
+          <path
+            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+        </svg>
+        このスレをおすすめする！
+      </button>
+      <a href="{% url 'board:favorite' thread.id %}" class="stretched-link"></a>
+    </div>
+
+    <div class="card border-primary mb-3" style="background-color: white;">
+      <div class="card-header">ルール</div>
+      <div class="card-body text-primary">
+        <h5 class="card-title">無礼講スレ</h5>
+        <p class="card-text">
+          なんでもあり！完全匿名！<br>
+          23時に削除されるので、履歴は残りません！<br>
+          暴れろ野郎ども！
+        </p>
+        <p class="card-text">
+          名前は無礼講ちゃんに置き換えられるため、適当に付けてください。
+        </p>
+      </div>
+    </div>
+
+    <!-- 書き込み -->
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="mb-3">
+        {% for field in form %}
+        {{ field.label_tag }}
+
+        {% if form.is_bound %}
+        {% if field.errors %}
+
+        {% render_field field class="form-control is-invalid" %}
+        {% for error in field.errors %}
+        <div class="invalid-feedback">
+          {{ error }}
+        </div>
+        {% endfor %}
+
+        {% else %}
+        {% render_field field class="form-control is-valid" %}
+        {% endif %}
+        {% else %}
+        {% render_field field class="form-control" %}
+        {% endif %}
+
+        {% if field.help_text %}
+        <small class="form-text text-muted">
+          {{ field.help_text }}
+        </small>
+        {% endif %}
+        {% endfor %}
+      </div>
+
+      <button type="submit" class="btn btn-primary mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle"
+          viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+          <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+        </svg>
+        書き込む
+      </button>
+    </form>
+
+    {% else %}
+
     <!-- スレッドタイトル -->
     <div class="alert alert-primary mt-2 mb-2" role="alert">
       {{ thread.get_title }}
@@ -274,6 +445,8 @@
         書き込む
       </button>
     </form>
+
+    {% endif %}
 
     <footer style="text-align: center;" id="bottom">
       <button type="button" class="btn btn-primary m-2" style="position: relative;">

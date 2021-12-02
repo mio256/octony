@@ -173,6 +173,8 @@ class ResponseView(generic.DetailView):
             initial_dict = dict(name='ななしちゃん')
         context['form'] = ResponseForm(initial=initial_dict)
 
+        context['thread_id'] = self.kwargs['pk']
+
         return context
 
 
