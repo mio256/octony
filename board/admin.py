@@ -6,7 +6,7 @@ from .models import Response, Thread
 
 class ResponseInline(admin.StackedInline):
     model = Response
-    extra = 3
+    extra = 1
 
 
 class ThreadAdmin(admin.ModelAdmin):
