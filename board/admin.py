@@ -1,9 +1,10 @@
 from django.contrib import admin
+from django import forms
 
-from .models import Response, Thread, Question, Answer
+from .models import Response, Thread
 
 
-class ResponseInline(admin.TabularInline):
+class ResponseInline(admin.StackedInline):
     model = Response
     extra = 3
 
@@ -16,4 +17,3 @@ class ThreadAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Thread, ThreadAdmin)
-admin.site.register(Question)
