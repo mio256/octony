@@ -12,8 +12,8 @@ from django.contrib import admin
 
 # ネガポジ辞書を読む
 np_dic = {}
-# fp = open("/home/mio256/mysite/pn.csv", "rt", encoding="utf-8")
-fp = open("pn.csv", "rt", encoding="utf-8")
+fp = open("/home/mio256/mysite/pn.csv", "rt", encoding="utf-8")
+# fp = open("pn.csv", "rt", encoding="utf-8")
 reader = csv.reader(fp, delimiter='\t')
 for i, row in enumerate(reader):
     name = row[0]
