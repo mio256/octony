@@ -1,0 +1,233 @@
+* dd5d380 管理者ページ 追加投稿1つを変更
+* 98c866d 無礼講スレ準備
+* ad641b6 データベース最適化
+* 9304278 管理人投稿にNGWORD排除
+* 7edd4b0 管理者投稿のID非表示
+* 40aef74 トップディレクトリに「はじめに」ページ
+* 8c700b8 トップページ修正
+* 9d4d238 recover
+* 2430687 ホワイト度 修正
+* dad2752 fix
+* fc002d2 error
+* d701011 correction
+*   25eddc6 Merge branch 'master' of https://github.com/mio256/mysite
+|\  
+| * 2508bfb test
+| * 7761948 test
+| * 8d638a5 marge
+| *   84cc050 Merge branch 'master' of https://github.com/mio256/mysite
+| |\  
+| * | 3bf669e ホワイト度
+* | | b615613 pc
+| |/  
+|/|   
+* | d92f9b3 Script head 移動
+* | b50e72b 広告
+* | c35f342 url改定
+* | 91d104a ～長工生が自由に交流できる校内掲示板～
+* | a4c26e2 カード 白
+* | c5543a0 Octonyでできること
+* | 70e93ec hover QR 「Octonyでできること」
+|/  
+* 30adc4a explain
+* 35bc7bc explain
+* 280d7be school
+* 8215cb2 メニュー おすすめ履歴
+* 530b0e4 アナリティクス
+* a7c9070 履歴機能実装
+* 8735ae2 履歴機能
+* 474b640 修正
+* 2e7b1ff 複数履歴
+* 951b224 バグ修正
+* 4a4dbf4 test
+* 5a43d36 履歴機能エラー処理
+* ae42a6c スマホ向け改良
+* 9807d36 ホスト設定
+* c1bf53d 微修正
+*   6d125f7 Merge branch 'master' of https://github.com/mio256/mysite
+|\  
+| *   d7cb23b Merge branch 'master' of github.com:mio256/mysite
+| |\  
+| * \   220e21f Merge branch 'master' of github.com:mio256/mysite
+| |\ \  
+| * | | 0fcefa7 before
+* | | | 41d66d8 もっと見る
+| |_|/  
+|/| |   
+* | | 52c715b おすすめボタンの文章変更
+| |/  
+|/|   
+* | a74794f ロード 背景
+|/  
+* 7479043 背景
+* f792e59 青空友人改善案
+*   14ad766 Merge branch 'master' of github.com:mio256/mysite
+|\  
+| * 84c4478 renew
+* | 23ab754 hello
+|/  
+* 5da4faa Update admin.py
+* af3c543 Update admin.py
+* d03a364 バグ修正
+* e89f4ed バグ修正
+* 3d0bed4 おすすめ順 スレ数順
+* 5b2ee3c 質問箱 アクセスボタン
+* 5117a30 質問機能実装
+* 4f91bf2 記事002
+* 8a9e37d Blog001
+* c6d6b0f 広告表示
+* d0731be 広告
+* 51b05af ブログ
+* 3a2f4c4 Google Analytics
+* 3e33773 連投制限失敗
+* d8808ee 校正
+* 4325139 画像ポップアップ
+* 0e17d4d todo 校正
+* be6991e 微修正
+* c83d3e5 button
+* 33de627 create todo
+*   96bf159 Merge branch 'master' of https://github.com/mio256/mysite
+|\  
+| *   1156dfb Merge branch 'master' of github.com:mio256/mysite
+| |\  
+| * | 1d48fc6 git reset
+* | | eab0647 explain-校正
+| |/  
+|/|   
+* | ee71285 git reset
+* | 2f3d978 explain-ランダム画像
+|/  
+* a9907bb 画像投稿
+* 2b32f1a ボタン位置調節
+* e72a92b explain-menu
+*   c1fe47d Merge branch 'master' of https://github.com/mio256/mysite
+|\  
+| *   d12fb7a before
+| |\  
+| * \   f1000f9 reset
+| |\ \  
+| * | | 402abfb before
+* | | | e6b4f89 スタイル大改良
+| |_|/  
+|/| |   
+* | | f277d09 git reset
+* | | 3181665 git reset
+| |/  
+|/|   
+* | 95110bd Update 2.0/new form/new model/new datebase
+|/  
+* f7caea7 スタイル
+* 8e3afb4 アップデート情報
+* ff1c9a4 セッション 名前保存機能
+* fba6e1b ID機能
+* df6b6e3 中央デザイン
+* ba576a7 「はじめに」左揃え
+* 313e021 「はじめに」URL折り返し
+* 9a10066 1020
+* 6c0493d 1020
+* 0bdcd55 微修正
+*   6412143 Merge branch 'master' of github.com:mio256/mysite
+|\  
+| * f8ece7f 校正
+* | e8cdbe2 Merge branch 'master' of github.com:mio256/mysite
+|\| 
+| * c2b6b43 URL投稿可能
+* | bf49f12 Merge branch 'master' of github.com:mio256/mysite
+|\| 
+| * 9879019 再構成
+* | 3d5ef5d tmp
+|/  
+* 94ee112 リダイレクト修正
+* 42e90c4 Todoリスト
+* 6266d5d スタイル調整、校正
+* 0e18bcd Update explain.html
+* 4a740b7 Update list.html
+* 90f3d98 Update list.html
+* 0c34db6 Update detail.html
+* 0746df8 Update style.css
+* 0118089 Update style.css
+* 9001161 Update explain.html
+* cd5fe4c Update style.css
+* c8dce63 特殊コテハン実装
+* c04325c 名前URLのとき、コテハンを開業させない
+* 2db3aa9 おすすめボタン
+* a23d252 CSVファイル内部化
+* f614496 NGワード パス通し
+* cc382cb NGワード設定
+* 9b9f564 はじめに 校正
+* f0f18b1 ロード 色変更
+* 1933ea7 index スレ数6+3 PCスレサイズ30%
+* 122220a はじめに の改行除去
+* 34065e5 スレ表示 文字制限 中央
+* 7718c51 ロゴ 中央
+* 71fc043 退会
+* 75cf14e 最初へボタン
+* 38862f2 bagu
+* 950ea0b loading
+* 2d5eef0 hover
+* a83140c center
+* 0173641 Update explain.html
+* 0997834 Update explain.html
+* e8a9936 Update views.py
+* 8944d2e Update urls.py
+* 00ac5ce Update explain.html
+* 5bffdd6 Create explain.html
+* 726b56c Update detail.html
+* 5f795b3 Update style.css
+* 9bf9448 おすすめ 更新
+* c5fcfab おすすめで更新
+* b34c1ae スタイル調節
+* c31a9ed スタイル調節
+* fc8c0e9 スタイル調節
+* a3ed000 シンプルUI
+* 4052723 hash 0
+* 0d873f4 hash space
+* d529ccf hash
+* 83af8d8 文字数制限
+* 66fa744 文字数制限
+* 59faad8 スレ一覧
+* a64c6ee フォント ファボ
+* 7607b04 応答画面改良
+* 2b6ce5a スタイル
+* fac736c アンケート
+* 99cffc4 URL可能
+* a124122 スレッド枠線 赤
+* e08d430 スレッド枠線の切り替え12時間以内の更新は赤枠線
+* 30dad51 スレ一覧機能
+* db16d69 去勢
+* b87238a tnk
+* 85feaaf 利用規約
+* 739414b 改行可能 コメント
+* e018ec2 復元
+* 687a3af 移行
+* 1e978ec 結局、文字数制限変えただけ
+* c23342b css
+* aa2e992 css test
+* 3aff973 static
+* 10c8591 setting
+* b3c43d9 スタイル修正
+* b18cdb6 ロゴ小さく
+* 4849b7d 余白
+* 9736551 大きさ修正、スマホ対応
+* 9f34c90 操作性向上
+* 0256857 最新ボタン
+* 853c763 完全スマホ対応化
+* 5a3010d 範囲修正
+* 0890938 統一CSS
+* 70ea5f5 微修正
+* dd3ed8e PC SP 切り替え
+* 97e9877 fontsize
+* 70bd594 ズーム解除
+* 4bff6ff 微修正
+* 26a38b6 ロゴと拡大
+* ff83bb7 Octony
+* a70ea70 リザルトも変更
+* 9d33c22 CSS改行無効
+* 4ccb318 レス番
+* 188f3c8 文字数制限改良
+* 8f1cb72 gitignore
+* 4008229 Delete db.sqlite3
+* 034bcd1 文字数制限 改良
+* dc45d36 文字数制御
+* 9161e03 更新ボタン
+* 902536f first commit
