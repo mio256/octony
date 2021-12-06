@@ -36,8 +36,8 @@ class ContactForm(forms.Form):
         name = self.cleaned_data['name']
         email = self.cleaned_data['email']
         from_email = '{name} <{email}>'.format(name=name, email=email)
-        subject = "Octony お問い合わせ "+ from_email
-        message = self.cleaned_data['message']
+        subject = "Octony お問い合わせ "+ name
+        message = self.cleaned_data['message'] + from_email
         recipient_list = [settings.EMAIL_HOST_USER]  # 受信者リスト
         try:
             send_mail(subject, message, from_email, recipient_list)
