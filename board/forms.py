@@ -33,11 +33,11 @@ class ContactForm(forms.Form):
     )
 
     def send_email(self):
-        subject = "お問い合わせ"
-        message = self.cleaned_data['message']
         name = self.cleaned_data['name']
         email = self.cleaned_data['email']
         from_email = '{name} <{email}>'.format(name=name, email=email)
+        subject = "Octony お問い合わせ "+ from_email
+        message = self.cleaned_data['message']
         recipient_list = [settings.EMAIL_HOST_USER]  # 受信者リスト
         try:
             send_mail(subject, message, from_email, recipient_list)
