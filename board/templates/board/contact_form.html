@@ -1,13 +1,15 @@
-<!-- contact/contact_form.html -->
-
 {% extends "board/base.html" %}
+
+{% load static %}
+{% load widget_tweaks %}
 
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-md-8">
             <h1>お問い合わせ</h1>
-            <p>お問い合わせフォームです。</p>
+            <p>管理人へ直接のお問い合わせがある場合、以下のフォームをご利用ください。</p>
+            <p>ご意見・ご要望は「アイデア求む」でも募集しています。</p>
             <form method="POST">{% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit" class="btn btn-primary">送信</button>

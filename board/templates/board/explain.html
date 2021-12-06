@@ -1,407 +1,283 @@
-<!doctype html>
-<html class="no-js" lang="ja">
+{% extends "board/base.html" %}
 
-<head>
-    {% load static %}
-    {% load widget_tweaks %}
-    <meta charset="utf-8">
-    <title>Octony</title>
-    <meta name="description" content="Octony Octo-Anonymou 長工生が自由に交流できる校内掲示板">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="{% static 'board/images/logo.png' %}">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <!-- mine -->
-    <link rel="stylesheet" href="{% static 'board/style.css' %}">
-    <script src="{% static 'board/script.js' %}"></script>
-    <!-- Google Adsense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9885623483939619"
-        crossorigin="anonymous"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81821919-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+{% load static %}
+{% load widget_tweaks %}
 
-        gtag('config', 'UA-81821919-2');
-    </script>
-</head>
+{% block content %}
+<!-- ロゴ -->
+<div style="text-align: center;">
+    <a href="{% url 'board:index' %}">
+        <img class="img-fluid my-2" src="{% static 'board/images/logo.png' %}" alt="Octony">
+    </a>
+    <p>
+        ～長工生が自由に交流できる校内掲示板～
+    </p>
+</div>
 
-<body style="background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
-    <!-- ローディング -->
-    <div id="loading">
-        <div class="spinner"></div>
+<div class="card mb-4" style="background-color: #ffffff;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img class="img-fluid rounded" src="{% static 'board/images/QR_461644.png' %}" alt="">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">
+                    はじめに
+                </h5>
+                <p class="card-text">
+                    Octonyは Octo(8つの)Anonymous(匿名者) を掛け合わせた言葉です。
+                </p>
+                <p class="card-text">
+                    この言葉には「長工生が学科関係なく、自由に交流ができる場所を提供する」という信念が込められています。
+                </p>
+                <p class="card-text">
+                    100回以上の改良を繰り返し、数多くの便利機能を実装してきたOctonyは、<br>
+                    「より良い交流場所」を目指し、長工生の声を聞き、改良を重ね続けています。
+                </p>
+                <p class="card-text">
+                    すべては「長工生の自由な交流」を実現するために。
+                </p>
+                <p class="card-text">
+                    Octonyを使い、長工生間の交流が増えることを願います。
+                </p>
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="container-lg" id="top">
-        <header class="sticky-top" style="background-color: aliceblue;">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="{% url 'board:index' %}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-house" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-                                        <path fill-rule="evenodd"
-                                            d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-                                    </svg>
-                                    トップ
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'board:thread' %}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-award" viewBox="0 0 16 16">
-                                        <path
-                                            d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
-                                        <path
-                                            d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
-                                    </svg>
-                                    ランキング
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'board:history' %}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-heart" viewBox="0 0 16 16">
-                                        <path
-                                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                    </svg>
-                                    おすすめ履歴
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+<div class="mb-4" style="text-align: center;">
+    <button type="button" class="btn btn-outline-danger btn-lg" style="position: relative;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-brightness-alt-high" viewBox="0 0 16 16">
+            <path
+                d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4zm0 1a3 3 0 0 1 2.959 2.5H5.04A3 3 0 0 1 8 8z" />
+        </svg>
+        さあ、Octonyをはじめよう。
+        <a href="{% url 'board:index' %}" class="stretched-link"></a>
+    </button>
+</div>
 
-        <!-- ロゴ -->
-        <div style="text-align: center;">
-            <a href="{% url 'board:index' %}">
-                <img class="img-fluid my-2" src="{% static 'board/images/logo.png' %}" alt="Octony">
-            </a>
-            <p>
-                ～長工生が自由に交流できる校内掲示板～
-            </p>
-        </div>
-
-        <div class="card mb-4" style="background-color: #ffffff;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded" src="{% static 'board/images/QR_461644.png' %}" alt="">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            はじめに
-                        </h5>
-                        <p class="card-text">
-                            Octonyは Octo(8つの)Anonymous(匿名者) を掛け合わせた言葉です。
-                        </p>
-                        <p class="card-text">
-                            この言葉には「長工生が学科関係なく、自由に交流ができる場所を提供する」という信念が込められています。
-                        </p>
-                        <p class="card-text">
-                            100回以上の改良を繰り返し、数多くの便利機能を実装してきたOctonyは、<br>
-                            「より良い交流場所」を目指し、長工生の声を聞き、改良を重ね続けています。
-                        </p>
-                        <p class="card-text">
-                            すべては「長工生の自由な交流」を実現するために。
-                        </p>
-                        <p class="card-text">
-                            Octonyを使い、長工生間の交流が増えることを願います。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-4" style="text-align: center;">
-            <button type="button" class="btn btn-outline-danger btn-lg" style="position: relative;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-brightness-alt-high" viewBox="0 0 16 16">
-                    <path
-                        d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4zm0 1a3 3 0 0 1 2.959 2.5H5.04A3 3 0 0 1 8 8z" />
-                </svg>
-                さあ、Octonyをはじめよう。
-                <a href="{% url 'board:index' %}" class="stretched-link"></a>
-            </button>
-        </div>
-
-        <ol class="list-group list-group-numbered mb-3">
-            <div class="list-group-item d-flex justify-content-between align-items-start">
-                OctonyはOcto(8つの)とAnonymous(匿名者)をかけ合わせた言葉であり、長工生が自由に交流できる校内掲示板です。<br>
-                友達にOctonyを紹介し、Octonyをさらに多くの長工生が集う場所にできます！
-            </div>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold"> 学科間の交流 </div>
-                    普段交流の少ない他学科の生徒と気軽に交流ができます！
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold"> 学年間の交流 </div>
-                    学年の差を気にせず、匿名で書き込みを行うことができます！
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold"> 話題別の交流 </div>
-                    ゲーム・日常・勉強など様々な話題で長工生と話し合えます！
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold"> 出会い </div>
-                    Octonyで知り合った生徒が仲良くなったり、一緒に製作活動を行ったりなど様々な出会いがあります！
-                </div>
-            </li>
-        </ol>
-
-        <div class="mb-3" class="accordion" id="accordionPanelsStayOpenExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                        aria-controls="panelsStayOpen-collapseOne">
-                        スレ・レス
-                    </button>
-                </h2>
-                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
-                    aria-labelledby="panelsStayOpen-headingOne">
-                    <div class="accordion-body">
-                        <p>
-                            スレ（スレッド） 掲示板内の話題
-                        </p>
-                        <p>
-                            レス（レスポンス） スレに書き込むこと
-                        </p>
-                        <p>
-                            「書き込み」や「おすすめ」により更新され、更新順にトップページに表示されます。
-                        </p>
-                        <p>
-                            「スレ一覧」ですべてのスレを見ることができます。
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseTwo">
-                        ID
-                    </button>
-                </h2>
-                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
-                    aria-labelledby="panelsStayOpen-headingTwo">
-                    <div class="accordion-body">
-                        <p>
-                            自動生成される識別信号
-                        </p>
-                        <p>
-                            同じ人の投稿であれば<strong>大体</strong>一緒の文字列になる信号です。
-                        </p>
-                        <div class="alert alert-primary d-flex align-items-center" role="alert">
-                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
-                                <use xlink:href="#info-fill" />
-                            </svg>
-                            <div>
-                                仕組み
-                            </div>
-                        </div>
-                        <ol class="list-group list-group-numbered m-2">
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        IPアドレスを取得
-                                    </div>
-                                    126.254.10.22
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        日付を取得
-                                    </div>
-                                    2021-10-01
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        IPアドレスと日付の文字列を結合
-                                    </div>
-                                    126.254.10.222021-10-01
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        文字列をハッシュ化する
-                                    </div>
-                                    '126.254.10.222021-10-01'→'7gr55xcvz6878fas4...'
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        ハッシュを編集する
-                                    </div>
-                                    '7gr55xcvz6878fas4...'→'7gr55xcv'
-                                </div>
-                            </li>
-                        </ol>
-                        <div class="alert alert-warning d-flex align-items-center" role="alert">
-                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
-                                <use xlink:href="#exclamation-triangle-fill" />
-                            </svg>
-                            <div>
-                                「IDが一致→同一人物」ではない
-                            </div>
-                        </div>
-                        <p>
-                            Wifi、キャリア、端末などの設定によりIPアドレスは変わる
-                        </p>
-                        <p>
-                            特に「同じLAN内」や「同じキャリア」であれば他の人と同じIPアドレスになる可能性が高い
-                        </p>
-                        <div class="alert alert-warning d-flex align-items-center" role="alert">
-                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
-                                <use xlink:href="#exclamation-triangle-fill" />
-                            </svg>
-                            <div>
-                                「IDが不一致→別人」ではない
-                            </div>
-                        </div>
-                        <p>
-                            本人がWifi、キャリア、端末などを変更するとIPアドレスも変わる
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseThree">
-                        コテハン
-                    </button>
-                </h2>
-                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
-                    aria-labelledby="panelsStayOpen-headingThree">
-                    <div class="accordion-body">
-                        <p>
-                            固定ハンドルネームの略称、なりすまし防止機能です。
-                        </p>
-                        <p>
-                            名前欄に「名前$暗号」で使用します。$は半角で、暗号は秘密の適当な文字列です。
-                        </p>
-                        <p>
-                            例）「ななしさん$さきいか」「ぱおぱお$toto48」
-                        </p>
-                        <p>
-                            「暗号」が「fes4re85」のように変換され表示され、「fes4re85」を他の人が見ても「暗号」だとわからないため、なりすましを防止できます。
-                        </p>
-                        <div class="alert alert-primary d-flex align-items-center" role="alert">
-                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
-                                <use xlink:href="#info-fill" />
-                            </svg>
-                            <div>
-                                仕組み
-                            </div>
-                        </div>
-                        <ol class="list-group list-group-numbered m-2">
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        入力文字を分割する
-                                    </div>
-                                    「ななしさん$あんごう」→['ななしさん','あんごう']
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        平文'あんごう'をSHA256でハッシュ化する
-                                    </div>
-                                    'あんごう'→'7gr55xcvz6878fas4...'
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        平文'あんごう'を破棄する
-                                    </div>
-                                    平文'あんごう'はパスワードなので、データベースには残さない。
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">
-                                        ハッシュの編集
-                                    </div>
-                                    ハッシュ'7gr55xcvz6878fas4...'の上位8文字を切り抜き、表示しやすくする。
-                                </div>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer style="text-align: center;" id="bottom">
-            <button type="button" class="btn btn-primary m-2" style="position: relative;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-card-text" viewBox="0 0 16 16">
-                    <path
-                        d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                    <path
-                        d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
-                </svg>
-                利用規約
-                <a href="{% url 'board:terms' %}" class="stretched-link"></a>
-            </button>
-            <p>
-                Octony - Since 2021.10.01
-            </p>
-        </footer>
+<ol class="list-group list-group-numbered mb-3">
+    <div class="list-group-item d-flex justify-content-between align-items-start">
+        OctonyはOcto(8つの)とAnonymous(匿名者)をかけ合わせた言葉であり、長工生が自由に交流できる校内掲示板です。<br>
+        友達にOctonyを紹介し、Octonyをさらに多くの長工生が集う場所にできます！
     </div>
-</body>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold"> 学科間の交流 </div>
+            普段交流の少ない他学科の生徒と気軽に交流ができます！
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold"> 学年間の交流 </div>
+            学年の差を気にせず、匿名で書き込みを行うことができます！
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold"> 話題別の交流 </div>
+            ゲーム・日常・勉強など様々な話題で長工生と話し合えます！
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold"> 出会い </div>
+            Octonyで知り合った生徒が仲良くなったり、一緒に製作活動を行ったりなど様々な出会いがあります！
+        </div>
+    </li>
+</ol>
 
-<script>
-    //初期表示は非表示
-    document.getElementById("more1").style.display = "none";
-    document.getElementById("more2").style.display = "none";
+<div class="mb-3" class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                aria-controls="panelsStayOpen-collapseOne">
+                スレ・レス
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+            aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+                <p>
+                    スレ（スレッド） 掲示板内の話題
+                </p>
+                <p>
+                    レス（レスポンス） スレに書き込むこと
+                </p>
+                <p>
+                    「書き込み」や「おすすめ」により更新され、更新順にトップページに表示されます。
+                </p>
+                <p>
+                    「スレ一覧」ですべてのスレを見ることができます。
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseTwo">
+                ID
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingTwo">
+            <div class="accordion-body">
+                <p>
+                    自動生成される識別信号
+                </p>
+                <p>
+                    同じ人の投稿であれば<strong>大体</strong>一緒の文字列になる信号です。
+                </p>
+                <div class="alert alert-primary d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
+                        <use xlink:href="#info-fill" />
+                    </svg>
+                    <div>
+                        仕組み
+                    </div>
+                </div>
+                <ol class="list-group list-group-numbered m-2">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                IPアドレスを取得
+                            </div>
+                            126.254.10.22
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                日付を取得
+                            </div>
+                            2021-10-01
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                IPアドレスと日付の文字列を結合
+                            </div>
+                            126.254.10.222021-10-01
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                文字列をハッシュ化する
+                            </div>
+                            '126.254.10.222021-10-01'→'7gr55xcvz6878fas4...'
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                ハッシュを編集する
+                            </div>
+                            '7gr55xcvz6878fas4...'→'7gr55xcv'
+                        </div>
+                    </li>
+                </ol>
+                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+                        <use xlink:href="#exclamation-triangle-fill" />
+                    </svg>
+                    <div>
+                        「IDが一致→同一人物」ではない
+                    </div>
+                </div>
+                <p>
+                    Wifi、キャリア、端末などの設定によりIPアドレスは変わる
+                </p>
+                <p>
+                    特に「同じLAN内」や「同じキャリア」であれば他の人と同じIPアドレスになる可能性が高い
+                </p>
+                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+                        <use xlink:href="#exclamation-triangle-fill" />
+                    </svg>
+                    <div>
+                        「IDが不一致→別人」ではない
+                    </div>
+                </div>
+                <p>
+                    本人がWifi、キャリア、端末などを変更するとIPアドレスも変わる
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseThree">
+                コテハン
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingThree">
+            <div class="accordion-body">
+                <p>
+                    固定ハンドルネームの略称、なりすまし防止機能です。
+                </p>
+                <p>
+                    名前欄に「名前$暗号」で使用します。$は半角で、暗号は秘密の適当な文字列です。
+                </p>
+                <p>
+                    例）「ななしさん$さきいか」「ぱおぱお$toto48」
+                </p>
+                <p>
+                    「暗号」が「fes4re85」のように変換され表示され、「fes4re85」を他の人が見ても「暗号」だとわからないため、なりすましを防止できます。
+                </p>
+                <div class="alert alert-primary d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
+                        <use xlink:href="#info-fill" />
+                    </svg>
+                    <div>
+                        仕組み
+                    </div>
+                </div>
+                <ol class="list-group list-group-numbered m-2">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                入力文字を分割する
+                            </div>
+                            「ななしさん$あんごう」→['ななしさん','あんごう']
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                平文'あんごう'をSHA256でハッシュ化する
+                            </div>
+                            'あんごう'→'7gr55xcvz6878fas4...'
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                平文'あんごう'を破棄する
+                            </div>
+                            平文'あんごう'はパスワードなので、データベースには残さない。
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                ハッシュの編集
+                            </div>
+                            ハッシュ'7gr55xcvz6878fas4...'の上位8文字を切り抜き、表示しやすくする。
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 
-    function clickMore() {
-        const more1 = document.getElementById("more1");
-        const more2 = document.getElementById("more2");
-        const moreButton = document.getElementById("moreButton");
-
-        if (more1.style.display == "none") {
-            // noneで非表示
-            more1.style.display = "block";
-        } else if (more2.style.display == "none") {
-            // noneで非表示
-            more2.style.display = "block";
-            moreButton.disabled = true
-        }
-    }
-</script>
+{% endblock %}

@@ -21,7 +21,7 @@ from .forms import ContactForm
 class ContactFormView(FormView):
     template_name = 'board/contact_form.html'
     form_class = ContactForm
-    success_url = reverse_lazy('contact_result')
+    success_url = reverse_lazy('board:contact_result')
 
     def form_valid(self, form):
         form.send_email()
