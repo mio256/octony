@@ -14,4 +14,6 @@ urlpatterns = [
     path('thread/response', views.RankResponseView.as_view(), name='rank_response'),
     path('history/', views.HistoryView.as_view(), name='history'),
     path('terms/', views.TermsView.as_view(), name='terms'),
+    path('contact/', views.ContactFormView.as_view(), name='contact_form'),
+    path('contact/result/', views.ContactResultView.as_view(), name='contact_result'),
 ]
