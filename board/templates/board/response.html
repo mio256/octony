@@ -53,7 +53,23 @@
   </p>
 </div>
 
-{% if thread_id == 24 %}
+{% if thread_id == 45 or thread_id == 44 %}
+
+<div class="card border-primary mb-3" style="background-color: white;">
+  <div class="card-header">ルール</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">無礼講スレ</h5>
+    <p class="card-text">
+      なんでもあり！完全匿名！<br>
+      3時に削除されるので、履歴は残りません！<br>
+      暴れろ野郎ども！
+    </p>
+    <p class="card-text">
+      名前は無礼講ちゃんに置き換えられるため、適当に付けてください。
+    </p>
+  </div>
+</div>
+
 <!-- レス一覧 -->
 {% for response in thread.response_set.all %}
 <div class="card m-2">
@@ -143,28 +159,13 @@
   <a href="{% url 'board:favorite' thread.id %}" class="stretched-link"></a>
 </div>
 
-<div class="card border-primary mb-3" style="background-color: white;">
-  <div class="card-header">ルール</div>
-  <div class="card-body text-primary">
-    <h5 class="card-title">無礼講スレ</h5>
-    <p class="card-text">
-      なんでもあり！完全匿名！<br>
-      23時に削除されるので、履歴は残りません！<br>
-      暴れろ野郎ども！
-    </p>
-    <p class="card-text">
-      名前は無礼講ちゃんに置き換えられるため、適当に付けてください。
-    </p>
-  </div>
-</div>
-
 <div style="text-align: center;">
   <script type="text/javascript">
     var year = "2021";
     var month = "12";
-    var day = "4";
-    var hour = "23";
-    var minute = "30";
+    var day = "25";
+    var hour = "3";
+    var minute = "0";
     var centi = "5";
     var convert = "1";
     var roop = "";
