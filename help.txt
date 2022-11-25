@@ -1,2 +1,0 @@
-画像削除
-find /media/images -type f -mtime +90 | xargs rm -f

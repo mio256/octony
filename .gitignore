@@ -2,3 +2,8 @@ db.sqlite3
 /backup/
 /media/
 mysite/settings.py
+/venv/
+*/__pycache__/
+*/migrations/
+/static/
+*/__init__.py
