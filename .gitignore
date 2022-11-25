@@ -1,1 +1,4 @@
 db.sqlite3
+/backup/
+/media/
+mysite/settings.py
