@@ -1,7 +1,7 @@
 db.sqlite3
 /backup/
 /media/
-mysite/settings.py
+*/settings.py
 /venv/
 */__pycache__/
 */migrations/
